@@ -38,7 +38,7 @@
 
 <body class="index-page">
 
-  <header id="header" class="header d-flex align-items-center fixed-top">
+  <header id="header" class="header d-flex align-items-center apple-glass">
     <div class="header-container container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
 
       <a href="index.html" class="logo d-flex align-items-center me-auto me-xl-0">
@@ -985,6 +985,20 @@
 
   <!-- Main JS File -->
   <script src="assets/js/main.js"></script>
+
+<script>
+const header = document.querySelector(".apple-glass");
+
+window.addEventListener("scroll", () => {
+    if (window.scrollY > 40) {
+        header.style.transform = "translateY(-6px) scale(0.985)";
+        header.style.boxShadow =
+            "0 55px 140px rgba(0,0,0,.55), inset 0 1px 1px rgba(255,255,255,.65)";
+    } else {
+        header.style.transform = "none";
+    }
+});
+</script>
 
 </body>
 
