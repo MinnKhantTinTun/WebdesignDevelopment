@@ -4,13 +4,13 @@
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>Tours - Marina Travel</title>
+  <title>Our Tours - Marina Travel | Explore Vung Tau & Beyond</title>
 
   <link href="assets/img/favicon.png" rel="icon">
-
+  
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
 
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
@@ -20,197 +20,165 @@
     :root {
       --primary: #0C4999;
       --secondary: #EF9B34;
-      --dark: #051e23;
-      --light: #f8fafc;
+      --light: #f1f5f9;
       --text-main: #1e293b;
-      --text-muted: #64748b;
     }
 
-    body { font-family: 'Inter', sans-serif; color: var(--text-main); background-color: var(--light); overflow-x: hidden; }
-    h1, h2, h3, h4 { font-family: 'Playfair Display', serif; color: var(--primary); }
+    body { font-family: 'Inter', sans-serif; color: var(--text-main); background-color: var(--light); }
+    h1, h2, h3 { font-family: 'Playfair Display', serif; color: var(--primary); font-weight: 700; }
 
-    /* --- Unified Navbar --- */
-    .header { padding: 15px 0; transition: all 0.4s; z-index: 999; }
-    .header.scrolled { background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); box-shadow: 0 4px 20px rgba(0,0,0,0.1); padding: 10px 0; }
-    .logo-container { display: flex; align-items: center; gap: 10px; text-decoration: none; }
-    .logo-icon { width: 40px; height: 40px; background: var(--primary); color: #fff; border-radius: 10px; display: flex; align-items: center; justify-content: center; }
-    .logo-text { font-size: 1.5rem; font-weight: 700; color: var(--primary); margin: 0; }
+    /* --- Header Consistency --- */
+    .header { background: white; padding: 12px 0; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
+    .logo-text { font-size: 1.5rem; font-weight: 700; color: var(--primary); text-transform: uppercase; }
     .logo-text span { color: var(--secondary); }
-    .nav-link { font-weight: 600; color: var(--text-main) !important; transition: 0.3s; padding: 10px 15px !important; }
-    .nav-link:hover, .nav-link.active { color: var(--primary) !important; }
-    .btn-navbar { background: var(--secondary); color: #fff !important; border-radius: 50px; padding: 8px 25px; margin-left: 15px; border: 2px solid var(--secondary); }
+    .nav-link { font-weight: 600; color: #333 !important; text-transform: uppercase; font-size: 0.85rem; padding: 10px 15px !important; }
+    .nav-link.active { color: var(--primary) !important; border-bottom: 2px solid var(--primary); }
 
-    /* --- Page Title --- */
-    .page-title { 
-      height: 40vh; 
-      background: linear-gradient(rgba(12, 73, 153, 0.7), rgba(12, 73, 153, 0.7)), url('assets/img/travel/showcase-8.webp') center/cover;
-      display: flex; align-items: center; justify-content: center; text-align: center; color: #fff; margin-top: 70px;
+    /* --- Tour Cards Styling --- */
+    .tour-grid-card { 
+      background: white; 
+      border-radius: 15px; 
+      overflow: hidden; 
+      border: none; 
+      transition: all 0.3s ease; 
+      height: 100%;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+    }
+    .tour-grid-card:hover { transform: translateY(-8px); box-shadow: 0 12px 30px rgba(0,0,0,0.1); }
+    
+    .tour-badge { 
+      position: absolute; top: 15px; left: 15px; 
+      background: var(--secondary); color: white; 
+      padding: 5px 15px; border-radius: 50px; 
+      font-size: 0.75rem; font-weight: 700; z-index: 2;
     }
 
-    /* --- Search/Filter Box --- */
-    .filter-box { background: #fff; border-radius: 20px; padding: 25px; margin-top: -50px; position: relative; z-index: 10; border: 1px solid #eef2f6; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
-    .form-select { border-radius: 10px; border: 1px solid #e2e8f0; padding: 10px; background-color: #f8fafc; }
+    .tour-image-container { position: relative; height: 230px; overflow: hidden; }
+    .tour-image-container img { width: 100%; height: 100%; object-fit: cover; transition: 0.5s; }
+    .tour-grid-card:hover .tour-image-container img { scale: 1.1; }
 
-    /* --- Tour Cards --- */
-    .tour-card { background: #fff; border-radius: 20px; overflow: hidden; border: 1px solid #eef2f6; transition: 0.4s; height: 100%; }
-    .tour-card:hover { transform: translateY(-10px); box-shadow: 0 15px 30px rgba(0,0,0,0.1); }
-    .tour-img-wrapper { height: 220px; overflow: hidden; position: relative; }
-    .tour-img-wrapper img { width: 100%; height: 100%; object-fit: cover; transition: 0.6s; }
-    .tour-card:hover .tour-img-wrapper img { transform: scale(1.1); }
-    .badge-tour { position: absolute; top: 15px; left: 15px; background: var(--secondary); color: #fff; padding: 4px 12px; border-radius: 50px; font-size: 0.75rem; font-weight: 700; }
-    
-    .tour-body { padding: 25px; }
-    .tour-meta { font-size: 0.85rem; color: var(--text-muted); display: flex; gap: 15px; margin-bottom: 10px; }
-    .price-tag { color: var(--primary); font-size: 1.4rem; font-weight: 700; }
+    .tour-info { padding: 25px; }
+    .tour-meta { font-size: 0.85rem; color: #64748b; margin-bottom: 10px; display: flex; gap: 15px; }
+    .tour-price { font-size: 1.4rem; color: var(--primary); font-weight: 800; }
+    .old-price { font-size: 0.9rem; text-decoration: line-through; color: #94a3b8; margin-right: 8px; }
 
-    /* --- Pagination --- */
-    .page-link { border: none; color: var(--text-main); margin: 0 5px; border-radius: 50% !important; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; }
-    .page-item.active .page-link { background-color: var(--primary); }
-
-    /* --- Footer --- */
-    footer { background: var(--primary); color: #fff; padding: 60px 0 20px; }
+    .category-filter { margin-bottom: 40px; display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; }
+    .filter-btn { border-radius: 50px; padding: 8px 25px; font-weight: 600; transition: 0.3s; }
   </style>
 </head>
 
 <body>
 
-  <header id="header" class="header fixed-top">
+  <header class="header fixed-top">
     <div class="container d-flex align-items-center justify-content-between">
-      <a href="index.html" class="logo-container">
-        <div class="logo-icon"><i class="bi bi-tsunami"></i></div>
-        <h1 class="logo-text">Marina<span>Travel</span></h1>
+      <a href="index.html" class="text-decoration-none">
+        <h1 class="logo-text m-0">MARINA <span>TRAVEL</span></h1>
       </a>
       <nav class="navbar navbar-expand-lg">
-        <div class="collapse navbar-collapse" id="nav">
+        <div class="collapse navbar-collapse">
           <ul class="navbar-nav ms-auto align-items-center">
             <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
             <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
-            <li class="nav-item"><a class="nav-link" href="destinations.html">Destinations</a></li>
             <li class="nav-item"><a class="nav-link active" href="tours.html">Tours</a></li>
             <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
-            <li class="nav-item"><a class="btn btn-navbar" href="booking.html">Book Now</a></li>
           </ul>
         </div>
       </nav>
     </div>
   </header>
 
-  <main>
-    <section class="page-title">
-      <div class="container" data-aos="zoom-out">
-        <h1 class="text-white display-4">Signature Tours</h1>
-        <p class="lead">Experience the ocean like never before.</p>
-      </div>
-    </section>
-
-    <div class="container">
-      <div class="filter-box" data-aos="fade-up">
-        <div class="row g-3 align-items-center">
-          <div class="col-md-3">
-            <select class="form-select"><option>Destination</option><option>Bali</option><option>Maldives</option></select>
-          </div>
-          <div class="col-md-3">
-            <select class="form-select"><option>Activity Type</option><option>Diving</option><option>Sailing</option></select>
-          </div>
-          <div class="col-md-3">
-            <select class="form-select"><option>Price Range</option><option>$500 - $1000</option><option>$1000+</option></select>
-          </div>
-          <div class="col-md-3">
-            <button class="btn btn-warning w-100 text-white fw-bold py-2 rounded-3">Find My Trip</button>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <section class="py-5 mt-4">
+  <main style="margin-top: 100px;">
+    <section class="py-5">
       <div class="container">
+        <div class="text-center mb-5" data-aos="fade-up">
+          <h1 class="display-4">Exclusive Tour Packages</h1>
+          <p class="text-muted">Authentic Vung Tau experiences curated by Marina Travel experts.</p>
+        </div>
+
         <div class="row g-4">
           <div class="col-lg-4 col-md-6" data-aos="fade-up">
-            <div class="tour-card">
-              <div class="tour-img-wrapper">
-                <img src="assets/img/travel/tour-15.webp" alt="Bali">
-                <span class="badge-tour">Bestseller</span>
+            <div class="tour-grid-card">
+              <div class="tour-image-container">
+                <span class="tour-badge">Flash Sale</span>
+                <img src="https://images.unsplash.com/photo-1596422846543-75c6fc18a593?auto=format&fit=crop&w=600" alt="Vung Tau Coast">
               </div>
-              <div class="tour-body">
-                <div class="tour-meta"><i class="bi bi-clock"></i> 7 Days <i class="bi bi-people ml-2"></i> Max 12</div>
-                <h4>Bali Adventure Escape</h4>
-                <p class="text-muted small">Explore hidden lagoons and vibrant coral reefs with our local guides.</p>
-                <hr>
-                <div class="d-flex justify-content-between align-items-center">
-                  <div class="price-tag">$899</div>
-                  <a href="tour-details.html" class="btn btn-outline-primary btn-sm rounded-pill px-4">View</a>
+              <div class="tour-info">
+                <div class="tour-meta">
+                  <span><i class="bi bi-clock"></i> 50-60 Mins</span>
+                  <span><i class="bi bi-geo-alt"></i> Vung Tau Bay</span>
+                </div>
+                <h4 class="h5">Explore Western Vung Tau from the Sea</h4>
+                <p class="small text-muted">A scenic canoe journey showcasing the coastal beauty of Vung Tau city from a unique offshore perspective.</p>
+                <div class="d-flex align-items-center justify-content-between mt-4">
+                  <div>
+                    <span class="old-price">300.000đ</span>
+                    <span class="tour-price">270.000 VNĐ</span>
+                  </div>
+                  <a href="contact.html" class="btn btn-outline-primary btn-sm rounded-pill px-3">Book</a>
                 </div>
               </div>
             </div>
           </div>
 
           <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
-            <div class="tour-card">
-              <div class="tour-img-wrapper">
-                <img src="assets/img/travel/tour-22.webp" alt="Paris">
-                <span class="badge-tour" style="background: var(--primary);">Luxury</span>
+            <div class="tour-grid-card">
+              <div class="tour-image-container">
+                <span class="tour-badge">Popular</span>
+                <img src="https://images.unsplash.com/photo-1544148103-0773bf10d330?auto=format&fit=crop&w=600" alt="Oyster Island">
               </div>
-              <div class="tour-body">
-                <div class="tour-meta"><i class="bi bi-clock"></i> 5 Days <i class="bi bi-star-fill text-warning"></i> 4.9</div>
-                <h4>Romantic Coastal Cruise</h4>
-                <p class="text-muted small">Gourmet dining on a private yacht at sunset across the Riviera.</p>
-                <hr>
-                <div class="d-flex justify-content-between align-items-center">
-                  <div class="price-tag">$1,299</div>
-                  <a href="tour-details.html" class="btn btn-outline-primary btn-sm rounded-pill px-4">View</a>
+              <div class="tour-info">
+                <div class="tour-meta">
+                  <span><i class="bi bi-clock"></i> Full Day</span>
+                  <span><i class="bi bi-geo-alt"></i> Go Gang Island</span>
+                </div>
+                <h4 class="h5">Go Gang Island - The Oyster Kingdom</h4>
+                <p class="small text-muted">Visit the famous "Oyster Kingdom," experience local fishing life, and enjoy fresh seafood at Long Son village.</p>
+                <div class="d-flex align-items-center justify-content-between mt-4">
+                  <div>
+                    <span class="old-price">420.000đ</span>
+                    <span class="tour-price">350.000 VNĐ</span>
+                  </div>
+                  <a href="contact.html" class="btn btn-outline-primary btn-sm rounded-pill px-3">Book</a>
                 </div>
               </div>
             </div>
           </div>
 
           <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
-            <div class="tour-card">
-              <div class="tour-img-wrapper">
-                <img src="assets/img/travel/tour-8.webp" alt="Tokyo">
-                <span class="badge-tour" style="background: #28a745;">New</span>
+            <div class="tour-grid-card">
+              <div class="tour-image-container">
+                <span class="tour-badge">Group Trip</span>
+                <img src="https://images.unsplash.com/photo-1544764200-d8132f4175c4?auto=format&fit=crop&w=600" alt="Fishing Tour">
               </div>
-              <div class="tour-body">
-                <div class="tour-meta"><i class="bi bi-clock"></i> 10 Days <i class="bi bi-geo-alt"></i> Japan</div>
-                <h4>Tokyo Marine Culture</h4>
-                <p class="text-muted small">Deep dive into Japan's relationship with the sea and local markets.</p>
-                <hr>
-                <div class="d-flex justify-content-between align-items-center">
-                  <div class="price-tag">$1,599</div>
-                  <a href="tour-details.html" class="btn btn-outline-primary btn-sm rounded-pill px-4">View</a>
+              <div class="tour-info">
+                <div class="tour-meta">
+                  <span><i class="bi bi-clock"></i> 3-4 Hours</span>
+                  <span><i class="bi bi-person"></i> Private Boat</span>
+                </div>
+                <h4 class="h5">Professional Recreational Fishing</h4>
+                <p class="small text-muted">Includes high-end canoe rental, 5 fishing rods, bait (shrimp/worms), and dedicated local support guides.</p>
+                <div class="d-flex align-items-center justify-content-between mt-4">
+                  <div>
+                    <span class="old-price">5.000.000đ</span>
+                    <span class="tour-price">4.500.000 VNĐ</span>
+                  </div>
+                  <a href="contact.html" class="btn btn-outline-primary btn-sm rounded-pill px-3">Book</a>
                 </div>
               </div>
             </div>
           </div>
         </div>
-
-        <nav class="mt-5">
-          <ul class="pagination justify-content-center">
-            <li class="page-item"><a class="page-link" href="#"><i class="bi bi-chevron-left"></i></a></li>
-            <li class="page-item active"><a class="page-link" href="#">1</a></li>
-            <li class="page-item"><a class="page-link" href="#">2</a></li>
-            <li class="page-item"><a class="page-link" href="#"><i class="bi bi-chevron-right"></i></a></li>
-          </ul>
-        </nav>
       </div>
     </section>
   </main>
 
-  <footer>
+  <footer class="bg-dark text-white py-4 mt-5">
     <div class="container text-center">
-      <h4 class="text-white">Marina<span>Travel</span></h4>
-      <p class="small opacity-50 mb-0">© 2025 Marina Travel. Premium Travel Experiences.</p>
+      <p class="mb-0 opacity-50 small">© 2026 Marina Travel VN. Unit 13 Project Rebuild.</p>
     </div>
   </footer>
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-  <script>
-    AOS.init({ duration: 1000, once: true });
-    window.addEventListener('scroll', function() {
-      const header = document.querySelector('.header');
-      if (window.scrollY > 50) header.classList.add('scrolled');
-      else header.classList.remove('scrolled');
-    });
-  </script>
+  <script>AOS.init();</script>
 </body>
 </html>
