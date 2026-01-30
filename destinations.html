@@ -4,451 +4,147 @@
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>Destinations - Tour Bootstrap Template</title>
-  <meta name="description" content="">
-  <meta name="keywords" content="">
+  <title>Destinations - Marina Travel</title>
 
-  <!-- Favicons -->
   <link href="assets/img/favicon.png" rel="icon">
-  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
-  <!-- Fonts -->
-  <link href="https://fonts.googleapis.com" rel="preconnect">
-  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
 
-  <!-- Vendor CSS Files -->
-  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
-  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
-  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
-  <!-- Main CSS File -->
-  <link href="assets/css/main.css" rel="stylesheet">
+  <style>
+    /* MASTER CSS */
+    :root { --primary: #0C4999; --secondary: #EF9B34; --dark: #083370; --light: #f8fafc; --text-main: #1e293b; --text-muted: #64748b; --card-radius: 20px; }
+    body { font-family: 'Inter', sans-serif; color: var(--text-main); background-color: var(--light); }
+    h1, h2, h3, h4, h5, h6 { font-family: 'Playfair Display', serif; color: var(--primary); font-weight: 700; }
+    a { text-decoration: none; transition: 0.3s; }
+    
+    /* Navbar */
+    .header { padding: 15px 0; transition: all 0.4s ease; z-index: 999; background: transparent; }
+    .header.scrolled { background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(0,0,0,0.05); box-shadow: 0 4px 30px rgba(0,0,0,0.03); padding: 10px 0; }
+    .logo-icon { width: 40px; height: 40px; background: var(--primary); color: #fff; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; }
+    .logo-text { font-family: 'Playfair Display', serif; font-size: 1.5rem; font-weight: 700; color: var(--primary); margin: 0; }
+    .logo-text span { color: var(--secondary); }
+    .nav-link { font-family: 'Inter', sans-serif; color: var(--text-main) !important; font-weight: 600; padding: 8px 18px !important; border-radius: 50px; transition: 0.3s; }
+    .nav-link:hover, .nav-link.active { color: var(--primary) !important; background: rgba(12, 73, 153, 0.08); }
+    .btn-navbar { background: var(--secondary); color: #fff !important; border-radius: 50px; padding: 10px 25px; font-weight: 600; transition: 0.3s; border: 2px solid var(--secondary); }
+    .btn-navbar:hover { background: transparent; color: var(--secondary) !important; transform: translateY(-2px); }
 
-  <!-- =======================================================
-  * Template Name: Tour
-  * Template URL: https://bootstrapmade.com/tour-bootstrap-travel-website-template/
-  * Updated: Jul 01 2025 with Bootstrap v5.3.7
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-  ======================================================== -->
+    /* Page Specific */
+    .page-title { height: 400px; background-size: cover; background-position: center; position: relative; display: flex; align-items: center; justify-content: center; text-align: center; margin-top: 80px; }
+    .page-title::before { content: ""; position: absolute; inset: 0; background: linear-gradient(to right, rgba(12, 73, 153, 0.9), rgba(12, 73, 153, 0.6)); }
+    .page-title h1 { color: #fff; font-size: 3.5rem; position: relative; z-index: 1; }
+    .breadcrumbs ol { display: flex; justify-content: center; list-style: none; padding: 0; margin: 1rem 0 0 0; color: rgba(255,255,255,0.8); position: relative; z-index: 1; }
+    .breadcrumbs ol li + li::before { content: "/"; padding: 0 10px; }
+    .breadcrumbs a { color: #fff; }
+    
+    .dest-card { border-radius: var(--card-radius); overflow: hidden; position: relative; height: 400px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); cursor: pointer; }
+    .dest-card:hover { transform: translateY(-10px); }
+    .dest-card img { width: 100%; height: 100%; object-fit: cover; transition: 0.8s; }
+    .dest-card:hover img { transform: scale(1.1); }
+    .dest-overlay { position: absolute; bottom: 0; left: 0; width: 100%; background: linear-gradient(to top, rgba(12, 73, 153, 0.95), transparent); padding: 30px; color: white; }
+    .dest-overlay h3 { color: white; margin-bottom: 5px; font-size: 1.5rem; }
+    
+    .footer { background-color: var(--primary); color: #fff; padding-top: 60px; }
+    .footer h4 { color: var(--secondary); margin-bottom: 20px; }
+    .footer a { color: rgba(255,255,255,0.7); text-decoration: none; }
+    .footer-bottom { border-top: 1px solid rgba(255,255,255,0.1); padding-top: 30px; margin-top: 50px; text-align: center; color: rgba(255,255,255,0.5); }
+  </style>
 </head>
 
-<body class="destinations-page">
+<body>
 
-  <header id="header" class="header d-flex align-items-center fixed-top">
-    <div class="header-container container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
-
-      <a href="index.html" class="logo d-flex align-items-center me-auto me-xl-0">
-        <!-- Uncomment the line below if you also wish to use an image logo -->
-        <img src="assets/img/logo.png" alt="">
-        <h1 class="sitename">Marina Travel</h1>
+  <header id="header" class="header fixed-top">
+    <div class="container d-flex align-items-center justify-content-between">
+      <a href="index.html" class="logo-container d-flex align-items-center gap-2 text-decoration-none">
+        <div class="logo-icon"><i class="bi bi-tsunami"></i></div><h1 class="logo-text">Marina<span>Travel</span></h1>
       </a>
-
-      <nav id="navmenu" class="navmenu">
-        <ul>
-          <li><a href="index.html">Home</a></li>
-          <li><a href="about.html">About</a></li>
-          <li><a href="destinations.html" class="active">Destinations</a></li>
-          <li><a href="tours.html">Tours</a></li>
-          <li><a href="gallery.html">Gallery</a></li>
-          <li><a href="blog.html">Blog</a></li>
-          <li class="dropdown"><a href="#"><span>More Pages</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
-            <ul>
-              <li><a href="destination-details.html">Destination Details</a></li>
-              <li><a href="tour-details.html">Tour Details</a></li>
-              <li><a href="booking.html">Booking</a></li>
-              <li><a href="testimonials">Testimonials</a></li>
-              <li><a href="faq.html">Frequently Asked Questions</a></li>
-              <li><a href="blog-details.html">Blog Details</a></li>
-              <li><a href="terms.html">Terms</a></li>
-              <li><a href="privacy.html">Privacy</a></li>
-              <li><a href="404.html">404</a></li>
-            </ul>
-          </li>
-          <li class="dropdown"><a href="#"><span>Dropdown</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
-            <ul>
-              <li><a href="#">Dropdown 1</a></li>
-              <li class="dropdown"><a href="#"><span>Deep Dropdown</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
-                <ul>
-                  <li><a href="#">Deep Dropdown 1</a></li>
-                  <li><a href="#">Deep Dropdown 2</a></li>
-                  <li><a href="#">Deep Dropdown 3</a></li>
-                  <li><a href="#">Deep Dropdown 4</a></li>
-                  <li><a href="#">Deep Dropdown 5</a></li>
-                </ul>
-              </li>
-              <li><a href="#">Dropdown 2</a></li>
-              <li><a href="#">Dropdown 3</a></li>
-              <li><a href="#">Dropdown 4</a></li>
-            </ul>
-          </li>
-          <li><a href="contact.html">Contact</a></li>
-        </ul>
-        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+      <nav id="navbar" class="navbar navbar-expand-lg">
+        <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"><i class="bi bi-list fs-2 text-primary"></i></button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto align-items-center gap-lg-2">
+            <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+            <li class="nav-item"><a class="nav-link active" href="destinations.html">Destinations</a></li>
+            <li class="nav-item"><a class="nav-link" href="tours.html">Tours</a></li>
+            <li class="nav-item dropdown">
+               <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Pages</a>
+               <ul class="dropdown-menu border-0 shadow-lg rounded-4 p-2 mt-2">
+                 <li><a class="dropdown-item rounded-pill p-2" href="gallery.html">Gallery</a></li>
+                 <li><a class="dropdown-item rounded-pill p-2" href="destination-details.html">Destination Details</a></li>
+                 <li><a class="dropdown-item rounded-pill p-2" href="tour-details.html">Tour Details</a></li>
+                 <li><a class="dropdown-item rounded-pill p-2" href="testimonials.html">Testimonials</a></li>
+                 <li><a class="dropdown-item rounded-pill p-2" href="faq.html">FAQ</a></li>
+               </ul>
+            </li>
+            <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+            <li class="nav-item ms-lg-3"><a class="btn btn-navbar" href="booking.html">Book Now</a></li>
+          </ul>
+        </div>
       </nav>
-
-      <a class="btn-getstarted" href="destiantios.html">Get Started</a>
-
     </div>
   </header>
 
-  <main class="main">
-
-    <!-- Page Title -->
-    <div class="page-title dark-background" data-aos="fade" style="background-image: url(assets/img/travel/showcase-8.webp);">
-      <div class="container position-relative">
-        <h1>Destinations</h1>
-        <p>Esse dolorum voluptatum ullam est sint nemo et est ipsa porro placeat quibusdam quia assumenda numquam molestias.</p>
-        <nav class="breadcrumbs">
-          <ol>
-            <li><a href="index.html">Home</a></li>
-            <li class="current">Destinations</li>
-          </ol>
+  <main>
+    <div class="page-title" style="background-image: url('assets/img/travel/destination-3.webp');">
+      <div class="container position-relative z-2">
+        <h1 data-aos="fade-up">Destinations</h1>
+        <nav class="breadcrumbs" data-aos="fade-up" data-aos-delay="100">
+          <ol><li><a href="index.html">Home</a></li><li class="text-warning fw-bold">Destinations</li></ol>
         </nav>
       </div>
-    </div><!-- End Page Title -->
+    </div>
 
-    <!-- Travel Destinations Section -->
-    <section id="travel-destinations" class="travel-destinations section">
-
-      <div class="container" data-aos="fade-up" data-aos-delay="100">
-
-        <div class="row">
-          <div class="col-lg-8 mx-auto text-center">
-            <h2>Uncover Captivating Travel Experiences</h2>
-            <p class="mb-5">From the bustling energy of cosmopolitan cities to the serene embrace of untouched wilderness, embark on incredible journeys to the planet's most enchanting destinations. We're here to help you craft memories that will last a lifetime.</p>
-          </div>
+    <section class="py-5 bg-light">
+      <div class="container">
+        <div class="text-center mb-5" data-aos="fade-up">
+           <h2 class="mb-3">Explore the World</h2>
+           <p class="text-muted">Discover our most popular locations curated just for you.</p>
         </div>
-
-        <div class="isotope-layout" data-default-filter="*" data-layout="masonry" data-sort="original-order">
-          <ul class="destination-filters isotope-filters" data-aos="fade-up" data-aos-delay="200">
-            <li data-filter="*" class="filter-active">All Locales</li>
-            <li data-filter=".filter-tropical">Tropical</li>
-            <li data-filter=".filter-mountain">Alpine</li>
-            <li data-filter=".filter-urban">Cityscapes</li>
-            <li data-filter=".filter-historical">Heritage</li>
-            <li data-filter=".filter-coastal">Seaside</li>
-          </ul><!-- End Destination Filters -->
-
-          <div class="row gy-4 isotope-container" data-aos="fade-up" data-aos-delay="300">
-
-            <div class="col-lg-4 col-md-6 destination-item isotope-item filter-coastal">
-              <a href="destination-details.html" class="destination-tile">
-                <div class="tile-image">
-                  <img src="assets/img/travel/destination-2.webp" alt="Maldives" class="img-fluid" loading="lazy">
-                  <div class="overlay-content">
-                    <span class="destination-tag luxury">Elysian</span>
-                    <div class="destination-info">
-                      <h4>Maldives</h4>
-                      <p>A cluster of idyllic islands, boasting sapphire waters and charming overwater retreats.</p>
-                      <div class="destination-stats">
-                        <span class="tours-available"><i class="bi bi-map"></i> 15 Escapes</span>
-                        <span class="starting-price">From $2,450</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </a>
-            </div><!-- End Destination Item -->
-
-            <div class="col-lg-4 col-md-6 destination-item isotope-item filter-historical">
-              <a href="destination-details.html" class="destination-tile">
-                <div class="tile-image">
-                  <img src="assets/img/travel/destination-4.webp" alt="Rome, Italy" class="img-fluid" loading="lazy">
-                  <div class="overlay-content">
-                    <span class="destination-tag cultural">Historic</span>
-                    <div class="destination-info">
-                      <h4>Rome, Italy</h4>
-                      <p>The timeless city, where ancient ruins meet breathtaking Renaissance artistry.</p>
-                      <div class="destination-stats">
-                        <span class="tours-available"><i class="bi bi-map"></i> 18 Excursions</span>
-                        <span class="starting-price">From $1,320</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </a>
-            </div><!-- End Destination Item -->
-
-            <div class="col-lg-4 col-md-6 destination-item isotope-item filter-mountain">
-              <a href="destination-details.html" class="destination-tile">
-                <div class="tile-image">
-                  <img src="assets/img/travel/destination-6.webp" alt="Swiss Alps" class="img-fluid" loading="lazy">
-                  <div class="overlay-content">
-                    <span class="destination-tag adventure">Alpine</span>
-                    <div class="destination-info">
-                      <h4>Swiss Alps</h4>
-                      <p>Grandiose peaks and unspoiled mountain hamlets await your discovery.</p>
-                      <div class="destination-stats">
-                        <span class="tours-available"><i class="bi bi-map"></i> 10 Treks</span>
-                        <span class="starting-price">From $1,980</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </a>
-            </div><!-- End Destination Item -->
-
-            <div class="col-lg-4 col-md-6 destination-item isotope-item filter-tropical">
-              <a href="destination-details.html" class="destination-tile">
-                <div class="tile-image">
-                  <img src="assets/img/travel/destination-8.webp" alt="Costa Rica" class="img-fluid" loading="lazy">
-                  <div class="overlay-content">
-                    <span class="destination-tag nature">Eco-Venture</span>
-                    <div class="destination-info">
-                      <h4>Costa Rica</h4>
-                      <p>Lush rainforests, abundant wildlife, and responsible eco-tourism experiences.</p>
-                      <div class="destination-stats">
-                        <span class="tours-available"><i class="bi bi-map"></i> 14 Expeditions</span>
-                        <span class="starting-price">From $1,650</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </a>
-            </div><!-- End Destination Item -->
-
-            <div class="col-lg-4 col-md-6 destination-item isotope-item filter-urban">
-              <a href="destination-details.html" class="destination-tile">
-                <div class="tile-image">
-                  <img src="assets/img/travel/destination-10.webp" alt="Dubai, UAE" class="img-fluid" loading="lazy">
-                  <div class="overlay-content">
-                    <span class="destination-tag modern">Cosmopolitan</span>
-                    <div class="destination-info">
-                      <h4>Dubai, UAE</h4>
-                      <p>A dazzling skyline where futuristic visions meet authentic Arabian warmth.</p>
-                      <div class="destination-stats">
-                        <span class="tours-available"><i class="bi bi-map"></i> 20 Journeys</span>
-                        <span class="starting-price">From $1,470</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </a>
-            </div><!-- End Destination Item -->
-
-            <div class="col-lg-4 col-md-6 destination-item isotope-item filter-coastal">
-              <a href="destination-details.html" class="destination-tile">
-                <div class="tile-image">
-                  <img src="assets/img/travel/destination-12.webp" alt="Amalfi Coast, Italy" class="img-fluid" loading="lazy">
-                  <div class="overlay-content">
-                    <span class="destination-tag romantic">Enchanting</span>
-                    <div class="destination-info">
-                      <h4>Amalfi Coast</h4>
-                      <p>Striking cliffs and picturesque villages perched above the cerulean Mediterranean.</p>
-                      <div class="destination-stats">
-                        <span class="tours-available"><i class="bi bi-map"></i> 13 Getaways</span>
-                        <span class="starting-price">From $1,850</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </a>
-            </div><!-- End Destination Item -->
-
-            <div class="col-lg-4 col-md-6 destination-item isotope-item filter-tropical">
-              <a href="destination-details.html" class="destination-tile">
-                <div class="tile-image">
-                  <img src="assets/img/travel/destination-14.webp" alt="Thailand" class="img-fluid" loading="lazy">
-                  <div class="overlay-content">
-                    <span class="destination-tag popular">Vibrant</span>
-                    <div class="destination-info">
-                      <h4>Thailand</h4>
-                      <p>Gilded temples, pristine beaches, and bustling street markets await.</p>
-                      <div class="destination-stats">
-                        <span class="tours-available"><i class="bi bi-map"></i> 22 Packages</span>
-                        <span class="starting-price">From $1,100</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </a>
-            </div><!-- End Destination Item -->
-
-            <div class="col-lg-4 col-md-6 destination-item isotope-item filter-mountain">
-              <a href="destination-details.html" class="destination-tile">
-                <div class="tile-image">
-                  <img src="assets/img/travel/destination-16.webp" alt="Nepal Himalayas" class="img-fluid" loading="lazy">
-                  <div class="overlay-content">
-                    <span class="destination-tag trekking">Ascent</span>
-                    <div class="destination-info">
-                      <h4>Nepal Himalayas</h4>
-                      <p>Home to the world's highest peaks and ancient, serene Buddhist sanctuaries.</p>
-                      <div class="destination-stats">
-                        <span class="tours-available"><i class="bi bi-map"></i> 8 Quests</span>
-                        <span class="starting-price">From $2,300</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </a>
-            </div><!-- End Destination Item -->
-
-            <div class="col-lg-4 col-md-6 destination-item isotope-item filter-historical">
-              <a href="destination-details.html" class="destination-tile">
-                <div class="tile-image">
-                  <img src="assets/img/travel/destination-18.webp" alt="Egypt Pyramids" class="img-fluid" loading="lazy">
-                  <div class="overlay-content">
-                    <span class="destination-tag ancient">Timeless</span>
-                    <div class="destination-info">
-                      <h4>Egypt</h4>
-                      <p>The eternal wonders of pharaohs and the majestic flow of the River Nile.</p>
-                      <div class="destination-stats">
-                        <span class="tours-available"><i class="bi bi-map"></i> 16 Expeditions</span>
-                        <span class="starting-price">From $1,750</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </a>
-            </div><!-- End Destination Item -->
-
-            <div class="col-lg-4 col-md-6 destination-item isotope-item filter-urban">
-              <a href="destination-details.html" class="destination-tile">
-                <div class="tile-image">
-                  <img src="assets/img/travel/destination-20.webp" alt="Singapore" class="img-fluid" loading="lazy">
-                  <div class="overlay-content">
-                    <span class="destination-tag family">Family-Friendly</span>
-                    <div class="destination-info">
-                      <h4>Singapore</h4>
-                      <p>A modern garden city, celebrated for its bold architecture and diverse culinary scene.</p>
-                      <div class="destination-stats">
-                        <span class="tours-available"><i class="bi bi-map"></i> 17 Adventures</span>
-                        <span class="starting-price">From $1,399</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </a>
-            </div><!-- End Destination Item -->
-
-          </div><!-- End Destinations Container -->
-
-        </div>
-
-        <div class="row mt-5">
-          <div class="col-lg-10 mx-auto text-center" data-aos="fade-up" data-aos-delay="400">
-            <div class="planning-assistance">
-              <div class="assistance-content">
-                <h3>Let Our Team Help Curate Your Perfect Expedition</h3>
-                <p>Unsure which destination aligns with your travel aspirations? Our seasoned travel advisors are poised to design a bespoke itinerary tailored just for you.</p>
-                <div class="assistance-actions">
-                  <a href="#" class="btn btn-primary">Receive Complimentary Consultation</a>
-                  <a href="#" class="btn btn-outline">Explore All Available Tours</a>
-                </div>
+        
+        <div class="row g-4">
+           <div class="col-lg-4 col-md-6" data-aos="fade-up">
+              <div class="dest-card">
+                 <img src="assets/img/travel/destination-3.webp" alt="Maldives">
+                 <div class="dest-overlay">
+                    <h3>Maldives</h3>
+                    <div class="d-flex justify-content-between align-items-center"><span><i class="bi bi-geo-alt-fill text-warning"></i> Tropical</span><span class="fw-bold">$2,450</span></div>
+                 </div>
+                 <a href="destination-details.html" class="stretched-link"></a>
               </div>
-            </div>
-          </div>
+           </div>
+           <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+              <div class="dest-card">
+                 <img src="assets/img/travel/destination-4.webp" alt="Rome">
+                 <div class="dest-overlay">
+                    <h3>Rome</h3>
+                    <div class="d-flex justify-content-between align-items-center"><span><i class="bi bi-geo-alt-fill text-warning"></i> Historical</span><span class="fw-bold">$1,320</span></div>
+                 </div>
+                 <a href="destination-details.html" class="stretched-link"></a>
+              </div>
+           </div>
+           <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
+              <div class="dest-card">
+                 <img src="assets/img/travel/destination-6.webp" alt="Swiss">
+                 <div class="dest-overlay">
+                    <h3>Swiss Alps</h3>
+                    <div class="d-flex justify-content-between align-items-center"><span><i class="bi bi-geo-alt-fill text-warning"></i> Nature</span><span class="fw-bold">$1,980</span></div>
+                 </div>
+                 <a href="destination-details.html" class="stretched-link"></a>
+              </div>
+           </div>
         </div>
-
       </div>
-
-    </section><!-- /Travel Destinations Section -->
-
+    </section>
   </main>
 
-  <footer id="footer" class="footer position-relative dark-background">
-
-    <div class="footer-newsletter">
-      <div class="container">
-        <div class="row justify-content-center text-center">
-          <div class="col-lg-6">
-            <h4>Join Our Newsletter</h4>
-            <p>Subscribe to our newsletter and receive the latest news about our products and services!</p>
-            <form action="forms/newsletter.php" method="post" class="php-email-form">
-              <div class="newsletter-form"><input type="email" name="email"><input type="submit" value="Subscribe"></div>
-              <div class="loading">Loading</div>
-              <div class="error-message"></div>
-              <div class="sent-message">Your subscription request has been sent. Thank you!</div>
-            </form>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="container footer-top">
-      <div class="row gy-4">
-        <div class="col-lg-4 col-md-6 footer-about">
-          <a href="index.html" class="d-flex align-items-center">
-            <span class="sitename">Tour</span>
-          </a>
-          <div class="footer-contact pt-3">
-            <p>A108 Adam Street</p>
-            <p>New York, NY 535022</p>
-            <p class="mt-3"><strong>Phone:</strong> <span>+1 5589 55488 55</span></p>
-            <p><strong>Email:</strong> <span>info@example.com</span></p>
-          </div>
-        </div>
-
-        <div class="col-lg-2 col-md-3 footer-links">
-          <h4>Useful Links</h4>
-          <ul>
-            <li><i class="bi bi-chevron-right"></i> <a href="#">Home</a></li>
-            <li><i class="bi bi-chevron-right"></i> <a href="#">About us</a></li>
-            <li><i class="bi bi-chevron-right"></i> <a href="#">Services</a></li>
-            <li><i class="bi bi-chevron-right"></i> <a href="#">Terms of service</a></li>
-          </ul>
-        </div>
-
-        <div class="col-lg-2 col-md-3 footer-links">
-          <h4>Our Services</h4>
-          <ul>
-            <li><i class="bi bi-chevron-right"></i> <a href="#">Web Design</a></li>
-            <li><i class="bi bi-chevron-right"></i> <a href="#">Web Development</a></li>
-            <li><i class="bi bi-chevron-right"></i> <a href="#">Product Management</a></li>
-            <li><i class="bi bi-chevron-right"></i> <a href="#">Marketing</a></li>
-          </ul>
-        </div>
-
-        <div class="col-lg-4 col-md-12">
-          <h4>Follow Us</h4>
-          <p>Cras fermentum odio eu feugiat lide par naso tierra videa magna derita valies</p>
-          <div class="social-links d-flex">
-            <a href=""><i class="bi bi-twitter-x"></i></a>
-            <a href=""><i class="bi bi-facebook"></i></a>
-            <a href=""><i class="bi bi-instagram"></i></a>
-            <a href=""><i class="bi bi-linkedin"></i></a>
-          </div>
-        </div>
-
-      </div>
-    </div>
-
-    <div class="container copyright text-center mt-4">
-      <p>© <span>Copyright</span> <strong class="px-1 sitename">MyWebsite</strong> <span>All Rights Reserved</span></p>
-      <div class="credits">
-        <!-- All the links in the footer should remain intact. -->
-        <!-- You can delete the links only if you've purchased the pro version. -->
-        <!-- Licensing information: https://bootstrapmade.com/license/ -->
-        <!-- Purchase the pro version with working PHP/AJAX contact form: [buy-url] -->
-        Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
-      </div>
-    </div>
-
-  </footer>
-
-  <!-- Scroll Top -->
-  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
-
-  <!-- Preloader -->
-  <div id="preloader"></div>
-
-  <!-- Vendor JS Files -->
-  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="assets/vendor/php-email-form/validate.js"></script>
+  <footer class="footer"><div class="container"><div class="footer-bottom"><p>© 2025 Marina Travel</p></div></div></footer>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
   <script src="assets/vendor/aos/aos.js"></script>
-  <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
-  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
-  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-  <script src="assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
-  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
-
-  <!-- Main JS File -->
-  <script src="assets/js/main.js"></script>
-
+  <script>AOS.init(); const header=document.getElementById('header'); window.addEventListener('scroll',()=>{window.scrollY>40?header.classList.add('scrolled'):header.classList.remove('scrolled');});</script>
 </body>
-
 </html>

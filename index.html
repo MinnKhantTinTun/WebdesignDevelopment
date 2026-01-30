@@ -4,1002 +4,436 @@
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>Index - Tour Bootstrap Template</title>
-  <meta name="description" content="">
-  <meta name="keywords" content="">
+  <title>Home - Marina Travel</title>
 
-  <!-- Favicons -->
   <link href="assets/img/favicon.png" rel="icon">
   <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
-  <!-- Fonts -->
-  <link href="https://fonts.googleapis.com" rel="preconnect">
-  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
 
-  <!-- Vendor CSS Files -->
-  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
   <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
   <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
 
-  <!-- Main CSS File -->
-  <link href="assets/css/main.css" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #0C4999;
+      --secondary: #EF9B34;
+      --dark: #083370;
+      --light: #f8fafc;
+      --text-main: #1e293b;
+      --text-muted: #64748b;
+      --card-radius: 20px;
+    }
 
-  <!-- =======================================================
-  * Template Name: Tour
-  * Template URL: https://bootstrapmade.com/tour-bootstrap-travel-website-template/
-  * Updated: Jul 01 2025 with Bootstrap v5.3.7
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-  ======================================================== -->
+    body { font-family: 'Inter', sans-serif; color: var(--text-main); background-color: var(--light); -webkit-font-smoothing: antialiased; }
+    h1, h2, h3, h4, h5, h6 { font-family: 'Playfair Display', serif; color: var(--primary); font-weight: 700; }
+    a { text-decoration: none; transition: 0.3s; }
+
+    /* --- UNIQUE NAVBAR STYLES --- */
+    .header { padding: 15px 0; transition: all 0.4s ease; z-index: 999; background: transparent; }
+    .header.scrolled { background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(0, 0, 0, 0.05); box-shadow: 0 4px 30px rgba(0, 0, 0, 0.03); padding: 10px 0; }
+    .logo-container { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+    .logo-icon { width: 40px; height: 40px; background: var(--primary); color: #fff; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; box-shadow: 0 4px 10px rgba(12, 73, 153, 0.3); transition: 0.3s; }
+    .logo-text { font-family: 'Playfair Display', serif; font-size: 1.5rem; font-weight: 700; color: var(--primary); margin: 0; letter-spacing: -0.5px; }
+    .logo-text span { color: var(--secondary); }
+    .nav-link { font-family: 'Inter', sans-serif; color: var(--text-main) !important; font-weight: 600; font-size: 0.95rem; padding: 8px 18px !important; border-radius: 50px; transition: all 0.3s ease; }
+    .nav-link:hover, .nav-link.active { color: var(--primary) !important; background: rgba(12, 73, 153, 0.08); }
+    .btn-navbar { background: var(--secondary); color: #fff !important; border-radius: 50px; padding: 10px 25px; font-weight: 600; font-size: 0.9rem; box-shadow: 0 4px 15px rgba(239, 155, 52, 0.3); transition: 0.3s; border: 2px solid var(--secondary); }
+    .btn-navbar:hover { background: transparent; color: var(--secondary) !important; transform: translateY(-2px); }
+    .navbar-toggler { border: none; padding: 0; color: var(--primary); }
+    .navbar-toggler:focus { box-shadow: none; }
+
+    /* Hero Section */
+    .hero-section { position: relative; height: 100vh; min-height: 700px; display: flex; align-items: center; }
+    .hero-bg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: -2; }
+    .hero-bg video { width: 100%; height: 100%; object-fit: cover; }
+    .hero-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(90deg, rgba(12, 73, 153, 0.9) 0%, rgba(12, 73, 153, 0.5) 100%); z-index: -1; }
+    .hero-title { font-size: 4rem; line-height: 1.1; margin-bottom: 20px; color: white; }
+    .hero-subtitle { font-size: 1.2rem; margin-bottom: 40px; color: rgba(255,255,255,0.9); max-width: 600px; font-weight: 300; }
+    
+    /* Booking Form Card */
+    .booking-form-card { background: rgba(255, 255, 255, 0.9); backdrop-filter: blur(20px); padding: 40px; border-radius: 20px; box-shadow: 0 15px 40px rgba(0,0,0,0.2); }
+    .form-control, .form-select { padding: 12px 15px; border-radius: 10px; border: 1px solid #e2e8f0; background-color: #f8fafc; }
+
+    /* Features */
+    .feature-box { background: white; padding: 40px 30px; border-radius: var(--card-radius); box-shadow: 0 5px 20px rgba(0,0,0,0.03); transition: 0.3s; text-align: center; height: 100%; border: 1px solid #eef2f6; }
+    .feature-box:hover { transform: translateY(-10px); box-shadow: 0 15px 30px rgba(12, 73, 153, 0.1); }
+    .feature-icon { width: 70px; height: 70px; background: rgba(12, 73, 153, 0.08); color: var(--primary); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.8rem; margin: 0 auto 20px; }
+
+    /* --- CLEAN DESTINATION CARDS --- */
+    .dest-card-clean {
+      background: #fff;
+      border-radius: var(--card-radius);
+      overflow: hidden;
+      border: 1px solid #eef2f6;
+      transition: all 0.3s ease;
+      height: 100%;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.03);
+    }
+    .dest-card-clean:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 30px rgba(12, 73, 153, 0.1);
+      border-color: var(--primary);
+    }
+    .dest-img-wrap {
+      height: 250px;
+      overflow: hidden;
+      position: relative;
+    }
+    .dest-img-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: 0.5s ease;
+    }
+    .dest-card-clean:hover .dest-img-wrap img { transform: scale(1.05); }
+    .dest-badge {
+      position: absolute; top: 15px; right: 15px;
+      background: rgba(255,255,255,0.9); color: var(--primary);
+      padding: 5px 12px; border-radius: 20px;
+      font-size: 0.75rem; font-weight: 700; text-transform: uppercase;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    .dest-body { padding: 25px; }
+    .dest-location { color: var(--secondary); font-size: 0.85rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 5px; display: block; }
+    .dest-title { font-size: 1.4rem; margin-bottom: 10px; color: var(--primary); }
+    .dest-price { font-weight: 700; color: var(--text-main); font-size: 1.1rem; }
+    .dest-rating { color: #f59e0b; font-size: 0.9rem; }
+
+    /* --- GAME SECTION STYLES --- */
+    .game-section { background: var(--light); padding: 80px 0; overflow: hidden; position: relative; }
+    .wheel-container { position: relative; width: 350px; height: 350px; margin: 0 auto; }
+    .wheel { width: 100%; height: 100%; border-radius: 50%; border: 10px solid #fff; box-shadow: 0 10px 30px rgba(0,0,0,0.1); transition: transform 4s cubic-bezier(0.25, 0.1, 0.25, 1); background: conic-gradient(
+      #FF6B6B 0deg 60deg, 
+      #4ECDC4 60deg 120deg, 
+      #45B7D1 120deg 180deg, 
+      #96CEB4 180deg 240deg, 
+      #FFEEAD 240deg 300deg, 
+      #FF9F43 300deg 360deg
+    ); position: relative; overflow: hidden; }
+    
+    .wheel-segment { position: absolute; top: 50%; left: 50%; transform-origin: 0 0; width: 50%; height: 2px; background: transparent; }
+    .wheel-label { position: absolute; left: 60px; top: -10px; transform-origin: 0 0; font-weight: 700; color: #fff; font-size: 0.9rem; text-shadow: 0 1px 2px rgba(0,0,0,0.2); white-space: nowrap; }
+
+    .wheel-pointer {
+      position: absolute; top: -20px; left: 50%; transform: translateX(-50%); width: 0; height: 0;
+      border-left: 20px solid transparent; border-right: 20px solid transparent; border-top: 40px solid var(--primary); z-index: 10; filter: drop-shadow(0 4px 4px rgba(0,0,0,0.3));
+    }
+    .spin-btn {
+      position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 80px; height: 80px;
+      background: #fff; border-radius: 50%; border: 4px solid var(--primary); color: var(--primary);
+      font-weight: 800; font-size: 1.1rem; cursor: pointer; box-shadow: 0 0 15px rgba(0,0,0,0.1); z-index: 5;
+    }
+    .spin-btn:active { transform: translate(-50%, -50%) scale(0.95); }
+    
+    .game-result { margin-top: 30px; font-size: 1.5rem; font-weight: 700; color: var(--primary); min-height: 40px; opacity: 0; transition: 0.5s; }
+    .game-result.show { opacity: 1; transform: translateY(0); }
+
+    /* Footer */
+    .footer { background-color: var(--primary); color: #fff; padding-top: 60px; }
+    .footer h4 { color: var(--secondary); margin-bottom: 20px; }
+    .footer a { color: rgba(255,255,255,0.7); }
+    .footer-bottom { border-top: 1px solid rgba(255,255,255,0.1); padding-top: 30px; margin-top: 50px; text-align: center; color: rgba(255,255,255,0.5); }
+    
+    /* Common Buttons */
+    .btn-primary { background-color: var(--secondary); border-color: var(--secondary); border-radius: 50px; padding: 12px 35px; font-weight: 600; }
+    .btn-primary:hover { background-color: #d68320; border-color: #d68320; transform: translateY(-2px); }
+  </style>
 </head>
 
-<body class="index-page">
+<body>
 
-  <header id="header" class="header d-flex align-items-center apple-glass">
-    <div class="header-container container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
-
-      <a href="index.html" class="logo d-flex align-items-center me-auto me-xl-0">
-        <!-- Uncomment the line below if you also wish to use an image logo -->
-        <img src="assets/img/logo.png" alt="">
-        <h1 class="sitename">Marina Travel</h1>
+  <header id="header" class="header fixed-top">
+    <div class="container d-flex align-items-center justify-content-between">
+      <a href="index.html" class="logo-container">
+        <div class="logo-icon"><img src="" alt=""></div>
+        <h1 class="logo-text">Marina<span>Travel</span></h1>
       </a>
-
-      <nav id="navmenu" class="navmenu">
-        <ul>
-          <li><a href="index.html" class="active">Home</a></li>
-          <li><a href="about.html">About</a></li>
-          <li><a href="destinations.html">Destinations</a></li>
-          <li><a href="tours.html">Tours</a></li>
-          <li><a href="gallery.html">Gallery</a></li>
-          <li><a href="blog.html">Blog</a></li>
-          <li class="dropdown"><a href="#"><span>More Pages</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
-            <ul>
-              <li><a href="destination-details.html">Destination Details</a></li>
-              <li><a href="tour-details.html">Tour Details</a></li>
-              <li><a href="booking.html">Booking</a></li>
-              <li><a href="testimonials">Testimonials</a></li>
-              <li><a href="faq.html">Frequently Asked Questions</a></li>
-              <li><a href="blog-details.html">Blog Details</a></li>
-              <li><a href="terms.html">Terms</a></li>
-              <li><a href="privacy.html">Privacy</a></li>
-              <li><a href="404.html">404</a></li>
-            </ul>
-          </li>
-          <li><a href="contact.html">Contact</a></li>
-        </ul>
-        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
-   
-   </nav>
-
-      <a class="btn-getstarted" href="destiantios.html">Get Started</a>
-
+      <nav id="navbar" class="navbar navbar-expand-lg">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"><i class="bi bi-list fs-2 text-primary"></i></button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto align-items-center gap-lg-2">
+            <li class="nav-item"><a class="nav-link active" href="index.html">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+            <li class="nav-item"><a class="nav-link" href="destinations.html">Destinations</a></li>
+            <li class="nav-item"><a class="nav-link" href="tours.html">Tours</a></li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Pages</a>
+              <ul class="dropdown-menu border-0 shadow-lg rounded-4 p-2 mt-2">
+                <li><a class="dropdown-item rounded-pill p-2" href="gallery.html">Gallery</a></li>
+                <li><a class="dropdown-item rounded-pill p-2" href="destination-details.html">Destination Details</a></li>
+                <li><a class="dropdown-item rounded-pill p-2" href="tour-details.html">Tour Details</a></li>
+                <li><a class="dropdown-item rounded-pill p-2" href="testimonials.html">Testimonials</a></li>
+                <li><a class="dropdown-item rounded-pill p-2" href="faq.html">FAQ</a></li>
+              </ul>
+            </li>
+            <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+            <li class="nav-item ms-lg-3"><a class="btn btn-navbar" href="booking.html">Book Now</a></li>
+          </ul>
+        </div>
+      </nav>
     </div>
   </header>
-  <main class="main">
 
-    <!-- Travel Hero Section -->
-    <section id="travel-hero" class="travel-hero section dark-background">
+  <section class="hero-section">
+    <div class="hero-bg">
+      <video autoplay muted loop playsinline>
+        <source src="assets/img/travel/video-2.mp4" type="video/mp4">
+      </video>
+    </div>
+    <div class="hero-overlay"></div>
 
-      <div class="hero-background">
-        <video autoplay="" muted="" loop="">
-          <source src="assets/img/travel/video-2.mp4" type="video/mp4">
-        </video>
-        <div class="hero-overlay"></div>
-      </div>
-
-      <div class="container position-relative">
-        <div class="row align-items-center">
-          <div class="col-lg-7">
-            <div class="hero-text" data-aos="fade-up" data-aos-delay="100">
-              <h1 class="hero-title">Discover Your Perfect Journey</h1>
-              <p class="hero-subtitle">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.</p>
-              <div class="hero-buttons">
-                <a href="#" class="btn btn-primary me-3">Start Exploring</a>
-                <a href="#" class="btn btn-outline">Browse Tours</a>
-              </div>
-            </div>
+    <div class="container position-relative z-2">
+      <div class="row align-items-center">
+        <div class="col-lg-7 text-white mb-5 mb-lg-0" data-aos="fade-up">
+          <span class="badge bg-white text-primary px-3 py-2 rounded-pill mb-4 text-uppercase fw-bold ls-1">Premium Travel Agency</span>
+          <h1 class="hero-title">Discover Your <br><span style="color: var(--secondary); font-style: italic;">Perfect Journey</span></h1>
+          <p class="hero-subtitle">Explore the world's most pristine oceans and coastlines with Marina Travel. Luxury, adventure, and memories that last a lifetime.</p>
+          <div class="d-flex gap-3">
+            <a href="destinations.html" class="btn btn-primary btn-lg">Start Exploring</a>
+            <a href="tours.html" class="btn btn-outline-light btn-lg rounded-pill px-4 fw-bold" style="border: 2px solid rgba(255,255,255,0.7); color: #fff;">Browse Tours</a>
           </div>
+        </div>
 
-          <div class="col-lg-5">
-            <div class="booking-form-wrapper" data-aos="fade-left" data-aos-delay="200">
-              <div class="booking-form">
-                <h3 class="form-title">Plan Your Adventure</h3>
-                <form action="" class="">
-                  <div class="form-group mb-3">
-                    <label for="destination">Destination</label>
-                    <select name="destination" id="destination" class="form-select" required="">
-                      <option value="">Choose your destination</option>
-                      <option value="europe">Europe</option>
-                      <option value="asia">Asia</option>
-                      <option value="america">America</option>
-                      <option value="africa">Africa</option>
-                      <option value="oceania">Oceania</option>
-                    </select>
-                  </div>
-
-                  <div class="row">
-                    <div class="col-md-6">
-                      <div class="form-group mb-3">
-                        <label for="checkin">Departure Date</label>
-                        <input type="date" name="checkin" id="checkin" class="form-control" required="">
-                      </div>
-                    </div>
-                    <div class="col-md-6">
-                      <div class="form-group mb-3">
-                        <label for="checkout">Return Date</label>
-                        <input type="date" name="checkout" id="checkout" class="form-control" required="">
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="row">
-                    <div class="col-md-6">
-                      <div class="form-group mb-3">
-                        <label for="adults">Adults</label>
-                        <select name="adults" id="adults" class="form-select" required="">
-                          <option value="1">1 Adult</option>
-                          <option value="2">2 Adults</option>
-                          <option value="3">3 Adults</option>
-                          <option value="4">4+ Adults</option>
-                        </select>
-                      </div>
-                    </div>
-                    <div class="col-md-6">
-                      <div class="form-group mb-3">
-                        <label for="children">Children</label>
-                        <select name="children" id="children" class="form-select">
-                          <option value="0">No Children</option>
-                          <option value="1">1 Child</option>
-                          <option value="2">2 Children</option>
-                          <option value="3">3+ Children</option>
-                        </select>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="form-group mb-3">
-                    <label for="tour-type">Tour Type</label>
-                    <select name="tour_type" id="tour-type" class="form-select" required="">
-                      <option value="">Select tour type</option>
-                      <option value="adventure">Adventure</option>
-                      <option value="cultural">Cultural</option>
-                      <option value="relaxation">Relaxation</option>
-                      <option value="family">Family</option>
-                      <option value="luxury">Luxury</option>
-                    </select>
-                  </div>
-
-                  <button type="submit" class="btn btn-primary w-100">Find Your Perfect Trip</button>
-                </form>
+        <div class="col-lg-5" data-aos="fade-left" data-aos-delay="200">
+          <div class="booking-form-card">
+            <h3 class="mb-4" style="color: var(--primary);">Plan Your Adventure</h3>
+            <form>
+              <div class="mb-3">
+                <label class="form-label">Destination</label>
+                <select class="form-select">
+                  <option selected>Select Region</option>
+                  <option>Maldives</option>
+                  <option>Mediterranean</option>
+                  <option>Caribbean</option>
+                </select>
               </div>
-            </div>
+              <div class="row g-3 mb-3">
+                <div class="col-6"><label class="form-label">Departure</label><input type="date" class="form-control"></div>
+                <div class="col-6"><label class="form-label">Return</label><input type="date" class="form-control"></div>
+              </div>
+              <div class="row g-3 mb-4">
+                <div class="col-6"><label class="form-label">Adults</label><select class="form-select"><option>2</option><option>3+</option></select></div>
+                <div class="col-6"><label class="form-label">Children</label><select class="form-select"><option>0</option><option>1</option></select></div>
+              </div>
+              <button type="submit" class="btn btn-primary w-100 py-3">Check Availability</button>
+            </form>
           </div>
         </div>
       </div>
+    </div>
+  </section>
 
-    </section><!-- /Travel Hero Section -->
+  <section class="section py-5">
+    <div class="container py-5">
+      <div class="row justify-content-center text-center mb-5" data-aos="fade-up">
+        <div class="col-lg-8">
+          <h2 class="mb-3">Why Choose Marina?</h2>
+          <p class="text-muted fs-5">We go beyond the booking to ensure your journey is unforgettable.</p>
+        </div>
+      </div>
 
-    <!-- Why Us Section -->
-    <section id="why-us" class="why-us section">
-
-      <div class="container" data-aos="fade-up" data-aos-delay="100">
-
-        <!-- About Us Content -->
-        <div class="row align-items-center mb-5">
-          <div class="col-lg-6" data-aos="fade-right" data-aos-delay="200">
-            <div class="content">
-              <h3>Explore the World with Confidence</h3>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-              <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-              <div class="stats-row">
-                <div class="stat-item">
-                  <span data-purecounter-start="0" data-purecounter-end="1200" data-purecounter-duration="2" class="purecounter">0</span>
-                  <div class="stat-label">Happy Travelers</div>
-                </div>
-                <div class="stat-item">
-                  <span data-purecounter-start="0" data-purecounter-end="85" data-purecounter-duration="2" class="purecounter">0</span>
-                  <div class="stat-label">Countries Covered</div>
-                </div>
-                <div class="stat-item">
-                  <span data-purecounter-start="0" data-purecounter-end="15" data-purecounter-duration="2" class="purecounter">0</span>
-                  <div class="stat-label">Years Experience</div>
-                </div>
-              </div>
-            </div>
+      <div class="row g-4">
+        <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+          <div class="feature-box">
+            <div class="feature-icon"><i class="bi bi-people-fill"></i></div>
+            <h4>Local Experts</h4>
+            <p class="text-muted">Guides who know the hidden gems and secret beaches that standard tours miss.</p>
           </div>
-          <div class="col-lg-6" data-aos="fade-left" data-aos-delay="300">
-            <div class="about-image">
-              <img src="assets/img/travel/showcase-8.webp" alt="Travel Experience" class="img-fluid rounded-4">
-              <div class="experience-badge">
-                <div class="experience-number">15+</div>
-                <div class="experience-text">Years of Excellence</div>
-              </div>
-            </div>
+        </div>
+        <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+          <div class="feature-box">
+            <div class="feature-icon"><i class="bi bi-shield-check"></i></div>
+            <h4>Safety First</h4>
+            <p class="text-muted">Certified vessels and premium insurance included in every package we offer.</p>
           </div>
-        </div><!-- End About Us Content -->
-
-        <!-- Why Choose Us -->
-        <div class="why-choose-section">
-          <div class="row justify-content-center">
-            <div class="col-lg-8 text-center mb-5" data-aos="fade-up" data-aos-delay="100">
-              <h3>Why Choose Us for Your Next Adventure</h3>
-              <p>Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.</p>
-            </div>
+        </div>
+        <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
+          <div class="feature-box">
+            <div class="feature-icon"><i class="bi bi-gem"></i></div>
+            <h4>Premium Experience</h4>
+            <p class="text-muted">5-star accommodations and exclusive access to private locations worldwide.</p>
           </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-          <div class="row g-4">
-            <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
-              <div class="feature-card">
-                <div class="feature-icon">
-                  <i class="bi bi-people-fill"></i>
-                </div>
-                <h4>Local Experts</h4>
-                <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium totam.</p>
-              </div>
+  <section class="game-section">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-lg-6 mb-5 mb-lg-0 text-center text-lg-start" data-aos="fade-right">
+          <span class="badge bg-primary px-3 py-2 rounded-pill mb-3 text-uppercase fw-bold ls-1">Lucky Traveler</span>
+          <h2 class="display-5 fw-bold mb-4 text-primary">Spin & Win Your <br><span class="text-secondary">Next Discount!</span></h2>
+          <p class="text-muted lead mb-4">Feeling lucky? Spin the Marina Wheel to unlock exclusive promo codes, free upgrades, or travel tips for your next booking.</p>
+          <div class="game-result" id="gameResult">Good Luck!</div>
+        </div>
+        <div class="col-lg-6" data-aos="fade-left">
+          <div class="wheel-container">
+            <div class="wheel-pointer"></div>
+            <div class="wheel" id="wheel">
+              <div class="wheel-label" style="transform: rotate(30deg) translate(80px) rotate(-30deg);">10% OFF</div>
+              <div class="wheel-label" style="transform: rotate(90deg) translate(80px) rotate(-90deg);">Free Drink</div>
+              <div class="wheel-label" style="transform: rotate(150deg) translate(80px) rotate(-150deg);">5% OFF</div>
+              <div class="wheel-label" style="transform: rotate(210deg) translate(80px) rotate(-210deg);">Upgrade</div>
+              <div class="wheel-label" style="transform: rotate(270deg) translate(80px) rotate(-270deg);">$50 Voucher</div>
+              <div class="wheel-label" style="transform: rotate(330deg) translate(80px) rotate(-330deg);">Try Again</div>
             </div>
+            <button class="spin-btn" id="spinBtn">SPIN</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-            <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="250">
-              <div class="feature-card">
-                <div class="feature-icon">
-                  <i class="bi bi-shield-check"></i>
-                </div>
-                <h4>Safe &amp; Secure</h4>
-                <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum.</p>
-              </div>
+  <section class="section py-5 bg-light">
+    <div class="container">
+      <div class="d-flex justify-content-between align-items-end mb-5">
+        <div data-aos="fade-right">
+          <span class="text-uppercase fw-bold text-secondary small ls-1">Explore</span>
+          <h2 class="mb-0 text-primary">Popular Destinations</h2>
+        </div>
+        <a href="destinations.html" class="btn btn-outline-primary rounded-pill d-none d-md-inline-block px-4">View All</a>
+      </div>
+
+      <div class="row g-4">
+        <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+          <div class="dest-card-clean">
+            <div class="dest-img-wrap">
+              <img src="assets/img/travel/destination-3.webp" alt="Maldives">
+              <span class="dest-badge">Tropical</span>
             </div>
-
-            <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
-              <div class="feature-card">
-                <div class="feature-icon">
-                  <i class="bi bi-cash"></i>
-                </div>
-                <h4>Best Prices</h4>
-                <p>Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet consectetur adipisci velit.</p>
-              </div>
-            </div>
-
-            <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="350">
-              <div class="feature-card">
-                <div class="feature-icon">
-                  <i class="bi bi-headset"></i>
-                </div>
-                <h4>24/7 Support</h4>
-                <p>Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam nisi.</p>
-              </div>
-            </div>
-
-            <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="400">
-              <div class="feature-card">
-                <div class="feature-icon">
-                  <i class="bi bi-geo-alt-fill"></i>
-                </div>
-                <h4>Global Destinations</h4>
-                <p>Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae.</p>
-              </div>
-            </div>
-
-            <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="450">
-              <div class="feature-card">
-                <div class="feature-icon">
+            <div class="dest-body">
+              <span class="dest-location">Indian Ocean</span>
+              <h3 class="dest-title">The Maldives</h3>
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="dest-rating">
                   <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star-fill"></i>
+                  <span class="text-muted small">(120)</span>
                 </div>
-                <h4>Premium Experience</h4>
-                <p>Excepteur sint occaecat cupidatat non proident sunt in culpa qui officia deserunt mollit anim.</p>
+                <span class="dest-price">$2,450</span>
               </div>
-            </div>
-          </div><!-- End Features Grid -->
-        </div><!-- End Why Choose Us -->
-
-      </div>
-
-    </section><!-- /Why Us Section -->
-
-    <!-- Featured Destinations Section -->
-    <section id="featured-destinations" class="featured-destinations section">
-
-      <!-- Section Title -->
-      <div class="container section-title" data-aos="fade-up">
-        <h2>Featured Destinations</h2>
-        <div><span>Check Our</span> <span class="description-title">Featured Destinations</span></div>
-      </div><!-- End Section Title -->
-
-      <div class="container" data-aos="fade-up" data-aos-delay="100">
-
-        <div class="row">
-
-          <div class="col-lg-6" data-aos="zoom-in" data-aos-delay="200">
-            <div class="featured-destination">
-              <div class="destination-overlay">
-                <img src="assets/img/travel/destination-3.webp" alt="Tropical Paradise" class="img-fluid">
-                <div class="destination-info">
-                  <span class="destination-tag">Popular Choice</span>
-                  <h3>Tropical Paradise</h3>
-                  <p class="location"><i class="bi bi-geo-alt-fill"></i> Maldives</p>
-                  <p class="description">Pristine beaches, crystal-clear waters, and luxury overwater villas await in this tropical paradise destination.</p>
-                  <div class="destination-meta">
-                    <div class="tours-count">
-                      <i class="bi bi-collection"></i>
-                      <span>22 Packages</span>
-                    </div>
-                    <div class="rating">
-                      <i class="bi bi-star-fill"></i>
-                      <span>4.9 (412)</span>
-                    </div>
-                  </div>
-                  <div class="price-info">
-                    <span class="starting-from">Starting from</span>
-                    <span class="amount">$2,150</span>
-                  </div>
-                  <a href="destination-details.html" class="explore-btn">
-                    <span>Explore Now</span>
-                    <i class="bi bi-arrow-right"></i>
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-6">
-            <div class="row g-3">
-
-              <div class="col-12" data-aos="fade-left" data-aos-delay="300">
-                <div class="compact-destination">
-                  <div class="destination-image">
-                    <img src="assets/img/travel/destination-7.webp" alt="Mountain Adventure" class="img-fluid">
-                    <div class="badge-offer">Best Value</div>
-                  </div>
-                  <div class="destination-details">
-                    <h4>Mountain Adventure</h4>
-                    <p class="location"><i class="bi bi-geo-alt"></i> Nepal</p>
-                    <p class="brief">Breathtaking Himalayan peaks and ancient Buddhist temples create an unforgettable spiritual journey.</p>
-                    <div class="stats-row">
-                      <span class="tour-count"><i class="bi bi-calendar-check"></i> 16 Tours</span>
-                      <span class="rating"><i class="bi bi-star-fill"></i> 4.8</span>
-                      <span class="price">from $1,420</span>
-                    </div>
-                    <a href="destination-details.html" class="quick-link">View Details <i class="bi bi-chevron-right"></i></a>
-                  </div>
-                </div>
-              </div>
-
-              <div class="col-12" data-aos="fade-left" data-aos-delay="400">
-                <div class="compact-destination">
-                  <div class="destination-image">
-                    <img src="assets/img/travel/destination-11.webp" alt="Cultural Heritage" class="img-fluid">
-                  </div>
-                  <div class="destination-details">
-                    <h4>Cultural Heritage</h4>
-                    <p class="location"><i class="bi bi-geo-alt"></i> Peru</p>
-                    <p class="brief">Discover ancient civilizations, colorful markets, and archaeological wonders in the heart of South America.</p>
-                    <div class="stats-row">
-                      <span class="tour-count"><i class="bi bi-calendar-check"></i> 9 Expeditions</span>
-                      <span class="rating"><i class="bi bi-star-fill"></i> 4.7</span>
-                      <span class="price">from $980</span>
-                    </div>
-                    <a href="destination-details.html" class="quick-link">View Details <i class="bi bi-chevron-right"></i></a>
-                  </div>
-                </div>
-              </div>
-
-              <div class="col-12" data-aos="fade-left" data-aos-delay="500">
-                <div class="compact-destination">
-                  <div class="destination-image">
-                    <img src="assets/img/travel/destination-16.webp" alt="Safari Experience" class="img-fluid">
-                    <div class="badge-offer limited">Limited Spots</div>
-                  </div>
-                  <div class="destination-details">
-                    <h4>Safari Experience</h4>
-                    <p class="location"><i class="bi bi-geo-alt"></i> Kenya</p>
-                    <p class="brief">Witness the Big Five and experience the great migration in Africa's most spectacular wildlife reserves.</p>
-                    <div class="stats-row">
-                      <span class="tour-count"><i class="bi bi-calendar-check"></i> 11 Safaris</span>
-                      <span class="rating"><i class="bi bi-star-fill"></i> 4.9</span>
-                      <span class="price">from $2,750</span>
-                    </div>
-                    <a href="destination-details.html" class="quick-link">View Details <i class="bi bi-chevron-right"></i></a>
-                  </div>
-                </div>
-              </div>
-
-            </div>
-          </div>
-
-        </div>
-
-      </div>
-
-    </section><!-- /Featured Destinations Section -->
-
-    <!-- Featured Tours Section -->
-    <section id="featured-tours" class="featured-tours section">
-
-      <!-- Section Title -->
-      <div class="container section-title" data-aos="fade-up">
-        <h2>Featured Tours</h2>
-        <div><span>Check Our</span> <span class="description-title">Featured Tours</span></div>
-      </div><!-- End Section Title -->
-
-      <div class="container" data-aos="fade-up" data-aos-delay="100">
-
-        <div class="row gy-4">
-          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
-            <div class="tour-card">
-              <div class="tour-image">
-                <img src="assets/img/travel/tour-1.webp" alt="Serene Beach Retreat" class="img-fluid" loading="lazy">
-                <div class="tour-badge">Top Rated</div>
-                <div class="tour-price">$2,150</div>
-              </div>
-              <div class="tour-content">
-                <h4>Serene Beach Retreat</h4>
-                <div class="tour-meta">
-                  <span class="duration"><i class="bi bi-clock"></i> 8 Days</span>
-                  <span class="group-size"><i class="bi bi-people"></i> Max 6</span>
-                </div>
-                <p>Mauris ipsum neque, cursus ac ipsum at, iaculis facilisis ligula. Suspendisse non sapien vel enim cursus semper.</p>
-                <div class="tour-highlights">
-                  <span>Maldives</span>
-                  <span>Seychelles</span>
-                  <span>Bora Bora</span>
-                </div>
-                <div class="tour-action">
-                  <a href="booking.html" class="btn-book">Book Now</a>
-                  <div class="tour-rating">
-                    <i class="bi bi-star-fill"></i>
-                    <i class="bi bi-star-fill"></i>
-                    <i class="bi bi-star-fill"></i>
-                    <i class="bi bi-star-fill"></i>
-                    <i class="bi bi-star-half"></i>
-                    <span>4.8 (95)</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div><!-- End Tour Item -->
-
-          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
-            <div class="tour-card">
-              <div class="tour-image">
-                <img src="assets/img/travel/tour-2.webp" alt="Arctic Expedition" class="img-fluid" loading="lazy">
-                <div class="tour-badge limited">Only 3 Spots!</div>
-                <div class="tour-price">$5,700</div>
-              </div>
-              <div class="tour-content">
-                <h4>Arctic Wilderness Expedition</h4>
-                <div class="tour-meta">
-                  <span class="duration"><i class="bi bi-clock"></i> 10 Days</span>
-                  <span class="group-size"><i class="bi bi-people"></i> Max 8</span>
-                </div>
-                <p>Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec dictum non massa nec fermentum.</p>
-                <div class="tour-highlights">
-                  <span>Greenland</span>
-                  <span>Iceland</span>
-                  <span>Norway</span>
-                </div>
-                <div class="tour-action">
-                  <a href="booking.html" class="btn-book">Book Now</a>
-                  <div class="tour-rating">
-                    <i class="bi bi-star-fill"></i>
-                    <i class="bi bi-star-fill"></i>
-                    <i class="bi bi-star-fill"></i>
-                    <i class="bi bi-star-fill"></i>
-                    <i class="bi bi-star"></i>
-                    <span>4.6 (55)</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div><!-- End Tour Item -->
-
-          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="400">
-            <div class="tour-card">
-              <div class="tour-image">
-                <img src="assets/img/travel/tour-4.webp" alt="Desert Safari" class="img-fluid" loading="lazy">
-                <div class="tour-badge new">Newly Added</div>
-                <div class="tour-price">$1,400</div>
-              </div>
-              <div class="tour-content">
-                <h4>Sahara Desert Discovery</h4>
-                <div class="tour-meta">
-                  <span class="duration"><i class="bi bi-clock"></i> 5 Days</span>
-                  <span class="group-size"><i class="bi bi-people"></i> Max 10</span>
-                </div>
-                <p>Pellentesque euismod tincidunt turpis ac tristique. Phasellus vitae lacus in enim mollis facilisis vel quis ex. In hac habitasse platea dictumst.</p>
-                <div class="tour-highlights">
-                  <span>Morocco</span>
-                  <span>Egypt</span>
-                  <span>Dubai</span>
-                </div>
-                <div class="tour-action">
-                  <a href="booking.html" class="btn-book">Book Now</a>
-                  <div class="tour-rating">
-                    <i class="bi bi-star-fill"></i>
-                    <i class="bi bi-star-fill"></i>
-                    <i class="bi bi-star-fill"></i>
-                    <i class="bi bi-star-fill"></i>
-                    <i class="bi bi-star-fill"></i>
-                    <span>4.9 (72)</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div><!-- End Tour Item -->
-
-          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
-            <div class="tour-card">
-              <div class="tour-image">
-                <img src="assets/img/travel/tour-5.webp" alt="Coastal Explorer" class="img-fluid" loading="lazy">
-                <div class="tour-badge">Popular Choice</div>
-                <div class="tour-price">$1,980</div>
-              </div>
-              <div class="tour-content">
-                <h4>Mediterranean Coastal Cruise</h4>
-                <div class="tour-meta">
-                  <span class="duration"><i class="bi bi-clock"></i> 9 Days</span>
-                  <span class="group-size"><i class="bi bi-people"></i> Max 15</span>
-                </div>
-                <p>Nullam lacinia justo eget ex sodales, vel finibus orci aliquet. Donec auctor, elit ut molestie gravida, magna mi molestie nisi.</p>
-                <div class="tour-highlights">
-                  <span>Greece</span>
-                  <span>Croatia</span>
-                  <span>Italy</span>
-                </div>
-                <div class="tour-action">
-                  <a href="booking.html" class="btn-book">Book Now</a>
-                  <div class="tour-rating">
-                    <i class="bi bi-star-fill"></i>
-                    <i class="bi bi-star-fill"></i>
-                    <i class="bi bi-star-fill"></i>
-                    <i class="bi bi-star-fill"></i>
-                    <i class="bi bi-star-half"></i>
-                    <span>4.7 (110)</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div><!-- End Tour Item -->
-
-          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
-            <div class="tour-card">
-              <div class="tour-image">
-                <img src="assets/img/travel/tour-6.webp" alt="Rainforest Trek" class="img-fluid" loading="lazy">
-                <div class="tour-badge cultural">Eco-Friendly</div>
-                <div class="tour-price">$2,650</div>
-              </div>
-              <div class="tour-content">
-                <h4>Amazon Rainforest Trek</h4>
-                <div class="tour-meta">
-                  <span class="duration"><i class="bi bi-clock"></i> 12 Days</span>
-                  <span class="group-size"><i class="bi bi-people"></i> Max 10</span>
-                </div>
-                <p>Quisque dictum felis eu tortor mollis, quis tincidunt arcu pharetra. A pellentesque sit amet, consectetur adipiscing elit.</p>
-                <div class="tour-highlights">
-                  <span>Brazil</span>
-                  <span>Ecuador</span>
-                  <span>Peru</span>
-                </div>
-                <div class="tour-action">
-                  <a href="booking.html" class="btn-book">Book Now</a>
-                  <div class="tour-rating">
-                    <i class="bi bi-star-fill"></i>
-                    <i class="bi bi-star-fill"></i>
-                    <i class="bi bi-star-fill"></i>
-                    <i class="bi bi-star-fill"></i>
-                    <i class="bi bi-star"></i>
-                    <span>4.5 (88)</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div><!-- End Tour Item -->
-
-          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="400">
-            <div class="tour-card">
-              <div class="tour-image">
-                <img src="assets/img/travel/tour-8.webp" alt="Patagonian Peaks" class="img-fluid" loading="lazy">
-                <div class="tour-badge adventure">Adventure Seekers</div>
-                <div class="tour-price">$3,950</div>
-              </div>
-              <div class="tour-content">
-                <h4>Patagonian Peaks &amp; Glaciers</h4>
-                <div class="tour-meta">
-                  <span class="duration"><i class="bi bi-clock"></i> 14 Days</span>
-                  <span class="group-size"><i class="bi bi-people"></i> Max 10</span>
-                </div>
-                <p>Vivamus eget semper neque. Ut porttitor mi at odio egestas, non vestibulum est malesuada. Nunc facilisis in felis eget efficitur.</p>
-                <div class="tour-highlights">
-                  <span>Argentina</span>
-                  <span>Chile</span>
-                  <span>Ushuaia</span>
-                </div>
-                <div class="tour-action">
-                  <a href="booking.html" class="btn-book">Book Now</a>
-                  <div class="tour-rating">
-                    <i class="bi bi-star-fill"></i>
-                    <i class="bi bi-star-fill"></i>
-                    <i class="bi bi-star-fill"></i>
-                    <i class="bi bi-star-fill"></i>
-                    <i class="bi bi-star-fill"></i>
-                    <span>4.9 (60)</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div><!-- End Tour Item -->
-
-        </div>
-
-        <div class="text-center mt-5" data-aos="fade-up" data-aos-delay="500">
-          <a href="tours.html" class="btn-view-all">View All Tours</a>
-        </div>
-
-      </div>
-
-    </section><!-- /Featured Tours Section -->
-
-    <!-- Testimonials Home Section -->
-    <section id="testimonials-home" class="testimonials-home section">
-
-      <!-- Section Title -->
-      <div class="container section-title" data-aos="fade-up">
-        <h2>Testimonials</h2>
-        <div><span>What Our Customers</span> <span class="description-title">Are Saying</span></div>
-      </div><!-- End Section Title -->
-
-      <div class="container" data-aos="fade-up" data-aos-delay="100">
-
-        <div class="swiper init-swiper">
-          <script type="application/json" class="swiper-config">
-            {
-              "loop": true,
-              "speed": 600,
-              "autoplay": {
-                "delay": 5000
-              },
-              "slidesPerView": "auto",
-              "pagination": {
-                "el": ".swiper-pagination",
-                "type": "bullets",
-                "clickable": true
-              },
-              "breakpoints": {
-                "320": {
-                  "slidesPerView": 1,
-                  "spaceBetween": 40
-                },
-                "1200": {
-                  "slidesPerView": 3,
-                  "spaceBetween": 1
-                }
-              }
-            }
-          </script>
-          <div class="swiper-wrapper">
-
-            <div class="swiper-slide">
-              <div class="testimonial-item">
-                <p>
-                  <i class="bi bi-quote quote-icon-left"></i>
-                  <span>Proin iaculis purus consequat sem cure digni ssim donec porttitora entum suscipit rhoncus. Accusantium quam, ultricies eget id, aliquam eget nibh et. Maecen aliquam, risus at semper.</span>
-                  <i class="bi bi-quote quote-icon-right"></i>
-                </p>
-                <img src="assets/img/person/person-m-9.webp" class="testimonial-img" alt="">
-                <h3>Saul Goodman</h3>
-                <h4>Ceo &amp; Founder</h4>
-              </div>
-            </div><!-- End testimonial item -->
-
-            <div class="swiper-slide">
-              <div class="testimonial-item">
-                <p>
-                  <i class="bi bi-quote quote-icon-left"></i>
-                  <span>Export tempor illum tamen malis malis eram quae irure esse labore quem cillum quid malis quorum velit fore eram velit sunt aliqua noster fugiat irure amet legam anim culpa.</span>
-                  <i class="bi bi-quote quote-icon-right"></i>
-                </p>
-                <img src="assets/img/person/person-f-5.webp" class="testimonial-img" alt="">
-                <h3>Sara Wilsson</h3>
-                <h4>Designer</h4>
-              </div>
-            </div><!-- End testimonial item -->
-
-            <div class="swiper-slide">
-              <div class="testimonial-item">
-                <p>
-                  <i class="bi bi-quote quote-icon-left"></i>
-                  <span>Enim nisi quem export duis labore cillum quae magna enim sint quorum nulla quem veniam duis minim tempor labore quem eram duis noster aute amet eram fore quis sint minim.</span>
-                  <i class="bi bi-quote quote-icon-right"></i>
-                </p>
-                <img src="assets/img/person/person-f-12.webp" class="testimonial-img" alt="">
-                <h3>Jena Karlis</h3>
-                <h4>Store Owner</h4>
-              </div>
-            </div><!-- End testimonial item -->
-
-            <div class="swiper-slide">
-              <div class="testimonial-item">
-                <p>
-                  <i class="bi bi-quote quote-icon-left"></i>
-                  <span>Fugiat enim eram quae cillum dolore dolor amet nulla culpa multos export minim fugiat dolor enim duis veniam ipsum anim magna sunt elit fore quem dolore labore illum veniam.</span>
-                  <i class="bi bi-quote quote-icon-right"></i>
-                </p>
-                <img src="assets/img/person/person-m-12.webp" class="testimonial-img" alt="">
-                <h3>Matt Brandon</h3>
-                <h4>Freelancer</h4>
-              </div>
-            </div><!-- End testimonial item -->
-
-            <div class="swiper-slide">
-              <div class="testimonial-item">
-                <p>
-                  <i class="bi bi-quote quote-icon-left"></i>
-                  <span>Quis quorum aliqua sint quem legam fore sunt eram irure aliqua veniam tempor noster veniam sunt culpa nulla illum cillum fugiat legam esse veniam culpa fore nisi cillum quid.</span>
-                  <i class="bi bi-quote quote-icon-right"></i>
-                </p>
-                <img src="assets/img/person/person-m-13.webp" class="testimonial-img" alt="">
-                <h3>John Larson</h3>
-                <h4>Entrepreneur</h4>
-              </div>
-            </div><!-- End testimonial item -->
-
-          </div>
-          <div class="swiper-pagination"></div>
-        </div>
-
-      </div>
-
-    </section><!-- /Testimonials Home Section -->
-
-    <!-- Call To Action Section -->
-    <section id="call-to-action" class="call-to-action section light-background">
-
-      <div class="container" data-aos="fade-up" data-aos-delay="100">
-
-        <div class="hero-content" data-aos="zoom-in" data-aos-delay="200">
-          <div class="content-wrapper">
-            <div class="badge-wrapper">
-              <span class="promo-badge">Limited Time Offer</span>
-            </div>
-            <h2>Discover Your Next Adventure</h2>
-            <p>Unlock incredible destinations with our specially curated travel packages. From exotic beaches to mountain peaks, your perfect getaway awaits.</p>
-
-            <div class="action-section">
-              <div class="main-actions">
-                <a href="destinations.html" class="btn btn-explore">
-                  <i class="bi bi-compass"></i>
-                  Explore Now
-                </a>
-                <a href="deals.html" class="btn btn-deals">
-                  <i class="bi bi-percent"></i>
-                  View Deals
-                </a>
-              </div>
-
-              <div class="quick-contact">
-                <span class="contact-label">Need help choosing?</span>
-                <a href="tel:+1555123456" class="contact-link">
-                  <i class="bi bi-telephone"></i>
-                  Call +1 (555) 123-456
-                </a>
-              </div>
-            </div>
-          </div>
-
-          <div class="visual-element">
-            <img src="assets/img/travel/showcase-3.webp" alt="Travel Adventure" class="hero-image" loading="lazy">
-            <div class="image-overlay">
-              <div class="stat-item">
-                <span class="stat-number">500+</span>
-                <span class="stat-label">Destinations</span>
-              </div>
-              <div class="stat-item">
-                <span class="stat-number">10K+</span>
-                <span class="stat-label">Happy Travelers</span>
-              </div>
+              <a href="destination-details.html" class="btn btn-outline-primary btn-sm w-100 mt-3 rounded-pill">View Details</a>
             </div>
           </div>
         </div>
 
-        <div class="newsletter-section" data-aos="fade-up" data-aos-delay="300">
-          <div class="newsletter-card">
-            <div class="newsletter-content">
-              <div class="newsletter-icon">
-                <i class="bi bi-envelope-heart"></i>
-              </div>
-              <div class="newsletter-text">
-                <h3>Stay in the Loop</h3>
-                <p>Get exclusive travel deals and destination guides delivered to your inbox</p>
-              </div>
+        <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+          <div class="dest-card-clean">
+            <div class="dest-img-wrap">
+              <img src="assets/img/travel/destination-7.webp" alt="Santorini">
+              <span class="dest-badge">Best Seller</span>
             </div>
-
-            <form class="php-email-form newsletter-form" action="forms/newsletter.php" method="post">
-              <div class="form-wrapper">
-                <input type="email" name="email" class="email-input" placeholder="Your email address" required="">
-                <button type="submit" class="subscribe-btn">
-                  <i class="bi bi-arrow-right"></i>
-                </button>
-              </div>
-
-              <div class="loading">Loading</div>
-              <div class="error-message"></div>
-              <div class="sent-message">Welcome aboard! Check your email for exclusive offers.</div>
-
-              <div class="trust-indicators">
-                <i class="bi bi-lock"></i>
-                <span>We protect your privacy. Unsubscribe anytime.</span>
-              </div>
-            </form>
-          </div>
-        </div>
-
-        <div class="benefits-showcase" data-aos="fade-up" data-aos-delay="400">
-          <div class="benefits-header">
-            <h3>Why Choose Our Adventures</h3>
-            <p>Experience the difference with our premium travel services</p>
-          </div>
-
-          <div class="benefits-grid">
-            <div class="benefit-card" data-aos="flip-left" data-aos-delay="450">
-              <div class="benefit-visual">
-                <div class="benefit-icon-wrap">
-                  <i class="bi bi-geo-alt"></i>
+            <div class="dest-body">
+              <span class="dest-location">Greece</span>
+              <h3 class="dest-title">Santorini</h3>
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="dest-rating">
+                  <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star-half"></i>
+                  <span class="text-muted small">(98)</span>
                 </div>
-                <div class="benefit-pattern"></div>
+                <span class="dest-price">$1,200</span>
               </div>
-              <div class="benefit-content">
-                <h4>Handpicked Destinations</h4>
-                <p>Every location is carefully selected by our travel experts for authentic experiences</p>
-              </div>
-            </div>
-
-            <div class="benefit-card" data-aos="flip-left" data-aos-delay="500">
-              <div class="benefit-visual">
-                <div class="benefit-icon-wrap">
-                  <i class="bi bi-award"></i>
-                </div>
-                <div class="benefit-pattern"></div>
-              </div>
-              <div class="benefit-content">
-                <h4>Award-Winning Service</h4>
-                <p>Recognized for excellence with 5-star ratings and industry awards</p>
-              </div>
-            </div>
-
-            <div class="benefit-card" data-aos="flip-left" data-aos-delay="550">
-              <div class="benefit-visual">
-                <div class="benefit-icon-wrap">
-                  <i class="bi bi-heart"></i>
-                </div>
-                <div class="benefit-pattern"></div>
-              </div>
-              <div class="benefit-content">
-                <h4>Personalized Care</h4>
-                <p>Tailored itineraries designed around your preferences and travel style</p>
-              </div>
+              <a href="destination-details.html" class="btn btn-outline-primary btn-sm w-100 mt-3 rounded-pill">View Details</a>
             </div>
           </div>
         </div>
 
-      </div>
-
-    </section><!-- /Call To Action Section -->
-
-  </main>
-
-  <footer id="footer" class="footer position-relative dark-background">
-
-    <div class="footer-newsletter">
-      <div class="container">
-        <div class="row justify-content-center text-center">
-          <div class="col-lg-6">
-            <h4>Join Our Newsletter</h4>
-            <p>Subscribe to our newsletter and receive the latest news about our products and services!</p>
-            <form action="forms/newsletter.php" method="post" class="php-email-form">
-              <div class="newsletter-form"><input type="email" name="email"><input type="submit" value="Subscribe"></div>
-              <div class="loading">Loading</div>
-              <div class="error-message"></div>
-              <div class="sent-message">Your subscription request has been sent. Thank you!</div>
-            </form>
+        <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
+          <div class="dest-card-clean">
+            <div class="dest-img-wrap">
+              <img src="assets/img/travel/destination-16.webp" alt="Amalfi">
+              <span class="dest-badge">Luxury</span>
+            </div>
+            <div class="dest-body">
+              <span class="dest-location">Italy</span>
+              <h3 class="dest-title">Amalfi Coast</h3>
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="dest-rating">
+                  <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star-fill"></i>
+                  <span class="text-muted small">(75)</span>
+                </div>
+                <span class="dest-price">$1,500</span>
+              </div>
+              <a href="destination-details.html" class="btn btn-outline-primary btn-sm w-100 mt-3 rounded-pill">View Details</a>
+            </div>
           </div>
         </div>
       </div>
     </div>
+  </section>
 
-    <div class="container footer-top">
-      <div class="row gy-4">
-        <div class="col-lg-4 col-md-6 footer-about">
-          <a href="index.html" class="d-flex align-items-center">
-            <span class="sitename">Tour</span>
-          </a>
-          <div class="footer-contact pt-3">
-            <p>A108 Adam Street</p>
-            <p>New York, NY 535022</p>
-            <p class="mt-3"><strong>Phone:</strong> <span>+1 5589 55488 55</span></p>
-            <p><strong>Email:</strong> <span>info@example.com</span></p>
-          </div>
+  <footer class="footer">
+    <div class="container">
+      <div class="row g-5">
+        <div class="col-lg-4">
+          <a href="index.html" class="logo-container mb-4"><div class="logo-icon bg-white text-primary"><i class="bi bi-tsunami"></i></div><h1 class="logo-text text-white">Marina<span class="text-secondary">Travel</span></h1></a>
+          <p class="text-white-50">Luxury ocean escapes crafted for the modern explorer.</p>
         </div>
-
-        <div class="col-lg-2 col-md-3 footer-links">
-          <h4>Useful Links</h4>
-          <ul>
-            <li><i class="bi bi-chevron-right"></i> <a href="#">Home</a></li>
-            <li><i class="bi bi-chevron-right"></i> <a href="#">About us</a></li>
-            <li><i class="bi bi-chevron-right"></i> <a href="#">Services</a></li>
-            <li><i class="bi bi-chevron-right"></i> <a href="#">Terms of service</a></li>
-          </ul>
-        </div>
-
-        <div class="col-lg-2 col-md-3 footer-links">
-          <h4>Our Services</h4>
-          <ul>
-            <li><i class="bi bi-chevron-right"></i> <a href="#">Web Design</a></li>
-            <li><i class="bi bi-chevron-right"></i> <a href="#">Web Development</a></li>
-            <li><i class="bi bi-chevron-right"></i> <a href="#">Product Management</a></li>
-            <li><i class="bi bi-chevron-right"></i> <a href="#">Marketing</a></li>
-          </ul>
-        </div>
-
-        <div class="col-lg-4 col-md-12">
-          <h4>Follow Us</h4>
-          <p>Cras fermentum odio eu feugiat lide par naso tierra videa magna derita valies</p>
-          <div class="social-links d-flex">
-            <a href=""><i class="bi bi-twitter-x"></i></a>
-            <a href=""><i class="bi bi-facebook"></i></a>
-            <a href=""><i class="bi bi-instagram"></i></a>
-            <a href=""><i class="bi bi-linkedin"></i></a>
-          </div>
-        </div>
-
+        <div class="col-lg-2 col-6"><h5>Links</h5><ul class="list-unstyled"><li><a href="index.html">Home</a></li><li><a href="destinations.html">Destinations</a></li></ul></div>
+        <div class="col-lg-2 col-6"><h5>Support</h5><ul class="list-unstyled"><li><a href="faq.html">FAQ</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+        <div class="col-lg-4"><h5>Contact</h5><p class="text-white-50">108 Ocean View Drive, Miami FL<br>info@marinatravel.com</p></div>
       </div>
+      <div class="footer-bottom"><p>© 2025 Marina Travel. All Rights Reserved.</p></div>
     </div>
-
-    <div class="container copyright text-center mt-4">
-      <p>© <span>Copyright</span> <strong class="px-1 sitename">MyWebsite</strong> <span>All Rights Reserved</span></p>
-      <div class="credits">
-        <!-- All the links in the footer should remain intact. -->
-        <!-- You can delete the links only if you've purchased the pro version. -->
-        <!-- Licensing information: https://bootstrapmade.com/license/ -->
-        <!-- Purchase the pro version with working PHP/AJAX contact form: [buy-url] -->
-        Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
-      </div>
-    </div>
-
   </footer>
 
-  <!-- Scroll Top -->
-  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+  <a href="#" id="scroll-top" class="fixed-bottom end-0 m-4 btn btn-primary rounded-circle d-flex align-items-center justify-content-center" style="width: 50px; height: 50px; z-index: 999;"><i class="bi bi-arrow-up-short fs-4"></i></a>
 
-  <!-- Preloader -->
-  <div id="preloader"></div>
-
-  <!-- Vendor JS Files -->
-  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="assets/vendor/php-email-form/validate.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
   <script src="assets/vendor/aos/aos.js"></script>
-  <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
   <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
-  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-  <script src="assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
   <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
 
-  <!-- Main JS File -->
-  <script src="assets/js/main.js"></script>
+  <script>
+    AOS.init({ once: true, duration: 800 });
 
-<script>
-const header = document.querySelector(".apple-glass");
+    // Sticky Header
+    const header = document.getElementById('header');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 40) header.classList.add('scrolled');
+      else header.classList.remove('scrolled');
+    });
 
-window.addEventListener("scroll", () => {
-    if (window.scrollY > 40) {
-        header.style.transform = "translateY(-6px) scale(0.985)";
-        header.style.boxShadow =
-            "0 55px 140px rgba(0,0,0,.55), inset 0 1px 1px rgba(255,255,255,.65)";
-    } else {
-        header.style.transform = "none";
-    }
-});
-</script>
+    // Spin Wheel Game Logic
+    const wheel = document.getElementById('wheel');
+    const spinBtn = document.getElementById('spinBtn');
+    const resultDisplay = document.getElementById('gameResult');
+    let isSpinning = false;
+
+    spinBtn.addEventListener('click', () => {
+      if (isSpinning) return;
+      isSpinning = true;
+      resultDisplay.classList.remove('show');
+      resultDisplay.innerText = "Spinning...";
+      
+      const randomDeg = Math.floor(5000 + Math.random() * 5000); 
+      wheel.style.transform = `rotate(${randomDeg}deg)`;
+      
+      setTimeout(() => {
+        isSpinning = false;
+        resultDisplay.innerText = "You Won: 10% OFF!"; 
+        resultDisplay.classList.add('show');
+      }, 4000); 
+    });
+  </script>
 
 </body>
-
 </html>
