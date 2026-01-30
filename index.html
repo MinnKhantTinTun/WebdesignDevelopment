@@ -4,10 +4,11 @@
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>Home - Marina Travel | Luxury Ocean Escapes</title>
+  <title>Marina Travel | Uy tín - Chuyên nghiệp - Chất lượng</title>
   <meta name="description" content="Marina Travel offers premium tourism services, specializing in luxury sea tours and coastal adventures.">
 
   <link href="assets/img/favicon.png" rel="icon">
+  
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
@@ -18,39 +19,39 @@
 
   <style>
     :root {
-      --primary: #0C4999;
-      --secondary: #EF9B34;
-      --dark: #083370;
+      --primary: #0056b3; /* Marina Blue */
+      --secondary: #ff8c00; /* Marina Orange */
+      --dark: #002d5e;
       --light: #f8fafc;
       --text-main: #1e293b;
       --text-muted: #64748b;
-      --card-radius: 20px;
+      --card-radius: 15px;
     }
 
     body { font-family: 'Inter', sans-serif; color: var(--text-main); background-color: var(--light); -webkit-font-smoothing: antialiased; }
     h1, h2, h3, h4, h5, h6 { font-family: 'Playfair Display', serif; color: var(--primary); font-weight: 700; }
     
-    /* Navbar styling for LO3 (Design Principles) */
-    .header { padding: 15px 0; transition: all 0.4s ease; z-index: 999; background: transparent; }
-    .header.scrolled { background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(12px); box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05); padding: 10px 0; }
-    .logo-container { display: flex; align-items: center; gap: 10px; }
-    .logo-icon { width: 40px; height: 40px; background: var(--primary); color: #fff; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; }
+    /* Header */
+    .header { padding: 15px 0; transition: all 0.4s ease; z-index: 999; }
+    .header.scrolled { background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(12px); box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); padding: 8px 0; }
     
-    /* Hero Section with Responsive Design */
-    .hero-section { position: relative; height: 100vh; min-height: 700px; display: flex; align-items: center; overflow: hidden; }
+    /* Hero Section */
+    .hero-section { position: relative; height: 90vh; min-height: 600px; display: flex; align-items: center; overflow: hidden; color: white; }
     .hero-bg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: -2; }
     .hero-bg video { width: 100%; height: 100%; object-fit: cover; }
-    .hero-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(90deg, rgba(12, 73, 153, 0.85) 0%, rgba(12, 73, 153, 0.4) 100%); z-index: -1; }
+    .hero-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 45, 94, 0.5); z-index: -1; }
 
-    /* Interactive Game Styles for Project Requirement */
-    .wheel-container { position: relative; width: 350px; height: 350px; margin: 0 auto; }
-    .wheel { width: 100%; height: 100%; border-radius: 50%; border: 10px solid #fff; box-shadow: 0 10px 30px rgba(0,0,0,0.1); transition: transform 4s cubic-bezier(0.25, 0.1, 0.25, 1); background: conic-gradient(#FF6B6B 0 60deg, #4ECDC4 60deg 120deg, #45B7D1 120deg 180deg, #96CEB4 180deg 240deg, #FFEEAD 240deg 300deg, #FF9F43 300deg 360deg); }
-    .spin-btn { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 70px; height: 70px; background: #fff; border-radius: 50%; border: 3px solid var(--primary); font-weight: 800; cursor: pointer; z-index: 5; }
+    /* Tour Cards */
+    .tour-card { background: #fff; border-radius: var(--card-radius); overflow: hidden; border: none; transition: transform 0.3s ease; box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
+    .tour-card:hover { transform: translateY(-10px); }
+    .tour-img { height: 220px; object-fit: cover; width: 100%; }
+    .price-tag { color: var(--secondary); font-weight: 700; font-size: 1.2rem; }
 
-    /* Destination Cards */
-    .dest-card-clean { background: #fff; border-radius: var(--card-radius); overflow: hidden; border: 1px solid #eef2f6; transition: 0.3s; height: 100%; }
-    .dest-img-wrap { height: 250px; overflow: hidden; }
-    .dest-img-wrap img { width: 100%; height: 100%; object-fit: cover; }
+    /* Spin Game */
+    .wheel-container { position: relative; width: 320px; height: 320px; margin: 0 auto; }
+    .wheel { width: 100%; height: 100%; border-radius: 50%; border: 8px solid #fff; box-shadow: 0 10px 25px rgba(0,0,0,0.2); transition: transform 4s cubic-bezier(0.15, 0, 0.15, 1); background: conic-gradient(#FF6B6B 0 60deg, #4ECDC4 60deg 120deg, #45B7D1 120deg 180deg, #96CEB4 180deg 240deg, #FFEEAD 240deg 300deg, #FF9F43 300deg 360deg); }
+    .spin-btn { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 60px; height: 60px; background: #fff; border-radius: 50%; border: 4px solid var(--primary); font-weight: 800; cursor: pointer; z-index: 5; }
+    .wheel-pointer { position: absolute; top: -10px; left: 50%; transform: translateX(-50%); width: 0; height: 0; border-left: 15px solid transparent; border-right: 15px solid transparent; border-top: 30px solid var(--secondary); z-index: 10; }
   </style>
 </head>
 
@@ -58,20 +59,20 @@
 
   <header id="header" class="header fixed-top">
     <div class="container d-flex align-items-center justify-content-between">
-      <a href="index.html" class="logo-container text-decoration-none">
-        <div class="logo-icon"><i class="bi bi-water"></i></div>
-        <h1 class="m-0" style="font-size: 1.5rem; color: var(--primary);">Marina<span style="color: var(--secondary);">Travel</span></h1>
+      <a href="index.html" class="logo-container text-decoration-none d-flex align-items-center">
+        <div class="logo-icon me-2"><i class="bi bi-water fs-3 text-primary"></i></div>
+        <h1 class="m-0" style="font-size: 1.6rem;">MARINA <span style="color: var(--secondary);">TRAVEL</span></h1>
       </a>
       
       <nav id="navbar" class="navbar navbar-expand-lg">
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"><i class="bi bi-list fs-2 text-primary"></i></button>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"><i class="bi bi-list fs-2"></i></button>
         <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav ms-auto align-items-center gap-2">
-            <li class="nav-item"><a class="nav-link fw-bold active" href="index.html">Home</a></li>
-            <li class="nav-item"><a class="nav-link fw-bold" href="about.html">About</a></li>
-            <li class="nav-item"><a class="nav-link fw-bold" href="tours.html">Services & Tours</a></li>
-            <li class="nav-item"><a class="nav-link fw-bold" href="contact.html">Contact</a></li>
-            <li class="nav-item ms-lg-3"><a class="btn btn-warning rounded-pill px-4 text-white fw-bold shadow-sm" href="contact.html">Book Now</a></li>
+          <ul class="navbar-nav ms-auto align-items-center">
+            <li class="nav-item"><a class="nav-link px-3 active" href="index.html">HOME</a></li>
+            <li class="nav-item"><a class="nav-link px-3" href="about.html">ABOUT US</a></li>
+            <li class="nav-item"><a class="nav-link px-3" href="tours.html">TOURS</a></li>
+            <li class="nav-item"><a class="nav-link px-3" href="contact.html">CONTACT</a></li>
+            <li class="nav-item ms-lg-3"><a class="btn btn-primary rounded-pill px-4 text-white" href="booking.html">BOOK NOW</a></li>
           </ul>
         </div>
       </nav>
@@ -85,49 +86,86 @@
       </video>
     </div>
     <div class="hero-overlay"></div>
-    <div class="container position-relative z-2">
-      <div class="row align-items-center">
-        <div class="col-lg-7 text-white mb-5" data-aos="fade-up">
-          <span class="badge bg-white text-primary px-3 py-2 rounded-pill mb-4 text-uppercase fw-bold">Marina Travel Official</span>
-          <h1 class="display-3 fw-bold mb-4">Discover Your <br><span style="color: var(--secondary); font-style: italic;">Perfect Journey</span></h1>
-          <p class="lead mb-5 opacity-90">Luxury ocean escapes and premium tourism services designed to build unforgettable digital brand memories.</p>
-          <a href="tours.html" class="btn btn-warning btn-lg px-5 rounded-pill text-white fw-bold shadow">Explore Our Services</a>
-        </div>
-        
-        <div class="col-lg-5" data-aos="fade-left">
-          <div class="bg-white p-4 rounded-4 shadow-lg">
-            <h3 class="h4 mb-4 text-dark text-center">Inquiry Form</h3>
-            <form id="contactFormMain">
-              <div class="mb-3"><input type="text" class="form-control" placeholder="Full Name" required></div>
-              <div class="mb-3"><input type="email" class="form-control" placeholder="Email Address" required></div>
-              <div class="mb-3">
-                <select class="form-select">
-                  <option selected>Select Service</option>
-                  <option>Luxury Tour</option>
-                  <option>Sea Cruise</option>
-                  <option>Private Yacht</option>
-                </select>
-              </div>
-              <button type="submit" class="btn btn-primary w-100 py-3 rounded-pill fw-bold">Get a Quote</button>
-            </form>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8" data-aos="fade-up">
+          <h1 class="display-2 text-white mb-3">Explore the Beauty <br>of the Ocean</h1>
+          <p class="fs-4 mb-5">Professional travel services with 10+ years of experience in Vietnam's tourism.</p>
+          <div class="d-flex gap-3">
+            <a href="tours.html" class="btn btn-secondary btn-lg px-4 rounded-pill shadow">View Tours</a>
+            <a href="about.html" class="btn btn-outline-light btn-lg px-4 rounded-pill">Learn More</a>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="py-5 bg-light">
+  <section class="py-5">
+    <div class="container py-5">
+      <div class="text-center mb-5" data-aos="fade-up">
+        <h2 class="display-5">Popular Destinations</h2>
+        <div class="bg-secondary mx-auto mb-3" style="width: 80px; height: 3px;"></div>
+        <p class="text-muted">Handpicked tours for your next adventure</p>
+      </div>
+      <div class="row g-4">
+        <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+          <div class="tour-card">
+            <img src="https://images.unsplash.com/photo-1528127269322-539801943592" class="tour-img" alt="Ha Long Bay">
+            <div class="p-4">
+              <h4>Ha Long Bay Luxury</h4>
+              <p class="text-muted">Experience the emerald waters and limestone islands.</p>
+              <div class="d-flex justify-content-between align-items-center">
+                <span class="price-tag">$299.00</span>
+                <a href="#" class="btn btn-sm btn-primary">Details</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+          <div class="tour-card">
+            <img src="https://images.unsplash.com/photo-1559592442-7e182c9403db" class="tour-img" alt="Nha Trang">
+            <div class="p-4">
+              <h4>Nha Trang Beach</h4>
+              <p class="text-muted">The best coral reefs and diving spots in Vietnam.</p>
+              <div class="d-flex justify-content-between align-items-center">
+                <span class="price-tag">$150.00</span>
+                <a href="#" class="btn btn-sm btn-primary">Details</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
+          <div class="tour-card">
+            <img src="https://images.unsplash.com/photo-1504457047772-27faf1c00561" class="tour-img" alt="Phu Quoc">
+            <div class="p-4">
+              <h4>Phu Quoc Sunset</h4>
+              <p class="text-muted">Relax on the pearl island with white sandy beaches.</p>
+              <div class="d-flex justify-content-between align-items-center">
+                <span class="price-tag">$210.00</span>
+                <a href="#" class="btn btn-sm btn-primary">Details</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-5 bg-white border-top">
     <div class="container py-5">
       <div class="row align-items-center">
-        <div class="col-lg-6" data-aos="fade-right">
-          <h2 class="display-5 mb-4">Spin & Win <br><span class="text-secondary">Sea Theme Game</span></h2>
-          <p class="text-muted lead mb-4">Engage with Marina Travel and win exclusive discounts for your next tour! We value user interaction and brand retention.</p>
-          <div id="gameResult" class="h3 fw-bold text-primary mb-4" style="min-height: 40px;">Ready to Play?</div>
+        <div class="col-lg-6 mb-5 mb-lg-0" data-aos="fade-right">
+          <h2 class="display-6 mb-4">Spin the Wheel of <br><span class="text-secondary">Adventure!</span></h2>
+          <p class="text-muted lead mb-4">Win special discounts or free gifts for your next trip with Marina Travel.</p>
+          <div id="gameResult" class="alert alert-info py-3 fw-bold text-center h4" style="border-style: dashed; border-width: 2px;">
+            Click SPIN to start!
+          </div>
         </div>
         <div class="col-lg-6 text-center">
           <div class="wheel-container" data-aos="zoom-in">
+            <div class="wheel-pointer"></div>
             <div class="wheel" id="wheel"></div>
-            <button class="spin-btn" id="spinBtn">SPIN</button>
+            <button class="spin-btn shadow" id="spinBtn">SPIN</button>
           </div>
         </div>
       </div>
@@ -135,8 +173,16 @@
   </section>
 
   <footer class="bg-dark text-white py-5">
-    <div class="container text-center">
-      <p class="mb-0 opacity-50">© 2025 Marina Travel. Developed for Web Design & Development Unit 13.</p>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 text-center text-md-start">
+          <h5>MARINA TRAVEL</h5>
+          <p class="opacity-50">Leading luxury travel provider in the region.</p>
+        </div>
+        <div class="col-md-6 text-center text-md-end">
+          <p class="mb-0 opacity-50 small">© 2026 Marina Travel. Developed for Unit 13.</p>
+        </div>
+      </div>
     </div>
   </footer>
 
@@ -152,7 +198,7 @@
       else header.classList.remove('scrolled');
     });
 
-    // Enhanced Game Logic for LO4 Testing
+    // Spin Game Logic
     const wheel = document.getElementById('wheel');
     const spinBtn = document.getElementById('spinBtn');
     const resultDisplay = document.getElementById('gameResult');
@@ -160,15 +206,19 @@
     let rotation = 0;
 
     spinBtn.addEventListener('click', () => {
-      const spin = Math.floor(Math.random() * 360) + 1440; // 4 full spins min
+      spinBtn.disabled = true;
+      const spin = Math.floor(Math.random() * 360) + 1440; 
       rotation += spin;
       wheel.style.transform = `rotate(${rotation}deg)`;
-      resultDisplay.innerText = "Spinning...";
+      resultDisplay.innerText = "Good Luck...";
 
       setTimeout(() => {
+        // Calculate result based on 6 sections (60 degrees each)
         const actualDeg = rotation % 360;
         const index = Math.floor(actualDeg / 60);
-        resultDisplay.innerText = "You Won: " + rewards[5 - index];
+        // We reverse because the wheel spins clockwise but the logic index is anti-clockwise
+        resultDisplay.innerText = "Congratulations! You Won: " + rewards[index];
+        spinBtn.disabled = false;
       }, 4000);
     });
   </script>
