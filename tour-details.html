@@ -4,583 +4,434 @@
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>Tour Details - Tour Bootstrap Template</title>
-  <meta name="description" content="">
-  <meta name="keywords" content="">
+  <title>Tour Details - Marina Travel</title>
 
-  <!-- Favicons -->
   <link href="assets/img/favicon.png" rel="icon">
   <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
-  <!-- Fonts -->
-  <link href="https://fonts.googleapis.com" rel="preconnect">
-  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
 
-  <!-- Vendor CSS Files -->
-  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
   <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
   <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
 
-  <!-- Main CSS File -->
-  <link href="assets/css/main.css" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #0C4999;
+      --secondary: #EF9B34;
+      --dark: #083370;
+      --light: #f8fafc;
+      --text-main: #1e293b;
+      --text-muted: #64748b;
+      --card-radius: 20px;
+    }
 
-  <!-- =======================================================
-  * Template Name: Tour
-  * Template URL: https://bootstrapmade.com/tour-bootstrap-travel-website-template/
-  * Updated: Jul 01 2025 with Bootstrap v5.3.7
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-  ======================================================== -->
+    body { font-family: 'Inter', sans-serif; color: var(--text-main); background-color: var(--light); -webkit-font-smoothing: antialiased; }
+    h1, h2, h3, h4, h5, h6 { font-family: 'Playfair Display', serif; color: var(--primary); font-weight: 700; }
+    a { text-decoration: none; transition: 0.3s; }
+
+    /* --- UNIFIED NAVBAR --- */
+    .header { padding: 15px 0; transition: all 0.4s ease; z-index: 999; background: transparent; }
+    .header.scrolled { background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(0, 0, 0, 0.05); box-shadow: 0 4px 30px rgba(0, 0, 0, 0.03); padding: 10px 0; }
+    .logo-container { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+    .logo-icon { width: 40px; height: 40px; background: var(--primary); color: #fff; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; box-shadow: 0 4px 10px rgba(12, 73, 153, 0.3); transition: 0.3s; }
+    .logo-text { font-family: 'Playfair Display', serif; font-size: 1.5rem; font-weight: 700; color: var(--primary); margin: 0; letter-spacing: -0.5px; }
+    .logo-text span { color: var(--secondary); }
+    .nav-link { font-family: 'Inter', sans-serif; color: var(--text-main) !important; font-weight: 600; font-size: 0.95rem; padding: 8px 18px !important; border-radius: 50px; transition: all 0.3s ease; }
+    .nav-link:hover, .nav-link.active { color: var(--primary) !important; background: rgba(12, 73, 153, 0.08); }
+    .btn-navbar { background: var(--secondary); color: #fff !important; border-radius: 50px; padding: 10px 25px; font-weight: 600; font-size: 0.9rem; box-shadow: 0 4px 15px rgba(239, 155, 52, 0.3); transition: 0.3s; border: 2px solid var(--secondary); }
+    .btn-navbar:hover { background: transparent; color: var(--secondary) !important; transform: translateY(-2px); }
+    .navbar-toggler { border: none; padding: 0; color: var(--primary); }
+    .navbar-toggler:focus { box-shadow: none; }
+
+    /* --- Hero Section --- */
+    .tour-hero { position: relative; height: 600px; margin-top: 80px; }
+    .tour-hero img { width: 100%; height: 100%; object-fit: cover; }
+    .hero-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(12, 73, 153, 0.9), transparent); display: flex; align-items: flex-end; padding-bottom: 60px; }
+    .hero-content { color: white; width: 100%; }
+    .hero-content h1 { color: white; font-size: 3.5rem; margin-bottom: 10px; }
+    .hero-meta { display: flex; gap: 20px; font-size: 1.1rem; margin-bottom: 20px; font-weight: 500; }
+    .hero-meta i { color: var(--secondary); margin-right: 5px; }
+
+    /* --- Content Layout --- */
+    .tour-content-wrap { padding: 60px 0; }
+    
+    /* Sticky Sidebar */
+    .booking-card { background: #fff; padding: 30px; border-radius: var(--card-radius); box-shadow: 0 10px 40px rgba(0,0,0,0.1); position: sticky; top: 120px; border: 1px solid #eef2f6; }
+    .price-tag { font-size: 2.5rem; color: var(--primary); font-weight: 700; font-family: 'Playfair Display', serif; }
+    .price-per { font-size: 0.9rem; color: var(--text-muted); }
+    .book-btn { width: 100%; padding: 15px; font-size: 1.1rem; margin-top: 20px; background: var(--secondary); color: #fff; border: none; border-radius: 50px; font-weight: 700; transition: 0.3s; }
+    .book-btn:hover { background: #d68320; transform: translateY(-2px); }
+    
+    .info-list li { display: flex; justify-content: space-between; border-bottom: 1px solid #f1f5f9; padding: 12px 0; font-size: 0.95rem; }
+    .info-list li:last-child { border-bottom: none; }
+    .info-label { color: var(--text-muted); font-weight: 500; }
+    .info-value { color: var(--text-main); font-weight: 700; text-align: right; }
+
+    /* --- Tabs & Content --- */
+    .nav-pills .nav-link { background: #fff; color: var(--text-muted); border-radius: 50px; padding: 10px 25px; margin-right: 10px; border: 1px solid #e2e8f0; font-family: 'Inter', sans-serif; transition: 0.3s; }
+    .nav-pills .nav-link.active, .nav-pills .nav-link:hover { background-color: var(--primary); color: #fff; border-color: var(--primary); }
+
+    /* --- Itinerary Timeline --- */
+    .itinerary-item { position: relative; padding-left: 40px; margin-bottom: 30px; border-left: 2px solid #e2e8f0; }
+    .day-badge { position: absolute; left: -16px; top: 0; width: 32px; height: 32px; background: var(--secondary); color: white; border-radius: 50%; text-align: center; line-height: 32px; font-weight: 700; font-size: 0.85rem; border: 4px solid var(--light); }
+    .itinerary-content { background: #fff; padding: 20px; border-radius: 15px; box-shadow: 0 2px 10px rgba(0,0,0,0.02); }
+    .itinerary-content h4 { font-size: 1.2rem; color: var(--dark); margin-bottom: 10px; }
+
+    /* --- Inclusions --- */
+    .check-list li { margin-bottom: 10px; display: flex; align-items: center; color: var(--text-muted); }
+    .check-list i { color: #10b981; margin-right: 10px; font-size: 1.2rem; }
+    .cross-list i { color: #ef4444; }
+
+    /* --- Related Tours Card --- */
+    .card { border-radius: 15px; border: none; box-shadow: 0 5px 15px rgba(0,0,0,0.05); transition: 0.3s; }
+    .card:hover { transform: translateY(-5px); box-shadow: 0 10px 25px rgba(0,0,0,0.1); }
+    
+    /* --- Footer --- */
+    .footer { background-color: var(--primary); color: #fff; padding-top: 60px; }
+    .footer h4 { color: var(--secondary); font-family: 'Inter', sans-serif; font-size: 1.1rem; text-transform: uppercase; margin-bottom: 20px; }
+    .footer a { color: rgba(255,255,255,0.7); }
+    .footer a:hover { color: #fff; padding-left: 5px; }
+    .footer-newsletter { background: rgba(255,255,255,0.05); border-radius: 20px; padding: 40px; margin-bottom: 40px; text-align: center; }
+    .footer .form-control { border-radius: 50px 0 0 50px; border: none; padding: 15px 25px; }
+    .footer .btn-submit { border-radius: 0 50px 50px 0; background: var(--secondary); border: none; color: white; padding: 0 30px; font-weight: 600; }
+    .footer-bottom { border-top: 1px solid rgba(255,255,255,0.1); padding-top: 30px; margin-top: 50px; text-align: center; font-size: 0.9rem; color: rgba(255,255,255,0.5); }
+  </style>
 </head>
 
-<body class="tour-details-page">
+<body>
 
-  <header id="header" class="header d-flex align-items-center fixed-top">
-    <div class="header-container container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
-
-      <a href="index.html" class="logo d-flex align-items-center me-auto me-xl-0">
-        <!-- Uncomment the line below if you also wish to use an image logo -->
-        <img src="assets/img/logo.png" alt="">
-        <h1 class="sitename">Marina Travel</h1>
+  <header id="header" class="header fixed-top">
+    <div class="container d-flex align-items-center justify-content-between">
+      <a href="index.html" class="logo-container">
+        <div class="logo-icon"><i class="bi bi-tsunami"></i></div>
+        <h1 class="logo-text">Marina<span>Travel</span></h1>
       </a>
-
-      <nav id="navmenu" class="navmenu">
-        <ul>
-          <li><a href="index.html">Home</a></li>
-          <li><a href="about.html">About</a></li>
-          <li><a href="destinations.html">Destinations</a></li>
-          <li><a href="tours.html">Tours</a></li>
-          <li><a href="gallery.html">Gallery</a></li>
-          <li><a href="blog.html">Blog</a></li>
-          <li class="dropdown"><a href="#"><span>More Pages</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
-            <ul>
-              <li><a href="destination-details.html">Destination Details</a></li>
-              <li><a href="tour-details.html" class="active">Tour Details</a></li>
-              <li><a href="booking.html">Booking</a></li>
-              <li><a href="testimonials">Testimonials</a></li>
-              <li><a href="faq.html">Frequently Asked Questions</a></li>
-              <li><a href="blog-details.html">Blog Details</a></li>
-              <li><a href="terms.html">Terms</a></li>
-              <li><a href="privacy.html">Privacy</a></li>
-              <li><a href="404.html">404</a></li>
-            </ul>
-          </li>
-          <li class="dropdown"><a href="#"><span>Dropdown</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
-            <ul>
-              <li><a href="#">Dropdown 1</a></li>
-              <li class="dropdown"><a href="#"><span>Deep Dropdown</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
-                <ul>
-                  <li><a href="#">Deep Dropdown 1</a></li>
-                  <li><a href="#">Deep Dropdown 2</a></li>
-                  <li><a href="#">Deep Dropdown 3</a></li>
-                  <li><a href="#">Deep Dropdown 4</a></li>
-                  <li><a href="#">Deep Dropdown 5</a></li>
-                </ul>
-              </li>
-              <li><a href="#">Dropdown 2</a></li>
-              <li><a href="#">Dropdown 3</a></li>
-              <li><a href="#">Dropdown 4</a></li>
-            </ul>
-          </li>
-          <li><a href="contact.html">Contact</a></li>
-        </ul>
-        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+      <nav id="navbar" class="navbar navbar-expand-lg">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"><i class="bi bi-list fs-2"></i></button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto align-items-center gap-lg-2">
+            <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+            <li class="nav-item"><a class="nav-link" href="destinations.html">Destinations</a></li>
+            <li class="nav-item"><a class="nav-link" href="tours.html">Tours</a></li>
+            <li class="nav-item dropdown">
+               <a class="nav-link dropdown-toggle active" href="#" role="button" data-bs-toggle="dropdown">Pages</a>
+               <ul class="dropdown-menu border-0 shadow-lg rounded-4 p-2 mt-2">
+                 <li><a class="dropdown-item rounded-pill p-2" href="gallery.html">Gallery</a></li>
+                 <li><a class="dropdown-item rounded-pill p-2" href="destination-details.html">Destination Details</a></li>
+                 <li><a class="dropdown-item rounded-pill p-2 active" href="tour-details.html">Tour Details</a></li>
+                 <li><a class="dropdown-item rounded-pill p-2" href="testimonials.html">Testimonials</a></li>
+                 <li><a class="dropdown-item rounded-pill p-2" href="faq.html">FAQ</a></li>
+               </ul>
+            </li>
+            <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+            <li class="nav-item ms-lg-3"><a class="btn btn-navbar" href="booking.html">Book Now</a></li>
+          </ul>
+        </div>
       </nav>
-
-      <a class="btn-getstarted" href="destiantios.html">Get Started</a>
-
     </div>
   </header>
 
-  <main class="main">
+  <main>
 
-    <!-- Page Title -->
-    <div class="page-title dark-background" data-aos="fade" style="background-image: url(assets/img/travel/showcase-8.webp);">
-      <div class="container position-relative">
-        <h1>Tour Details</h1>
-        <p>Esse dolorum voluptatum ullam est sint nemo et est ipsa porro placeat quibusdam quia assumenda numquam molestias.</p>
-        <nav class="breadcrumbs">
-          <ol>
-            <li><a href="index.html">Home</a></li>
-            <li class="current">Tour Details</li>
-          </ol>
-        </nav>
+    <div class="tour-hero">
+      <img src="assets/img/travel/tour-5.webp" alt="Mediterranean Yachting">
+      <div class="hero-overlay">
+        <div class="container hero-content">
+          <span class="badge bg-secondary mb-3 text-uppercase" style="letter-spacing: 1px;">Best Seller</span>
+          <h1 data-aos="fade-up">Mediterranean Yachting</h1>
+          <div class="hero-meta" data-aos="fade-up" data-aos-delay="100">
+            <span><i class="bi bi-geo-alt-fill"></i> Italy & Greece</span>
+            <span><i class="bi bi-clock-fill"></i> 9 Days</span>
+            <span><i class="bi bi-star-fill"></i> 4.9 (124 Reviews)</span>
+          </div>
+        </div>
       </div>
-    </div><!-- End Page Title -->
+    </div>
 
-    <!-- Travel Tour Details Section -->
-    <section id="travel-tour-details" class="travel-tour-details section">
+    <section class="tour-content-wrap">
+      <div class="container">
+        <div class="row">
+          
+          <div class="col-lg-8">
+            
+            <ul class="nav nav-pills mb-5" id="pills-tab" role="tablist" data-aos="fade-up">
+              <li class="nav-item" role="presentation">
+                <button class="nav-link active" id="pills-overview-tab" data-bs-toggle="pill" data-bs-target="#pills-overview" type="button">Overview</button>
+              </li>
+              <li class="nav-item" role="presentation">
+                <button class="nav-link" id="pills-itinerary-tab" data-bs-toggle="pill" data-bs-target="#pills-itinerary" type="button">Itinerary</button>
+              </li>
+              <li class="nav-item" role="presentation">
+                <button class="nav-link" id="pills-gallery-tab" data-bs-toggle="pill" data-bs-target="#pills-gallery" type="button">Gallery</button>
+              </li>
+            </ul>
 
-      <div class="container" data-aos="fade-up" data-aos-delay="100">
-
-        <!-- Hero Section -->
-        <div class="tour-hero">
-          <div class="hero-image-wrapper">
-            <img src="assets/img/travel/showcase-9.webp" alt="Mediterranean Adventure Tour" class="img-fluid w-100">
-            <div class="hero-overlay">
-              <div class="hero-content">
-                <h1>Mediterranean Adventure</h1>
-                <div class="hero-meta">
-                  <span class="duration"><i class="bi bi-calendar"></i> 12 Days</span>
-                  <span class="destination"><i class="bi bi-geo-alt"></i> Italy, Greece &amp; Turkey</span>
-                  <span class="rating"><i class="bi bi-star-fill"></i> 4.8 (124 reviews)</span>
-                </div>
-                <p class="hero-tagline">Experience ancient wonders, pristine beaches, and vibrant cultures across three magnificent countries</p>
-                <a href="#booking" class="btn-book">Check Availability</a>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Tour Overview -->
-        <div class="tour-overview" data-aos="fade-up" data-aos-delay="200">
-          <div class="row">
-            <div class="col-lg-8">
-              <h2>Tour Overview</h2>
-              <p>Embark on an unforgettable journey through the heart of the Mediterranean, where ancient civilizations left their mark on stunning landscapes. This comprehensive tour takes you from the romantic canals of Venice to the sun-soaked islands of Santorini, culminating in the magical city of Istanbul where East meets West.</p>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-            </div>
-            <div class="col-lg-4">
-              <div class="tour-highlights">
-                <h3>Tour Highlights</h3>
-                <ul>
-                  <li><i class="bi bi-check-circle"></i> 4-Star Boutique Hotels</li>
-                  <li><i class="bi bi-check-circle"></i> Expert Local Guides</li>
-                  <li><i class="bi bi-check-circle"></i> Daily Breakfast Included</li>
-                  <li><i class="bi bi-check-circle"></i> Small Group (Max 16)
-                  </li>
-                  <li><i class="bi bi-check-circle"></i> UNESCO World Heritage Sites</li>
-                  <li><i class="bi bi-check-circle"></i> Cultural Experiences</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Itinerary -->
-        <div class="tour-itinerary" data-aos="fade-up" data-aos-delay="300">
-          <h2>Day-by-Day Itinerary</h2>
-          <div class="itinerary-timeline">
-
-            <div class="itinerary-item">
-              <div class="day-number">Day 1</div>
-              <div class="day-content">
-                <h4>Arrival in Venice</h4>
-                <p>Welcome to the enchanting city of canals. Upon arrival, check into your waterfront hotel and enjoy a welcome dinner featuring fresh seafood and local Venetian specialties.</p>
-                <div class="day-details">
-                  <span class="accommodation"><i class="bi bi-building"></i> Hotel Palazzo Vitturi</span>
-                  <span class="meals"><i class="bi bi-cup-hot"></i> Welcome Dinner</span>
-                </div>
-              </div>
-            </div>
-
-            <div class="itinerary-item">
-              <div class="day-number">Day 2</div>
-              <div class="day-content">
-                <h4>Venice City Tour</h4>
-                <p>Explore St. Mark's Square, visit the magnificent Basilica, and take a gondola ride through the romantic canals. Afternoon visit to Murano Island to see traditional glassblowing demonstrations.</p>
-                <div class="day-details">
-                  <span class="accommodation"><i class="bi bi-building"></i> Hotel Palazzo Vitturi</span>
-                  <span class="meals"><i class="bi bi-cup-hot"></i> Breakfast</span>
-                </div>
-              </div>
-            </div>
-
-            <div class="itinerary-item">
-              <div class="day-number">Day 3</div>
-              <div class="day-content">
-                <h4>Florence Discovery</h4>
-                <p>Travel to Florence, the cradle of Renaissance. Visit the Uffizi Gallery, admire Michelangelo's David, and climb to the top of the Duomo for breathtaking city views.</p>
-                <div class="day-details">
-                  <span class="accommodation"><i class="bi bi-building"></i> Hotel Davanzati</span>
-                  <span class="meals"><i class="bi bi-cup-hot"></i> Breakfast</span>
-                </div>
-              </div>
-            </div>
-
-            <div class="itinerary-item">
-              <div class="day-number">Days 4-5</div>
-              <div class="day-content">
-                <h4>Rome Exploration</h4>
-                <p>Two full days in the Eternal City. Visit the Colosseum, Roman Forum, Vatican City with the Sistine Chapel, and enjoy an authentic cooking class with a local Roman family.</p>
-                <div class="day-details">
-                  <span class="accommodation"><i class="bi bi-building"></i> Hotel Artemide</span>
-                  <span class="meals"><i class="bi bi-cup-hot"></i> Breakfast, Cooking Class</span>
-                </div>
-              </div>
-            </div>
-
-            <div class="itinerary-item">
-              <div class="day-number">Days 6-8</div>
-              <div class="day-content">
-                <h4>Santorini Paradise</h4>
-                <p>Flight to Greece and arrival in Santorini. Three days to explore the iconic blue-domed churches, stunning sunsets in Oia, wine tasting, and relaxation on unique volcanic beaches.</p>
-                <div class="day-details">
-                  <span class="accommodation"><i class="bi bi-building"></i> Canaves Oia Hotel</span>
-                  <span class="meals"><i class="bi bi-cup-hot"></i> Breakfast Daily</span>
-                </div>
-              </div>
-            </div>
-
-            <div class="itinerary-item">
-              <div class="day-number">Days 9-11</div>
-              <div class="day-content">
-                <h4>Istanbul Adventure</h4>
-                <p>Fly to Istanbul for three incredible days exploring where Europe meets Asia. Visit Hagia Sophia, Blue Mosque, Grand Bazaar, and enjoy a Bosphorus cruise at sunset.</p>
-                <div class="day-details">
-                  <span class="accommodation"><i class="bi bi-building"></i> Four Seasons Sultanahmet</span>
-                  <span class="meals"><i class="bi bi-cup-hot"></i> Breakfast, Farewell Dinner</span>
-                </div>
-              </div>
-            </div>
-
-            <div class="itinerary-item">
-              <div class="day-number">Day 12</div>
-              <div class="day-content">
-                <h4>Departure</h4>
-                <p>Transfer to Istanbul Airport for your departure flight. Take home memories of an incredible Mediterranean adventure that will last a lifetime.</p>
-                <div class="day-details">
-                  <span class="meals"><i class="bi bi-cup-hot"></i> Breakfast</span>
-                </div>
-              </div>
-            </div>
-
-          </div>
-        </div>
-
-        <!-- Inclusions -->
-        <div class="tour-inclusions" data-aos="fade-up" data-aos-delay="400">
-          <div class="row">
-            <div class="col-lg-6">
-              <div class="included-section">
-                <h3><i class="bi bi-check-circle-fill"></i> What's Included</h3>
-                <ul class="inclusion-list included">
-                  <li><i class="bi bi-check"></i> Round-trip flights between destinations</li>
-                  <li><i class="bi bi-check"></i> 11 nights accommodation (4-star hotels)</li>
-                  <li><i class="bi bi-check"></i> Daily breakfast at all hotels</li>
-                  <li><i class="bi bi-check"></i> Professional English-speaking guides</li>
-                  <li><i class="bi bi-check"></i> All entrance fees to attractions</li>
-                  <li><i class="bi bi-check"></i> Private transportation</li>
-                  <li><i class="bi bi-check"></i> Welcome and farewell dinners</li>
-                  <li><i class="bi bi-check"></i> Gondola ride in Venice</li>
-                  <li><i class="bi bi-check"></i> Wine tasting in Santorini</li>
-                  <li><i class="bi bi-check"></i> Bosphorus cruise in Istanbul</li>
-                </ul>
-              </div>
-            </div>
-            <div class="col-lg-6">
-              <div class="excluded-section">
-                <h3><i class="bi bi-x-circle-fill"></i> What's Not Included</h3>
-                <ul class="inclusion-list excluded">
-                  <li><i class="bi bi-x"></i> International flights to/from departure city</li>
-                  <li><i class="bi bi-x"></i> Lunch and dinner (except specified)</li>
-                  <li><i class="bi bi-x"></i> Personal expenses and shopping</li>
-                  <li><i class="bi bi-x"></i> Travel insurance (recommended)</li>
-                  <li><i class="bi bi-x"></i> Tips for guides and drivers</li>
-                  <li><i class="bi bi-x"></i> Optional activities and excursions</li>
-                  <li><i class="bi bi-x"></i> Alcoholic beverages (except wine tasting)</li>
-                  <li><i class="bi bi-x"></i> Visa fees if required</li>
-                  <li><i class="bi bi-x"></i> Single supplement for solo travelers</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Pricing -->
-        <div class="tour-pricing" data-aos="fade-up" data-aos-delay="500">
-          <h2>Pricing &amp; Dates</h2>
-          <div class="pricing-table">
-            <div class="pricing-header">
-              <div class="price-item">
-                <h3>Starting from</h3>
-                <div class="price-amount">$3,299</div>
-                <p>per person (double occupancy)</p>
-              </div>
-            </div>
-            <div class="pricing-details">
-              <div class="row">
-                <div class="col-lg-4">
-                  <div class="price-type">
-                    <h4>Double Occupancy</h4>
-                    <div class="price">$3,299</div>
-                    <p>per person</p>
+            <div class="tab-content" id="pills-tabContent">
+              
+              <div class="tab-pane fade show active" id="pills-overview" role="tabpanel">
+                <div class="mb-5" data-aos="fade-up">
+                  <h3 class="mb-3">About this Tour</h3>
+                  <p class="text-muted leading-relaxed">Sail through history visiting ancient ruins and swimming in crystal clear bays along the Amalfi coast and Greek Isles. This exclusive yachting experience offers the perfect blend of cultural exploration and relaxation. You will visit hidden coves accessible only by boat, dine in authentic local tavernas, and sleep under the stars.</p>
+                  
+                  <div class="row mt-4">
+                    <div class="col-md-6">
+                      <h5 class="mb-3">Included</h5>
+                      <ul class="list-unstyled check-list">
+                        <li><i class="bi bi-check-circle-fill"></i> Luxury Yacht Accommodation</li>
+                        <li><i class="bi bi-check-circle-fill"></i> Daily Breakfast & Lunch</li>
+                        <li><i class="bi bi-check-circle-fill"></i> Professional Skipper & Crew</li>
+                        <li><i class="bi bi-check-circle-fill"></i> Snorkeling Equipment</li>
+                      </ul>
+                    </div>
+                    <div class="col-md-6">
+                      <h5 class="mb-3">Not Included</h5>
+                      <ul class="list-unstyled check-list cross-list">
+                        <li><i class="bi bi-x-circle-fill"></i> Flights to/from departure</li>
+                        <li><i class="bi bi-x-circle-fill"></i> Travel Insurance</li>
+                        <li><i class="bi bi-x-circle-fill"></i> Evening Dinners (Free time)</li>
+                      </ul>
+                    </div>
                   </div>
                 </div>
-                <div class="col-lg-4">
-                  <div class="price-type">
-                    <h4>Single Supplement</h4>
-                    <div class="price">+$899</div>
-                    <p>additional</p>
+              </div>
+
+              <div class="tab-pane fade" id="pills-itinerary" role="tabpanel">
+                <div class="timeline-wrap" data-aos="fade-up">
+                  <div class="itinerary-item">
+                    <span class="day-badge">1</span>
+                    <div class="itinerary-content">
+                      <h4>Arrival in Naples</h4>
+                      <p class="text-muted mb-0">Meet your skipper and fellow travelers. Welcome dinner at a seaside restaurant overlooking the bay.</p>
+                    </div>
+                  </div>
+                  <div class="itinerary-item">
+                    <span class="day-badge">2</span>
+                    <div class="itinerary-content">
+                      <h4>Sail to Capri</h4>
+                      <p class="text-muted mb-0">Visit the famous Blue Grotto and explore the chic streets of Capri town. Anchor for the night in a secluded bay.</p>
+                    </div>
+                  </div>
+                  <div class="itinerary-item">
+                    <span class="day-badge">3</span>
+                    <div class="itinerary-content">
+                      <h4>Amalfi Coast & Positano</h4>
+                      <p class="text-muted mb-0">Cruise along the dramatic coastline. Stop for a swim near Positano and hike the Path of the Gods.</p>
+                    </div>
+                  </div>
+                  <div class="itinerary-item">
+                    <span class="day-badge">4</span>
+                    <div class="itinerary-content">
+                      <h4>Crossing to Greece</h4>
+                      <p class="text-muted mb-0">A day at open sea. Learn sailing basics from the crew or simply relax on the sun deck.</p>
+                    </div>
                   </div>
                 </div>
-                <div class="col-lg-4">
-                  <div class="price-type">
-                    <h4>Group Discount</h4>
-                    <div class="price">-$200</div>
-                    <p>for 6+ people</p>
+              </div>
+
+              <div class="tab-pane fade" id="pills-gallery" role="tabpanel">
+                <div class="row g-3" data-aos="fade-up">
+                  <div class="col-md-6">
+                    <a href="assets/img/travel/tour-5.webp" class="glightbox"><img src="assets/img/travel/tour-5.webp" class="img-fluid rounded-4 w-100" style="height: 300px; object-fit: cover;"></a>
+                  </div>
+                  <div class="col-md-6">
+                    <a href="assets/img/travel/destination-16.webp" class="glightbox"><img src="assets/img/travel/destination-16.webp" class="img-fluid rounded-4 w-100" style="height: 300px; object-fit: cover;"></a>
+                  </div>
+                  <div class="col-md-4">
+                    <a href="assets/img/travel/tour-12.webp" class="glightbox"><img src="assets/img/travel/tour-12.webp" class="img-fluid rounded-4 w-100" style="height: 200px; object-fit: cover;"></a>
+                  </div>
+                  <div class="col-md-4">
+                    <a href="assets/img/travel/tour-18.webp" class="glightbox"><img src="assets/img/travel/tour-18.webp" class="img-fluid rounded-4 w-100" style="height: 200px; object-fit: cover;"></a>
+                  </div>
+                  <div class="col-md-4">
+                    <a href="assets/img/travel/destination-7.webp" class="glightbox"><img src="assets/img/travel/destination-7.webp" class="img-fluid rounded-4 w-100" style="height: 200px; object-fit: cover;"></a>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <div class="col-lg-4">
+            <div class="booking-card" data-aos="fade-left">
+              <div class="mb-4 pb-4 border-bottom">
+                <span class="price-tag">$1,980</span>
+                <span class="price-per">/ per person</span>
+              </div>
+              
+              <ul class="list-unstyled info-list mb-4">
+                <li>
+                  <span class="info-label"><i class="bi bi-calendar3 me-2"></i> Date</span>
+                  <span class="info-value">Oct 15 - Oct 24</span>
+                </li>
+                <li>
+                  <span class="info-label"><i class="bi bi-people me-2"></i> Max Group</span>
+                  <span class="info-value">12 People</span>
+                </li>
+                <li>
+                  <span class="info-label"><i class="bi bi-clock me-2"></i> Duration</span>
+                  <span class="info-value">9 Days</span>
+                </li>
+                <li>
+                  <span class="info-label"><i class="bi bi-translate me-2"></i> Guide</span>
+                  <span class="info-value">English</span>
+                </li>
+              </ul>
+
+              <a href="booking.html" class="btn btn-primary book-btn d-block text-center">Proceed to Booking</a>
+              <div class="text-center mt-3">
+                <small class="text-muted"><i class="bi bi-check-circle-fill text-success"></i> Free cancellation 48h prior</small>
+              </div>
+
+              <div class="mt-4 pt-4 border-top">
+                <h5 class="mb-3">Have Questions?</h5>
+                <div class="d-flex align-items-center gap-3">
+                  <div class="bg-light rounded-circle d-flex align-items-center justify-content-center" style="width: 50px; height: 50px;">
+                    <i class="bi bi-telephone text-primary"></i>
+                  </div>
+                  <div>
+                    <span class="d-block text-muted text-sm">Call us anytime</span>
+                    <span class="fw-bold text-dark">+1 5589 55488 55</span>
                   </div>
                 </div>
               </div>
             </div>
-            <div class="available-dates">
-              <h3>2024 Departure Dates</h3>
-              <div class="dates-grid">
-                <div class="date-option">
-                  <div class="date">May 15-26</div>
-                  <div class="availability">6 spots left</div>
-                </div>
-                <div class="date-option">
-                  <div class="date">June 12-23</div>
-                  <div class="availability">Available</div>
-                </div>
-                <div class="date-option">
-                  <div class="date">July 10-21</div>
-                  <div class="availability">Almost full</div>
-                </div>
-                <div class="date-option">
-                  <div class="date">August 14-25</div>
-                  <div class="availability">Available</div>
-                </div>
-                <div class="date-option">
-                  <div class="date">September 18-29</div>
-                  <div class="availability">Available</div>
-                </div>
-                <div class="date-option">
-                  <div class="date">October 9-20</div>
-                  <div class="availability">11 spots left</div>
-                </div>
-              </div>
-            </div>
           </div>
-        </div>
 
-        <!-- Booking Form -->
-        <div class="booking-section" id="booking" data-aos="fade-up" data-aos-delay="600">
-          <div class="booking-card">
-            <h2>Book This Tour</h2>
-            <form action="forms/tour-booking.php" method="post" class="php-email-form">
-              <div class="row">
-                <div class="col-lg-6">
-                  <div class="form-group">
-                    <label for="travel-date">Preferred Travel Date</label>
-                    <select name="date" id="travel-date" class="form-control" required="">
-                      <option value="">Select a date</option>
-                      <option value="May 15-26">May 15-26, 2024</option>
-                      <option value="June 12-23">June 12-23, 2024</option>
-                      <option value="July 10-21">July 10-21, 2024</option>
-                      <option value="August 14-25">August 14-25, 2024</option>
-                      <option value="September 18-29">September 18-29, 2024</option>
-                      <option value="October 9-20">October 9-20, 2024</option>
-                    </select>
-                  </div>
-                </div>
-                <div class="col-lg-6">
-                  <div class="form-group">
-                    <label for="travelers">Number of Travelers</label>
-                    <select name="travelers" id="travelers" class="form-control" required="">
-                      <option value="">Select travelers</option>
-                      <option value="1">1 Traveler</option>
-                      <option value="2">2 Travelers</option>
-                      <option value="3">3 Travelers</option>
-                      <option value="4">4 Travelers</option>
-                      <option value="5">5 Travelers</option>
-                      <option value="6+">6+ Travelers</option>
-                    </select>
-                  </div>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-lg-6">
-                  <div class="form-group">
-                    <label for="name">Full Name</label>
-                    <input type="text" name="name" id="name" class="form-control" required="">
-                  </div>
-                </div>
-                <div class="col-lg-6">
-                  <div class="form-group">
-                    <label for="email">Email Address</label>
-                    <input type="email" name="email" id="email" class="form-control" required="">
-                  </div>
-                </div>
-              </div>
-              <div class="form-group">
-                <label for="phone">Phone Number</label>
-                <input type="tel" name="phone" id="phone" class="form-control">
-              </div>
-              <div class="form-group">
-                <label for="message">Special Requests or Questions</label>
-                <textarea name="message" id="message" rows="4" class="form-control" placeholder="Any dietary restrictions, accessibility needs, or special occasions..."></textarea>
-              </div>
-              <div class="loading">Loading</div>
-              <div class="error-message"></div>
-              <div class="sent-message">Your booking request has been sent. We'll contact you within 24 hours!</div>
-              <button type="submit" class="btn-submit">Send Booking Request</button>
-            </form>
-          </div>
         </div>
-
-        <!-- Gallery -->
-        <div class="tour-gallery" data-aos="fade-up" data-aos-delay="700">
-          <h2>Photo Gallery</h2>
-          <div class="gallery-grid">
-            <div class="gallery-item">
-              <a href="assets/img/travel/destination-1.webp" class="glightbox">
-                <img src="assets/img/travel/destination-1.webp" alt="Venice Canals" class="img-fluid" loading="lazy">
-              </a>
-            </div>
-            <div class="gallery-item">
-              <a href="assets/img/travel/destination-2.webp" class="glightbox">
-                <img src="assets/img/travel/destination-2.webp" alt="Florence Cathedral" class="img-fluid" loading="lazy">
-              </a>
-            </div>
-            <div class="gallery-item">
-              <a href="assets/img/travel/destination-3.webp" class="glightbox">
-                <img src="assets/img/travel/destination-3.webp" alt="Roman Colosseum" class="img-fluid" loading="lazy">
-              </a>
-            </div>
-            <div class="gallery-item">
-              <a href="assets/img/travel/destination-4.webp" class="glightbox">
-                <img src="assets/img/travel/destination-4.webp" alt="Santorini Sunset" class="img-fluid" loading="lazy">
-              </a>
-            </div>
-            <div class="gallery-item">
-              <a href="assets/img/travel/destination-5.webp" class="glightbox">
-                <img src="assets/img/travel/destination-5.webp" alt="Hagia Sophia" class="img-fluid" loading="lazy">
-              </a>
-            </div>
-            <div class="gallery-item">
-              <a href="assets/img/travel/destination-6.webp" class="glightbox">
-                <img src="assets/img/travel/destination-6.webp" alt="Mediterranean Cuisine" class="img-fluid" loading="lazy">
-              </a>
-            </div>
-          </div>
-        </div>
-
-        <!-- Final CTA -->
-        <div class="final-cta" data-aos="fade-up" data-aos-delay="1000">
-          <div class="cta-content">
-            <h2>Ready for Your Mediterranean Adventure?</h2>
-            <p>Limited spots available for 2024 departures. Book now to secure your place on this incredible journey.</p>
-            <div class="cta-actions">
-              <a href="booking.html" class="btn-primary">Book Now</a>
-              <a href="tel:+1-555-123-4567" class="btn-secondary">Call Us: +1 (555) 123-4567</a>
-            </div>
-            <div class="urgency-banner">
-              <i class="bi bi-clock"></i>
-              <span>Next departure in 45 days - Only 6 spots remaining!</span>
-            </div>
-          </div>
-        </div>
-
       </div>
+    </section>
 
-    </section><!-- /Travel Tour Details Section -->
+    <section class="section py-5 bg-light">
+      <div class="container">
+        <h3 class="mb-4 font-playfair text-primary">You Might Also Like</h3>
+        <div class="row g-4">
+          <div class="col-md-4">
+            <div class="card h-100 border-0 shadow-sm rounded-4 overflow-hidden">
+              <img src="assets/img/travel/tour-3.webp" class="card-img-top" style="height: 200px; object-fit: cover;" alt="Swiss">
+              <div class="card-body p-4">
+                <div class="d-flex justify-content-between mb-2">
+                  <span class="text-secondary fw-bold text-uppercase small">Adventure</span>
+                  <span class="text-warning"><i class="bi bi-star-fill"></i> 4.8</span>
+                </div>
+                <h5 class="card-title text-primary">Swiss Alps Adventure</h5>
+                <p class="card-text text-muted small">Hiking through the majestic mountains of Switzerland.</p>
+                <hr>
+                <div class="d-flex justify-content-between align-items-center">
+                  <small class="text-muted"><i class="bi bi-clock"></i> 6 Days</small>
+                  <span class="fw-bold text-primary">$749</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card h-100 border-0 shadow-sm rounded-4 overflow-hidden">
+              <img src="assets/img/travel/tour-15.webp" class="card-img-top" style="height: 200px; object-fit: cover;" alt="Bali">
+              <div class="card-body p-4">
+                <div class="d-flex justify-content-between mb-2">
+                  <span class="text-secondary fw-bold text-uppercase small">Relaxation</span>
+                  <span class="text-warning"><i class="bi bi-star-fill"></i> 4.9</span>
+                </div>
+                <h5 class="card-title text-primary">Bali Island Escape</h5>
+                <p class="card-text text-muted small">Discover the mystical beauty of Bali's beaches and temples.</p>
+                <hr>
+                <div class="d-flex justify-content-between align-items-center">
+                  <small class="text-muted"><i class="bi bi-clock"></i> 7 Days</small>
+                  <span class="fw-bold text-primary">$899</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card h-100 border-0 shadow-sm rounded-4 overflow-hidden">
+              <img src="assets/img/travel/tour-11.webp" class="card-img-top" style="height: 200px; object-fit: cover;" alt="Iceland">
+              <div class="card-body p-4">
+                <div class="d-flex justify-content-between mb-2">
+                  <span class="text-secondary fw-bold text-uppercase small">Nature</span>
+                  <span class="text-warning"><i class="bi bi-star-fill"></i> 4.9</span>
+                </div>
+                <h5 class="card-title text-primary">Iceland Northern Lights</h5>
+                <p class="card-text text-muted small">Chase the aurora borealis in the land of fire and ice.</p>
+                <hr>
+                <div class="d-flex justify-content-between align-items-center">
+                  <small class="text-muted"><i class="bi bi-clock"></i> 8 Days</small>
+                  <span class="fw-bold text-primary">$1,199</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
   </main>
 
-  <footer id="footer" class="footer position-relative dark-background">
-
-    <div class="footer-newsletter">
-      <div class="container">
-        <div class="row justify-content-center text-center">
-          <div class="col-lg-6">
-            <h4>Join Our Newsletter</h4>
-            <p>Subscribe to our newsletter and receive the latest news about our products and services!</p>
-            <form action="forms/newsletter.php" method="post" class="php-email-form">
-              <div class="newsletter-form"><input type="email" name="email"><input type="submit" value="Subscribe"></div>
-              <div class="loading">Loading</div>
-              <div class="error-message"></div>
-              <div class="sent-message">Your subscription request has been sent. Thank you!</div>
-            </form>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="container footer-top">
-      <div class="row gy-4">
-        <div class="col-lg-4 col-md-6 footer-about">
-          <a href="index.html" class="d-flex align-items-center">
-            <span class="sitename">Tour</span>
+  <footer class="footer">
+    <div class="container">
+      <div class="row g-5">
+        <div class="col-lg-4">
+          <a href="index.html" class="logo-container mb-4">
+            <div class="logo-icon bg-white text-primary" style="box-shadow: none;">
+              <i class="bi bi-tsunami"></i>
+            </div>
+            <h1 class="logo-text text-white">Marina<span class="text-secondary">Travel</span></h1>
           </a>
-          <div class="footer-contact pt-3">
-            <p>A108 Adam Street</p>
-            <p>New York, NY 535022</p>
-            <p class="mt-3"><strong>Phone:</strong> <span>+1 5589 55488 55</span></p>
-            <p><strong>Email:</strong> <span>info@example.com</span></p>
-          </div>
+          <p class="text-white-50">Luxury ocean escapes crafted for the modern explorer.</p>
         </div>
-
-        <div class="col-lg-2 col-md-3 footer-links">
-          <h4>Useful Links</h4>
-          <ul>
-            <li><i class="bi bi-chevron-right"></i> <a href="#">Home</a></li>
-            <li><i class="bi bi-chevron-right"></i> <a href="#">About us</a></li>
-            <li><i class="bi bi-chevron-right"></i> <a href="#">Services</a></li>
-            <li><i class="bi bi-chevron-right"></i> <a href="#">Terms of service</a></li>
+        <div class="col-lg-2 col-6">
+          <h5>Explore</h5>
+          <ul class="list-unstyled text-white-50">
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="destinations.html">Destinations</a></li>
+            <li><a href="tours.html">Tour Packages</a></li>
           </ul>
         </div>
-
-        <div class="col-lg-2 col-md-3 footer-links">
-          <h4>Our Services</h4>
-          <ul>
-            <li><i class="bi bi-chevron-right"></i> <a href="#">Web Design</a></li>
-            <li><i class="bi bi-chevron-right"></i> <a href="#">Web Development</a></li>
-            <li><i class="bi bi-chevron-right"></i> <a href="#">Product Management</a></li>
-            <li><i class="bi bi-chevron-right"></i> <a href="#">Marketing</a></li>
+        <div class="col-lg-2 col-6">
+          <h5>Support</h5>
+          <ul class="list-unstyled text-white-50">
+            <li><a href="faq.html">Help Center</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+            <li><a href="#">Privacy Policy</a></li>
           </ul>
         </div>
-
-        <div class="col-lg-4 col-md-12">
-          <h4>Follow Us</h4>
-          <p>Cras fermentum odio eu feugiat lide par naso tierra videa magna derita valies</p>
-          <div class="social-links d-flex">
-            <a href=""><i class="bi bi-twitter-x"></i></a>
-            <a href=""><i class="bi bi-facebook"></i></a>
-            <a href=""><i class="bi bi-instagram"></i></a>
-            <a href=""><i class="bi bi-linkedin"></i></a>
-          </div>
+        <div class="col-lg-4">
+          <h5>Contact</h5>
+          <ul class="list-unstyled text-white-50">
+            <li><i class="bi bi-geo-alt me-2"></i> 108 Ocean View Drive, Miami FL</li>
+            <li><i class="bi bi-telephone me-2"></i> +1 5589 55488 55</li>
+            <li><i class="bi bi-envelope me-2"></i> info@marinatravel.com</li>
+          </ul>
         </div>
-
+      </div>
+      <div class="footer-bottom">
+        <p>© 2025 Marina Travel. All Rights Reserved.</p>
       </div>
     </div>
-
-    <div class="container copyright text-center mt-4">
-      <p>© <span>Copyright</span> <strong class="px-1 sitename">MyWebsite</strong> <span>All Rights Reserved</span></p>
-      <div class="credits">
-        <!-- All the links in the footer should remain intact. -->
-        <!-- You can delete the links only if you've purchased the pro version. -->
-        <!-- Licensing information: https://bootstrapmade.com/license/ -->
-        <!-- Purchase the pro version with working PHP/AJAX contact form: [buy-url] -->
-        Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
-      </div>
-    </div>
-
   </footer>
 
-  <!-- Scroll Top -->
-  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+  <a href="#" id="scroll-top" class="fixed-bottom end-0 m-4 btn btn-primary rounded-circle d-flex align-items-center justify-content-center" style="width: 50px; height: 50px;"><i class="bi bi-arrow-up-short fs-4"></i></a>
 
-  <!-- Preloader -->
-  <div id="preloader"></div>
-
-  <!-- Vendor JS Files -->
-  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="assets/vendor/php-email-form/validate.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
   <script src="assets/vendor/aos/aos.js"></script>
-  <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
   <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
-  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-  <script src="assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
   <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
 
-  <!-- Main JS File -->
-  <script src="assets/js/main.js"></script>
+  <script>
+    AOS.init({ once: true, duration: 800 });
+    const glightbox = GLightbox({ selector: '.glightbox' });
+    
+    // Header Scroll
+    const header = document.getElementById('header');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 40) header.classList.add('scrolled');
+      else header.classList.remove('scrolled');
+    });
+  </script>
 
 </body>
-
 </html>
