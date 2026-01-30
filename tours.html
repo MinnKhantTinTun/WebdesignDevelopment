@@ -65,10 +65,6 @@
     .tour-meta { display: flex; gap: 15px; font-size: 0.85rem; color: var(--text-muted); margin-bottom: 15px; font-weight: 600; }
     .tour-price { display: flex; justify-content: space-between; align-items: center; margin-top: 20px; padding-top: 20px; border-top: 1px solid #f1f5f9; }
     
-    /* --- Filter Box --- */
-    .filter-box { background: #fff; border-radius: var(--card-radius); padding: 30px; border: 1px solid #eef2f6; margin-bottom: 40px; }
-    .form-select { border-radius: 12px; padding: 12px 15px; border: 1px solid #e2e8f0; background-color: #f8fafc; font-weight: 500; }
-    
     /* --- Footer --- */
     .footer { background-color: var(--primary); color: #fff; padding-top: 60px; }
     .footer h4 { color: var(--secondary); margin-bottom: 20px; }
@@ -123,32 +119,23 @@
 
     <section class="section py-5">
       <div class="container">
-        
-        <div class="filter-box shadow-sm" data-aos="fade-up">
-          <div class="row g-3">
-            <div class="col-md-3"><select class="form-select"><option>Destination</option><option>Bali</option><option>Paris</option></select></div>
-            <div class="col-md-3"><select class="form-select"><option>Type</option><option>Adventure</option><option>Luxury</option></select></div>
-            <div class="col-md-3"><select class="form-select"><option>Duration</option><option>1-3 Days</option><option>7+ Days</option></select></div>
-            <div class="col-md-3"><button class="btn btn-primary w-100 h-100 rounded-3">Search</button></div>
-          </div>
-        </div>
 
         <div class="row g-4">
           <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
             <div class="tour-card">
               <div class="tour-image">
-                <img src="assets/img/travel/tour-15.webp" alt="Bali">
+                <img src="assets/img/travel/tour-15.webp" alt="Western Bay Scenic">
                 <span class="tour-badge">Best Seller</span>
               </div>
               <div class="tour-content">
-                <div class="text-uppercase text-primary fw-bold small mb-2">Indonesia</div>
-                <h4>Bali Adventure Escape</h4>
+                <div class="text-uppercase text-primary fw-bold small mb-2">Vung Tau Bay</div>
+                <h4>Western Vung Tau Bay Scenic Tour</h4>
                 <div class="tour-meta">
-                  <span><i class="bi bi-clock"></i> 7 Days</span>
-                  <span><i class="bi bi-star-fill text-warning"></i> 4.8</span>
+                  <span><i class="bi bi-clock"></i> 50-60 Min</span>
+                  <span><i class="bi bi-star-fill text-warning"></i> 4.9</span>
                 </div>
                 <div class="tour-price">
-                  <div><small class="text-muted d-block">From</small><span class="fs-5 fw-bold text-primary">$899</span></div>
+                  <div><small class="text-muted d-block">From</small><span class="fs-5 fw-bold text-primary">270,000 VNĐ</span> <small class="text-success">(was 300,000 VNĐ)</small></div>
                   <a href="tour-details.html" class="btn btn-outline-primary rounded-pill btn-sm px-4">Details</a>
                 </div>
               </div>
@@ -158,18 +145,18 @@
           <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
             <div class="tour-card">
               <div class="tour-image">
-                <img src="assets/img/travel/tour-22.webp" alt="Paris">
-                <span class="tour-badge bg-primary">Luxury</span>
+                <img src="assets/img/travel/tour-22.webp" alt="Commercial Ports">
+                <span class="tour-badge bg-primary">Popular</span>
               </div>
               <div class="tour-content">
-                <div class="text-uppercase text-primary fw-bold small mb-2">France</div>
-                <h4>Romantic Paris</h4>
+                <div class="text-uppercase text-primary fw-bold small mb-2">Vung Tau Ports</div>
+                <h4>Sea Commercial Ports & Oil Platforms Tour</h4>
                 <div class="tour-meta">
-                  <span><i class="bi bi-clock"></i> 5 Days</span>
-                  <span><i class="bi bi-star-fill text-warning"></i> 4.9</span>
+                  <span><i class="bi bi-clock"></i> 50-60 Min</span>
+                  <span><i class="bi bi-star-fill text-warning"></i> 4.8</span>
                 </div>
                 <div class="tour-price">
-                  <div><small class="text-muted d-block">From</small><span class="fs-5 fw-bold text-primary">$1,299</span></div>
+                  <div><small class="text-muted d-block">From</small><span class="fs-5 fw-bold text-primary">380,000 VNĐ</span> <small class="text-success">(was 450,000 VNĐ)</small></div>
                   <a href="tour-details.html" class="btn btn-outline-primary rounded-pill btn-sm px-4">Details</a>
                 </div>
               </div>
@@ -179,18 +166,81 @@
           <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
             <div class="tour-card">
               <div class="tour-image">
-                <img src="assets/img/travel/tour-8.webp" alt="Tokyo">
-                <span class="tour-badge bg-success">New</span>
+                <img src="assets/img/travel/tour-8.webp" alt="Go Gang Relaxation">
+                <span class="tour-badge bg-success">Relaxation</span>
               </div>
               <div class="tour-content">
-                <div class="text-uppercase text-primary fw-bold small mb-2">Japan</div>
-                <h4>Tokyo Cultural</h4>
+                <div class="text-uppercase text-primary fw-bold small mb-2">Go Gang Island</div>
+                <h4>Go Gang Island Relaxation (Oyster Kingdom)</h4>
                 <div class="tour-meta">
-                  <span><i class="bi bi-clock"></i> 10 Days</span>
-                  <span><i class="bi bi-star-fill text-warning"></i> 5.0</span>
+                  <span><i class="bi bi-clock"></i> Half Day</span>
+                  <span><i class="bi bi-star-fill text-warning"></i> 4.9</span>
                 </div>
                 <div class="tour-price">
-                  <div><small class="text-muted d-block">From</small><span class="fs-5 fw-bold text-primary">$1,599</span></div>
+                  <div><small class="text-muted d-block">From</small><span class="fs-5 fw-bold text-primary">350,000 VNĐ</span> <small class="text-success">(was 420,000 VNĐ)</small></div>
+                  <a href="tour-details.html" class="btn btn-outline-primary rounded-pill btn-sm px-4">Details</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-4" data-aos="fade-up" data-aos-delay="400">
+            <div class="tour-card">
+              <div class="tour-image">
+                <img src="assets/img/travel/tour-15.webp" alt="Western Bay + Village">
+                <span class="tour-badge">Scenic</span>
+              </div>
+              <div class="tour-content">
+                <div class="text-uppercase text-primary fw-bold small mb-2">Vung Tau Bay</div>
+                <h4>Western Bay & Fishing Village Tour</h4>
+                <div class="tour-meta">
+                  <span><i class="bi bi-clock"></i> Half Day</span>
+                  <span><i class="bi bi-star-fill text-warning"></i> 4.7</span>
+                </div>
+                <div class="tour-price">
+                  <div><small class="text-muted d-block">From</small><span class="fs-5 fw-bold text-primary">320,000 VNĐ</span> <small class="text-success">(was 400,000 VNĐ)</small></div>
+                  <a href="tour-details.html" class="btn btn-outline-primary rounded-pill btn-sm px-4">Details</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-4" data-aos="fade-up" data-aos-delay="500">
+            <div class="tour-card">
+              <div class="tour-image">
+                <img src="assets/img/travel/tour-22.webp" alt="Long Son Village">
+                <span class="tour-badge bg-info">Cultural</span>
+              </div>
+              <div class="tour-content">
+                <div class="text-uppercase text-primary fw-bold small mb-2">Long Son Village</div>
+                <h4>Long Son Floating Village Exploration</h4>
+                <div class="tour-meta">
+                  <span><i class="bi bi-clock"></i> Half Day</span>
+                  <span><i class="bi bi-star-fill text-warning"></i> 4.8</span>
+                </div>
+                <div class="tour-price">
+                  <div><small class="text-muted d-block">From</small><span class="fs-5 fw-bold text-primary">500,000 VNĐ</span> <small class="text-success">(was 560,000 VNĐ)</small></div>
+                  <a href="tour-details.html" class="btn btn-outline-primary rounded-pill btn-sm px-4">Details</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-4" data-aos="fade-up" data-aos-delay="600">
+            <div class="tour-card">
+              <div class="tour-image">
+                <img src="assets/img/travel/tour-8.webp" alt="Recreational Fishing">
+                <span class="tour-badge">Adventure</span>
+              </div>
+              <div class="tour-content">
+                <div class="text-uppercase text-primary fw-bold small mb-2">Vung Tau Bay</div>
+                <h4>Recreational Fishing Tour</h4>
+                <div class="tour-meta">
+                  <span><i class="bi bi-clock"></i> 3 Hours</span>
+                  <span><i class="bi bi-star-fill text-warning"></i> 4.7</span>
+                </div>
+                <div class="tour-price">
+                  <div><small class="text-muted d-block">From</small><span class="fs-5 fw-bold text-primary">4,500,000 VNĐ / boat</span> <small class="text-success">(was 5,000,000 VNĐ)</small></div>
                   <a href="tour-details.html" class="btn btn-outline-primary rounded-pill btn-sm px-4">Details</a>
                 </div>
               </div>
@@ -206,7 +256,7 @@
                 <li class="page-item"><a class="page-link rounded-circle mx-1" href="#"><i class="bi bi-chevron-left"></i></a></li>
                 <li class="page-item active"><a class="page-link rounded-circle mx-1" href="#">1</a></li>
                 <li class="page-item"><a class="page-link rounded-circle mx-1" href="#">2</a></li>
-                <li class="page-item"><a class="page-link rounded-circle mx-1" href="#">3</a></li>
+                <li class="page-item disabled"><a class="page-link rounded-circle mx-1" href="#">...</a></li>
                 <li class="page-item"><a class="page-link rounded-circle mx-1" href="#"><i class="bi bi-chevron-right"></i></a></li>
               </ul>
             </nav>
@@ -223,11 +273,11 @@
       <div class="row g-5">
         <div class="col-lg-4">
           <a href="index.html" class="logo-container mb-4"><div class="logo-icon bg-white text-primary"><i class="bi bi-tsunami"></i></div><h1 class="logo-text text-white">Marina<span class="text-secondary">Travel</span></h1></a>
-          <p class="text-white-50">Luxury ocean escapes crafted for the modern explorer.</p>
+          <p class="text-white-50">High-speed canoe adventures exploring Vung Tau Bay — safe, unique, and unforgettable.</p>
         </div>
         <div class="col-lg-2 col-6"><h5>Links</h5><ul class="list-unstyled"><li><a href="index.html">Home</a></li><li><a href="destinations.html">Destinations</a></li></ul></div>
         <div class="col-lg-2 col-6"><h5>Support</h5><ul class="list-unstyled"><li><a href="faq.html">FAQ</a></li><li><a href="contact.html">Contact</a></li></ul></div>
-        <div class="col-lg-4"><h5>Contact</h5><p class="text-white-50">108 Ocean View Drive, Miami FL<br>info@marinatravel.com</p></div>
+        <div class="col-lg-4"><h5>Contact</h5><p class="text-white-50">115B Tran Phu, Ward 5, Vung Tau City<br>0933 368 485<br>sales@marinatravel.com.vn</p></div>
       </div>
       <div class="footer-bottom"><p>© 2025 Marina Travel. All Rights Reserved.</p></div>
     </div>
