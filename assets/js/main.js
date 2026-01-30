@@ -178,15 +178,3 @@
   });
 
 })();
-
-// Function to highlight the active page in the menu
-document.addEventListener("DOMContentLoaded", function() {
-  const currentLocation = window.location.pathname.split("/").pop();
-  const navLinks = document.querySelectorAll(".nav-link");
-
-  navLinks.forEach(link => {
-    if (link.getAttribute("href") === currentLocation) {
-      link.classList.add("active");
-    }
-  });
-});
