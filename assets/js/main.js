@@ -148,14 +148,16 @@
     let sort = isotopeItem.getAttribute('data-sort') ?? 'original-order';
 
     let initIsotope;
-    imagesLoaded(isotopeItem.querySelector('.isotope-container'), function() {
-      initIsotope = new Isotope(isotopeItem.querySelector('.isotope-container'), {
-        itemSelector: '.isotope-item',
-        layoutMode: layout,
-        filter: filter,
-        sortBy: sort
-      });
-    });
+    if (typeof imagesLoaded !== 'undefined') {
+        imagesLoaded(isotopeItem.querySelector('.isotope-container'), function() {
+          initIsotope = new Isotope(isotopeItem.querySelector('.isotope-container'), {
+            itemSelector: '.isotope-item',
+            layoutMode: layout,
+            filter: filter,
+            sortBy: sort
+          });
+        });
+    }
 
     isotopeItem.querySelectorAll('.isotope-filters li').forEach(function(filters) {
       filters.addEventListener('click', function() {
@@ -181,49 +183,45 @@
     });
   });
 
-  /**
-   * --------------------------------------------------------------
-   * MINI GAME: OCEAN TREASURE HUNT
-   * --------------------------------------------------------------
-   */
-  let pearlPosition = Math.floor(Math.random() * 3);
-  let isGameOver = false;
-
-  window.playGame = function(clickedIndex) {
-    if (isGameOver) return;
-
-    const shells = document.querySelectorAll('.shell-item');
-    const message = document.getElementById('game-message');
-    const resetBtn = document.getElementById('reset-btn');
-
-    if (clickedIndex === pearlPosition) {
-      shells[clickedIndex].innerHTML = "⚪";
-      shells[clickedIndex].classList.add('winner');
-      message.innerHTML = "🎉 TREASURE FOUND! Use Code: <span style='color: #22c55e'>MARINA20</span>";
-      isGameOver = true;
-      resetBtn.classList.remove('d-none');
-      shells.forEach(s => s.classList.add('disabled'));
-    } else {
-      shells[clickedIndex].innerHTML = "❌";
-      shells[clickedIndex].classList.add('loser');
-      message.innerText = "Empty! Try a different shell...";
-      shells[clickedIndex].classList.add('disabled');
-    }
-  };
-
-  window.resetGame = function() {
-    pearlPosition = Math.floor(Math.random() * 3);
-    isGameOver = false;
-    const shells = document.querySelectorAll('.shell-item');
-    const message = document.getElementById('game-message');
-    const resetBtn = document.getElementById('reset-btn');
-
-    shells.forEach(s => {
-      s.innerHTML = "🐚";
-      s.className = "shell-item";
-    });
-    message.innerText = "Good Luck, Captain!";
-    resetBtn.classList.add('d-none');
-  };
-
 })();
+
+/* --- GAME LOGIC MOVED OUTSIDE FOR COMPATIBILITY --- */
+let pearlPosition = Math.floor(Math.random() * 3);
+let isGameOver = false;
+
+function playGame(clickedIndex) {
+  if (isGameOver) return;
+
+  const shells = document.querySelectorAll('.shell-item');
+  const message = document.getElementById('game-message');
+  const resetBtn = document.getElementById('reset-btn');
+
+  if (clickedIndex === pearlPosition) {
+    shells[clickedIndex].innerHTML = "⚪";
+    shells[clickedIndex].classList.add('winner');
+    message.innerHTML = "🎉 TREASURE FOUND! Use Code: <span style='color: #22c55e'>MARINA20</span>";
+    isGameOver = true;
+    resetBtn.classList.remove('d-none');
+    shells.forEach(s => s.classList.add('disabled'));
+  } else {
+    shells[clickedIndex].innerHTML = "❌";
+    shells[clickedIndex].classList.add('loser');
+    message.innerText = "Empty! Try a different shell...";
+    shells[clickedIndex].classList.add('disabled');
+  }
+}
+
+function resetGame() {
+  pearlPosition = Math.floor(Math.random() * 3);
+  isGameOver = false;
+  const shells = document.querySelectorAll('.shell-item');
+  const message = document.getElementById('game-message');
+  const resetBtn = document.getElementById('reset-btn');
+
+  shells.forEach(s => {
+    s.innerHTML = "🐚";
+    s.className = "shell-item";
+  });
+  message.innerText = "Good Luck, Captain!";
+  resetBtn.classList.add('d-none');
+}
