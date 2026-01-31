@@ -357,24 +357,25 @@
   </style>
 
   <section class="game-section py-5">
-    <div class="container" data-aos="fade-up">
-      <div class="row justify-content-center">
-        <div class="col-lg-8 text-center">
-          <span class="badge bg-primary mb-2 px-3 py-2 rounded-pill text-uppercase fw-bold">Ocean Treasure Hunt</span>
-          <h2 class="display-5">Find the Hidden Pearl</h2>
-          <p class="lead">Pick a shell. If you find the pearl, you'll unlock a 20% discount code!</p>
-          
-          <div class="shell-container" id="shell-grid">
-            <div class="shell-item" onclick="playGame(0)">🐚</div>
-            <div class="shell-item" onclick="playGame(1)">🐚</div>
-            <div class="shell-item" onclick="playGame(2)">🐚</div>
-          </div>
-
-          <h3 id="game-message">Good Luck, Captain!</h3>
-          <button id="reset-btn" class="btn btn-primary mt-3 d-none" onclick="resetGame()">Play Again</button>
-        </div>
-      </div>
+   <div class="container text-center" data-aos="fade-up">
+    <span class="badge bg-primary mb-2 px-3 py-2 rounded-pill text-uppercase fw-bold">Ocean Survival</span>
+    <h2 class="display-5">Collect Shells, Avoid Sharks!</h2>
+    <p class="lead">Reach 3 points to win a 20% discount. If you hit the shark, you lose!</p>
+    
+    <div class="d-flex justify-content-center gap-4 mb-4">
+      <div class="p-3 bg-white shadow-sm rounded-3">Score: <span id="game-score" class="fw-bold text-primary">0</span>/3</div>
     </div>
+
+    <div class="shell-container" id="shell-grid">
+      <div class="shell-item" onclick="playTurn(0)">❓</div>
+      <div class="shell-item" onclick="playTurn(1)">❓</div>
+      <div class="shell-item" onclick="playTurn(2)">❓</div>
+      <div class="shell-item" onclick="playTurn(3)">❓</div>
+    </div>
+
+    <h3 id="game-message">Choose a card, Captain!</h3>
+    <button id="reset-btn" class="btn btn-primary mt-3 d-none" onclick="resetGame()">Try Again</button>
+   </div>
   </section>
   </footer>
 
