@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Long Son Floating Village Exploration - Marina Travel</title>
+
+  <link href="assets/img/favicon.png" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+
+  <style>
+    :root {
+      --primary: #0C4999;
+      --secondary: #EF9B34;
+      --dark: #083370;
+      --light: #f8fafc;
+      --text-main: #1e293b;
+      --text-muted: #64748b;
+      --card-radius: 20px;
+    }
+
+    body { font-family: 'Inter', sans-serif; color: var(--text-main); background-color: var(--light); -webkit-font-smoothing: antialiased; }
+    h1, h2, h3, h4, h5, h6 { font-family: 'Playfair Display', serif; color: var(--primary); font-weight: 700; }
+    a { text-decoration: none; transition: 0.3s; }
+
+    /* --- UNIFIED NAVBAR --- */
+    .header { padding: 15px 0; transition: all 0.4s ease; z-index: 999; background: transparent; }
+    .header.scrolled { background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(0, 0, 0, 0.05); box-shadow: 0 4px 30px rgba(0, 0, 0, 0.03); padding: 10px 0; }
+    .logo-container { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+    .logo-icon { width: 40px; height: 40px; background: var(--primary); color: #fff; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; box-shadow: 0 4px 10px rgba(12, 73, 153, 0.3); transition: 0.3s; }
+    .logo-text { font-family: 'Playfair Display', serif; font-size: 1.5rem; font-weight: 700; color: var(--primary); margin: 0; letter-spacing: -0.5px; }
+    .logo-text span { color: var(--secondary); }
+    .nav-link { font-family: 'Inter', sans-serif; color: var(--text-main) !important; font-weight: 600; font-size: 0.95rem; padding: 8px 18px !important; border-radius: 50px; transition: all 0.3s ease; }
+    .nav-link:hover, .nav-link.active { color: var(--primary) !important; background: rgba(12, 73, 153, 0.08); }
+    .btn-navbar { background: var(--secondary); color: #fff !important; border-radius: 50px; padding: 10px 25px; font-weight: 600; font-size: 0.9rem; box-shadow: 0 4px 15px rgba(239, 155, 52, 0.3); transition: 0.3s; border: 2px solid var(--secondary); }
+    .btn-navbar:hover { background: transparent; color: var(--secondary) !important; transform: translateY(-2px); }
+    .navbar-toggler { border: none; padding: 0; color: var(--primary); }
+    .navbar-toggler:focus { box-shadow: none; }
+
+    /* --- Hero Section --- */
+    .tour-hero { position: relative; height: 600px; margin-top: 80px; }
+    .tour-hero img { width: 100%; height: 100%; object-fit: cover; }
+    .hero-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(12, 73, 153, 0.9), transparent); display: flex; align-items: flex-end; padding-bottom: 60px; }
+    .hero-content { color: white; width: 100%; }
+    .hero-content h1 { color: white; font-size: 3.5rem; margin-bottom: 10px; }
+    .hero-meta { display: flex; gap: 20px; font-size: 1.1rem; margin-bottom: 20px; font-weight: 500; }
+    .hero-meta i { color: var(--secondary); margin-right: 5px; }
+
+    /* --- Content Layout --- */
+    .tour-content-wrap { padding: 60px 0; }
+    
+    /* Sticky Sidebar */
+    .booking-card { background: #fff; padding: 30px; border-radius: var(--card-radius); box-shadow: 0 10px 40px rgba(0,0,0,0.1); position: sticky; top: 120px; border: 1px solid #eef2f6; }
+    .price-tag { font-size: 2.5rem; color: var(--primary); font-weight: 700; font-family: 'Playfair Display', serif; }
+    .price-per { font-size: 0.9rem; color: var(--text-muted); }
+    .book-btn { width: 100%; padding: 15px; font-size: 1.1rem; margin-top: 20px; background: var(--secondary); color: #fff; border: none; border-radius: 50px; font-weight: 700; transition: 0.3s; }
+    .book-btn:hover { background: #d68320; transform: translateY(-2px); }
+    
+    .info-list li { display: flex; justify-content: space-between; border-bottom: 1px solid #f1f5f9; padding: 12px 0; font-size: 0.95rem; }
+    .info-list li:last-child { border-bottom: none; }
+    .info-label { color: var(--text-muted); font-weight: 500; }
+    .info-value { color: var(--text-main); font-weight: 700; text-align: right; }
+
+    /* --- Tabs & Content --- */
+    .nav-pills .nav-link { background: #fff; color: var(--text-muted); border-radius: 50px; padding: 10px 25px; margin-right: 10px; border: 1px solid #e2e8f0; font-family: 'Inter', sans-serif; transition: 0.3s; }
+    .nav-pills .nav-link.active, .nav-pills .nav-link:hover { background-color: var(--primary); color: #fff; border-color: var(--primary); }
+
+    /* --- Itinerary Timeline --- */
+    .itinerary-item { position: relative; padding-left: 40px; margin-bottom: 30px; border-left: 2px solid #e2e8f0; }
+    .day-badge { position: absolute; left: -16px; top: 0; width: 32px; height: 32px; background: var(--secondary); color: white; border-radius: 50%; text-align: center; line-height: 32px; font-weight: 700; font-size: 0.85rem; border: 4px solid var(--light); }
+    .itinerary-content { background: #fff; padding: 20px; border-radius: 15px; box-shadow: 0 2px 10px rgba(0,0,0,0.02); }
+    .itinerary-content h4 { font-size: 1.2rem; color: var(--dark); margin-bottom: 10px; }
+
+    /* --- Inclusions --- */
+    .check-list li { margin-bottom: 10px; display: flex; align-items: center; color: var(--text-muted); }
+    .check-list i { color: #10b981; margin-right: 10px; font-size: 1.2rem; }
+    .cross-list i { color: #ef4444; }
+
+    /* --- Related Tours Card --- */
+    .card { border-radius: 15px; border: none; box-shadow: 0 5px 15px rgba(0,0,0,0.05); transition: 0.3s; }
+    .card:hover { transform: translateY(-5px); box-shadow: 0 10px 25px rgba(0,0,0,0.1); }
+    
+    /* --- Footer --- */
+    .footer { background-color: var(--primary); color: #fff; padding-top: 60px; }
+    .footer h4 { color: var(--secondary); font-family: 'Inter', sans-serif; font-size: 1.1rem; text-transform: uppercase; margin-bottom: 20px; }
+    .footer a { color: rgba(255,255,255,0.7); }
+    .footer-newsletter { background: rgba(255,255,255,0.05); border-radius: 20px; padding: 40px; margin-bottom: 40px; text-align: center; }
+    .footer .form-control { border-radius: 50px 0 0 50px; border: none; padding: 15px 25px; }
+    .footer .btn-submit { border-radius: 0 50px 50px 0; background: var(--secondary); border: none; color: white; padding: 0 30px; font-weight: 600; }
+    .footer-bottom { border-top: 1px solid rgba(255,255,255,0.1); padding-top: 30px; margin-top: 50px; text-align: center; font-size: 0.9rem; color: rgba(255,255,255,0.5); }
+  </style>
+</head>
+
+<body>
+
+  <header id="header" class="header fixed-top">
+    <div class="container d-flex align-items-center justify-content-between">
+      <a href="index.html" class="logo-container">
+        <div class="logo-icon"><i class="bi bi-tsunami"></i></div>
+        <h1 class="logo-text">Marina<span>Travel</span></h1>
+      </a>
+      <nav id="navbar" class="navbar navbar-expand-lg">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"><i class="bi bi-list fs-2"></i></button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto align-items-center gap-lg-2">
+            <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+            <li class="nav-item"><a class="nav-link" href="destinations.html">Destinations</a></li>
+            <li class="nav-item"><a class="nav-link" href="tours.html">Tours</a></li>
+            <li class="nav-item dropdown">
+               <a class="nav-link dropdown-toggle active" href="#" role="button" data-bs-toggle="dropdown">Pages</a>
+               <ul class="dropdown-menu border-0 shadow-lg rounded-4 p-2 mt-2">
+                 <li><a class="dropdown-item rounded-pill p-2" href="destination-details.html">Destination Details</a></li>
+                 <li><a class="dropdown-item rounded-pill p-2 active" href="tour-details.html">Tour Details</a></li>
+                 <li><a class="dropdown-item rounded-pill p-2" href="testimonials.html">Testimonials</a></li>
+                 <li><a class="dropdown-item rounded-pill p-2" href="faq.html">FAQ</a></li>
+               </ul>
+            </li>
+            <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+            <li class="nav-item ms-lg-3"><a class="btn btn-navbar" href="booking.html">Book Now</a></li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+
+    <div class="tour-hero">
+      <img src="assets/img/travel/tour-22.webp" alt="Long Son Floating Village Exploration">
+      <div class="hero-overlay">
+        <div class="container hero-content">
+          <span class="badge bg-info mb-3 text-uppercase" style="letter-spacing: 1px;">Cultural</span>
+          <h1 data-aos="fade-up">Long Son Floating Village Exploration</h1>
+          <div class="hero-meta" data-aos="fade-up" data-aos-delay="100">
+            <span><i class="bi bi-geo-alt-fill"></i> Vung Tau Bay, Vietnam</span>
+            <span><i class="bi bi-clock-fill"></i> Half Day</span>
+            <span><i class="bi bi-star-fill"></i> 4.8</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <section class="tour-content-wrap">
+      <div class="container">
+        <div class="row">
+          
+          <div class="col-lg-8">
+            
+            <ul class="nav nav-pills mb-5" id="pills-tab" role="tablist" data-aos="fade-up">
+              <li class="nav-item" role="presentation">
+                <button class="nav-link active" id="pills-overview-tab" data-bs-toggle="pill" data-bs-target="#pills-overview" type="button">Overview</button>
+              </li>
+              <li class="nav-item" role="presentation">
+                <button class="nav-link" id="pills-itinerary-tab" data-bs-toggle="pill" data-bs-target="#pills-itinerary" type="button">Itinerary</button>
+              </li>
+            </ul>
+
+            <div class="tab-content" id="pills-tabContent">
+              
+              <div class="tab-pane fade show active" id="pills-overview" role="tabpanel">
+                <div class="mb-5" data-aos="fade-up">
+                  <h3 class="mb-3">About this Tour</h3>
+                  <p class="text-muted leading-relaxed">Immerse yourself in the authentic life of Long Son floating village — one of Vung Tau Bay's most traditional fishing communities. See hundreds of floating houses, colorful boats, locals repairing nets, sorting fresh catch, and living on the water. Learn about daily routines, traditional fishing methods, and the unique water-based lifestyle that has endured for generations. This cultural half-day tour combines scenic bay cruising with a genuine glimpse into Vietnam's coastal heritage.</p>
+                  
+                  <div class="row mt-4">
+                    <div class="col-md-6">
+                      <h5 class="mb-3">Included</h5>
+                      <ul class="list-unstyled check-list">
+                        <li><i class="bi bi-check-circle-fill"></i> Round-trip high-speed canoe from Vung Tau</li>
+                        <li><i class="bi bi-check-circle-fill"></i> Life jackets & safety equipment</li>
+                        <li><i class="bi bi-check-circle-fill"></i> Village exploration & local guide</li>
+                        <li><i class="bi bi-check-circle-fill"></i> Bottled water</li>
+                      </ul>
+                    </div>
+                    <div class="col-md-6">
+                      <h5 class="mb-3">Not Included</h5>
+                      <ul class="list-unstyled check-list cross-list">
+                        <li><i class="bi bi-x-circle-fill"></i> Hotel pickup/drop-off</li>
+                        <li><i class="bi bi-x-circle-fill"></i> Personal expenses & tips</li>
+                        <li><i class="bi bi-x-circle-fill"></i> Travel insurance</li>
+                        <li><i class="bi bi-x-circle-fill"></i> Meals/drinks</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="tab-pane fade" id="pills-itinerary" role="tabpanel">
+                <div class="timeline-wrap" data-aos="fade-up">
+                  <div class="itinerary-item">
+                    <span class="day-badge">08:30</span>
+                    <div class="itinerary-content">
+                      <h4>Departure from Sao Mai Port</h4>
+                      <p class="text-muted mb-0">Check-in at Sao Mai Port (115B Trần Phú, Ward 5, Vung Tau), safety briefing, board high-speed canoe and depart toward Long Son village.</p>
+                    </div>
+                  </div>
+                  <div class="itinerary-item">
+                    <span class="day-badge">09:30</span>
+                    <div class="itinerary-content">
+                      <h4>Arrival at Long Son Floating Village</h4>
+                      <p class="text-muted mb-0">Cruise into the heart of the floating village. Observe hundreds of stilt houses on water, fishing boats, locals mending nets, sorting catch, and daily water-based life.</p>
+                    </div>
+                  </div>
+                  <div class="itinerary-item">
+                    <span class="day-badge">10:30</span>
+                    <div class="itinerary-content">
+                      <h4>Village Exploration & Cultural Insights</h4>
+                      <p class="text-muted mb-0">Learn about traditional fishing techniques, family life on the water, seafood processing, and how the community sustains itself amid bay changes.</p>
+                    </div>
+                  </div>
+                  <div class="itinerary-item">
+                    <span class="day-badge">11:30</span>
+                    <div class="itinerary-content">
+                      <h4>Return Cruise</h4>
+                      <p class="text-muted mb-0">Depart the village, enjoy final bay views on the return to Vung Tau.</p>
+                    </div>
+                  </div>
+                  <div class="itinerary-item">
+                    <span class="day-badge">12:30</span>
+                    <div class="itinerary-content">
+                      <h4>Arrival Back at Port</h4>
+                      <p class="text-muted mb-0">Disembark at Sao Mai Port, tour concludes (half-day total).</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <div class="col-lg-4">
+            <div class="booking-card" data-aos="fade-left">
+              <div class="mb-4 pb-4 border-bottom">
+                <span class="price-tag">500,000 VNĐ</span>
+                <span class="price-per">/ per adult</span>
+              </div>
+              
+              <ul class="list-unstyled info-list mb-4">
+                <li>
+                  <span class="info-label"><i class="bi bi-calendar3 me-2"></i> Date</span>
+                  <span class="info-value">Daily (weather permitting)</span>
+                </li>
+                <li>
+                  <span class="info-label"><i class="bi bi-people me-2"></i> Max Group</span>
+                  <span class="info-value">12–15 People</span>
+                </li>
+                <li>
+                  <span class="info-label"><i class="bi bi-clock me-2"></i> Duration</span>
+                  <span class="info-value">Half Day (~5–6 hours)</span>
+                </li>
+                <li>
+                  <span class="info-label"><i class="bi bi-translate me-2"></i> Guide</span>
+                  <span class="info-value">Vietnamese / English</span>
+                </li>
+              </ul>
+
+              <a href="booking.html" class="btn btn-primary book-btn d-block text-center">Proceed to Booking</a>
+              <div class="text-center mt-3">
+                <small class="text-muted"><i class="bi bi-check-circle-fill text-success"></i> Free cancellation 24h prior</small>
+              </div>
+
+              <div class="mt-4 pt-4 border-top">
+                <h5 class="mb-3">Have Questions?</h5>
+                <div class="d-flex align-items-center gap-3">
+                  <div class="bg-light rounded-circle d-flex align-items-center justify-content-center" style="width: 50px; height: 50px;">
+                    <i class="bi bi-telephone text-primary"></i>
+                  </div>
+                  <div>
+                    <span class="d-block text-muted text-sm">Call us anytime</span>
+                    <span class="fw-bold text-dark">0933 368 485</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <section class="section py-5 bg-light">
+      <div class="container">
+        <h3 class="mb-4 font-playfair text-primary">You Might Also Like</h3>
+        <div class="row g-4">
+          <div class="col-md-4">
+            <div class="card h-100 border-0 shadow-sm rounded-4 overflow-hidden">
+              <img src="assets/img/travel/tour-15.webp" class="card-img-top" style="height: 200px; object-fit: cover;" alt="Western Scenic">
+              <div class="card-body p-4">
+                <div class="d-flex justify-content-between mb-2">
+                  <span class="text-secondary fw-bold text-uppercase small">Scenic</span>
+                  <span class="text-warning"><i class="bi bi-star-fill"></i> 4.9</span>
+                </div>
+                <h5 class="card-title text-primary">Western Vung Tau Bay Scenic Tour</h5>
+                <p class="card-text text-muted small">Panoramic bay views from sea.</p>
+                <hr>
+                <div class="d-flex justify-content-between align-items-center">
+                  <small class="text-muted"><i class="bi bi-clock"></i> 50-60 Min</small>
+                  <span class="fw-bold text-primary">270,000 VNĐ</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card h-100 border-0 shadow-sm rounded-4 overflow-hidden">
+              <img src="assets/img/travel/tour-22.webp" class="card-img-top" style="height: 200px; object-fit: cover;" alt="Ports">
+              <div class="card-body p-4">
+                <div class="d-flex justify-content-between mb-2">
+                  <span class="text-secondary fw-bold text-uppercase small">Industrial</span>
+                  <span class="text-warning"><i class="bi bi-star-fill"></i> 4.8</span>
+                </div>
+                <h5 class="card-title text-primary">Sea Commercial Ports & Oil Platforms Tour</h5>
+                <p class="card-text text-muted small">Explore ports and oil industry from sea.</p>
+                <hr>
+                <div class="d-flex justify-content-between align-items-center">
+                  <small class="text-muted"><i class="bi bi-clock"></i> 50-60 Min</small>
+                  <span class="fw-bold text-primary">380,000 VNĐ</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card h-100 border-0 shadow-sm rounded-4 overflow-hidden">
+              <img src="assets/img/travel/tour-8.webp" class="card-img-top" style="height: 200px; object-fit: cover;" alt="Go Gang">
+              <div class="card-body p-4">
+                <div class="d-flex justify-content-between mb-2">
+                  <span class="text-secondary fw-bold text-uppercase small">Relaxation</span>
+                  <span class="text-warning"><i class="bi bi-star-fill"></i> 4.9</span>
+                </div>
+                <h5 class="card-title text-primary">Go Gang Island Relaxation Tour</h5>
+                <p class="card-text text-muted small">Oyster farms and beach escape.</p>
+                <hr>
+                <div class="d-flex justify-content-between align-items-center">
+                  <small class="text-muted"><i class="bi bi-clock"></i> Half Day</small>
+                  <span class="fw-bold text-primary">350,000 VNĐ</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="row g-5">
+        <div class="col-lg-4">
+          <a href="index.html" class="logo-container mb-4">
+            <div class="logo-icon bg-white text-primary" style="box-shadow: none;">
+              <i class="bi bi-tsunami"></i>
+            </div>
+            <h1 class="logo-text text-white">Marina<span class="text-secondary">Travel</span></h1>
+          </a>
+          <p class="text-white-50">High-speed canoe adventures exploring Vung Tau Bay — safe, unique, and unforgettable.</p>
+        </div>
+        <div class="col-lg-2 col-6">
+          <h5>Explore</h5>
+          <ul class="list-unstyled text-white-50">
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="destinations.html">Destinations</a></li>
+            <li><a href="tours.html">Tour Packages</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-2 col-6">
+          <h5>Support</h5>
+          <ul class="list-unstyled text-white-50">
+            <li><a href="faq.html">Help Center</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="#">Privacy Policy</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-4">
+          <h5>Contact</h5>
+          <ul class="list-unstyled text-white-50">
+            <li><i class="bi bi-geo-alt me-2"></i> 115B Trần Phú, Phường 5, TP. Vũng Tàu</li>
+            <li><i class="bi bi-telephone me-2"></i> 0933 368 485</li>
+            <li><i class="bi bi-envelope me-2"></i> sales@marinatravel.com.vn</li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2025 Marina Travel. All Rights Reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <a href="#" id="scroll-top" class="fixed-bottom end-0 m-4 btn btn-primary rounded-circle d-flex align-items-center justify-content-center" style="width: 50px; height: 50px;"><i class="bi bi-arrow-up-short fs-4"></i></a>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/aos/aos.js"></script>
+  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+
+  <script>
+    AOS.init({ once: true, duration: 800 });
+    const glightbox = GLightbox({ selector: '.glightbox' });
+    
+    // Header Scroll
+    const header = document.getElementById('header');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 40) header.classList.add('scrolled');
+      else header.classList.remove('scrolled');
+    });
+  </script>
+
+</body>
+</html>
