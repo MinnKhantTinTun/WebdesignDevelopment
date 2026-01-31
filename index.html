@@ -398,34 +398,43 @@
 
     <section class="game-section py-5">
       <div class="container text-center" data-aos="fade-up">
-        <span class="badge bg-primary mb-2 px-3 py-2 rounded-pill text-uppercase fw-bold">Shell Hunt Game</span>
-        <h2 class="display-5">Find the Shell – Avoid the Shark!</h2>
-        <p class="lead mb-4">+1 point per shell • Shark = reset • Blank = reshuffle<br>Reach <strong>10 points</strong> → get 10% discount coupon</p>
+        <span class="badge bg-primary mb-3 px-4 py-2 rounded-pill text-uppercase fw-bold fs-5">Shell Hunt Game</span>
+    
+        <h2 class="display-5 fw-bold mb-4 text-primary">Find the Shell – Avoid the Shark!</h2>
+    
+        <div class="rules-box mb-5 p-4 bg-white rounded-4 shadow border border-primary mx-auto" style="max-width: 680px; font-size: 1.2rem; line-height: 1.6; color: #083370;">
+          +1 point per shell found<br>
+          Shark = lose all points (reset)<br>
+          Blank = reshuffle (no point change)<br>
+          Reach <strong>10 points</strong> → unlock 10% discount coupon
+        </div>
 
-        <div class="d-flex justify-content-center gap-4 mb-4">
-          <div class="p-3 bg-white shadow-sm rounded-3 fw-bold fs-4">
+        <div class="d-flex justify-content-center mb-5">
+          <div class="score-box p-4 bg-white rounded-4 shadow-lg border border-primary fw-bold fs-3" style="min-width: 260px; color: #0C4999;">
             Score: <span id="game-score">0</span>
           </div>
         </div>
 
-        <div id="cards" class="d-flex justify-content-center gap-4 flex-wrap mb-4">
+        <div id="cards" class="d-flex justify-content-center gap-4 gap-md-5 flex-wrap mb-5">
           <div class="card" data-index="0"><div class="card-inner"><div class="face front">?</div><div class="face back"></div></div></div>
           <div class="card" data-index="1"><div class="card-inner"><div class="face front">?</div><div class="face back"></div></div></div>
           <div class="card" data-index="2"><div class="card-inner"><div class="face front">?</div><div class="face back"></div></div></div>
           <div class="card" data-index="3"><div class="card-inner"><div class="face front">?</div><div class="face back"></div></div></div>
         </div>
 
-        <div id="game-message" class="fs-4 fw-bold mb-3" style="min-height: 1.6em; color: var(--primary);"></div>
-
-        <div id="coupon-area" class="d-none mt-4 p-4 bg-success text-white rounded-4 shadow">
-          <h4 class="mb-3">🎉 Congratulations!</h4>
-          <p class="mb-2">You've earned a <strong>10% discount</strong></p>
-          <div class="bg-white text-dark d-inline-block px-4 py-2 rounded-3 fw-bold fs-5 mb-3" id="coupon-code">SHELL10</div>
-          <br>
-          <button id="copy-coupon" class="btn btn-light px-4">Copy Code</button>
+        <div id="game-message" class="fs-4 fw-bold mb-4 p-3 bg-white rounded-4 shadow border border-primary" style="min-height: 3rem; color: #0C4999;">
+          Choose a card!
         </div>
 
-        <button id="reset-game" class="btn btn-outline-primary mt-4 d-none px-5 py-2">Play Again</button>
+        <div id="coupon-area" class="d-none mt-5 p-5 bg-success text-white rounded-4 shadow-lg">
+          <h4 class="mb-4 display-6">🎉 Congratulations!</h4>
+          <p class="fs-4 mb-4">You've earned a <strong>10% discount</strong></p>
+          <div class="bg-white text-dark d-inline-block px-5 py-3 rounded-3 fw-bold fs-4 mb-4" id="coupon-code">SHELL10</div>
+          <br>
+          <button id="copy-coupon" class="btn btn-light btn-lg px-5">Copy Code</button>
+        </div>
+
+        <button id="reset-game" class="btn btn-outline-primary btn-lg mt-4 d-none px-5 py-3">Play Again</button>
       </div>
     </section>
 
