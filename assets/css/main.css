@@ -223,7 +223,7 @@ section { padding: 60px 0; overflow: clip; }
 .section-title { text-align: center; padding-bottom: 60px; }
 .section-title h2 { font-size: 13px; background: rgba(0, 140, 173, 0.1); color: var(--accent-color); padding: 8px 20px; border-radius: 50px; text-transform: uppercase; }
 
-/* Game text visibility fix */
+/* Game text visibility  */
 .game-section .lead,
 .game-section #game-score,
 .game-section #game-message {
