@@ -45,7 +45,6 @@
         mobileNavToogle();
       }
     });
-
   });
 
   /**
@@ -184,68 +183,3 @@
   });
 
 })();
-
-/* --- NEW SHARK GAME LOGIC --- */
-window.score = 0;
-window.isGameOver = false;
-window.winningScore = 3;
-
-window.playTurn = function(clickedIndex) {
-  if (window.isGameOver) return;
-
-  const shells = document.querySelectorAll('.shell-item');
-  const message = document.getElementById('game-message');
-  const scoreDisplay = document.getElementById('game-score');
-  const resetBtn = document.getElementById('reset-btn');
-
-  // Randomize: 25% chance of a shark, 75% chance of a shell
-  const isShark = Math.random() < 0.25;
-
-  if (isShark) {
-    // SHARK HIT - GAME OVER
-    shells[clickedIndex].innerHTML = "🦈";
-    shells[clickedIndex].classList.add('loser');
-    message.innerHTML = "<span class='text-danger'>SHARK ATTACK!</span> Game Over.";
-    window.isGameOver = true;
-    resetBtn.classList.remove('d-none');
-    shells.forEach(s => s.classList.add('disabled'));
-  } else {
-    // SHELL FOUND - ADD POINT
-    shells[clickedIndex].innerHTML = "🐚";
-    shells[clickedIndex].classList.add('winner');
-    shells[clickedIndex].style.pointerEvents = "none"; // Can't click same card twice
-    window.score++;
-    scoreDisplay.innerText = window.score;
-
-    if (window.score >= window.winningScore) {
-      message.innerHTML = "🎉 ELITE CAPTAIN! Code: <span style='color: #22c55e'>MARINA20</span>";
-      window.isGameOver = true;
-      resetBtn.innerText = "Play Again";
-      resetBtn.classList.remove('d-none');
-      shells.forEach(s => s.classList.add('disabled'));
-    } else {
-      message.innerText = "Nice! Find " + (window.winningScore - window.score) + " more...";
-    }
-  }
-};
-
-window.resetGame = function() {
-  window.score = 0;
-  window.isGameOver = false;
-  
-  const shells = document.querySelectorAll('.shell-item');
-  const message = document.getElementById('game-message');
-  const scoreDisplay = document.getElementById('game-score');
-  const resetBtn = document.getElementById('reset-btn');
-
-  shells.forEach(s => {
-    s.innerHTML = "❓";
-    s.className = "shell-item";
-    s.style.pointerEvents = "auto";
-  });
-  
-  scoreDisplay.innerText = "0";
-  message.innerText = "Choose a card, Captain!";
-  resetBtn.classList.add('d-none');
-};
-

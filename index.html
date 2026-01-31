@@ -36,7 +36,7 @@
 
     /* --- UNIQUE NAVBAR STYLES --- */
     .header { padding: 15px 0; transition: all 0.4s ease; z-index: 999; background: transparent; }
-    .header.scrolled { background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(0, 0, 0, 0.05); box-shadow: 0 4px 30px rgba(0, 0, 0, 0.03); padding: 10px 0; }
+    .header.scrolled { background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(0, 0, 0, 0.05); box-shadow: 0 4px 30px rgba(0,0,0,0.03); padding: 10px 0; }
     .logo-container { display: flex; align-items: center; gap: 10px; text-decoration: none; }
     .logo-icon { width: 45px; height: 45px; background: var(--secondary); color: #fff; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; }
     .logo-text { font-family: 'Playfair Display', serif; font-size: 1.5rem; font-weight: 700; color: var(--primary); margin: 0; letter-spacing: -0.5px; }
@@ -105,7 +105,6 @@
     .dest-price { font-weight: 700; color: var(--text-main); font-size: 1.1rem; }
     .dest-rating { color: #f59e0b; font-size: 0.9rem; }
 
-  
     /* Footer */
     .footer { background-color: var(--primary); color: #fff; padding-top: 60px; }
     .footer h4 { color: var(--secondary); margin-bottom: 20px; }
@@ -115,6 +114,62 @@
     /* Common Buttons */
     .btn-primary { background-color: var(--secondary); border-color: var(--secondary); border-radius: 50px; padding: 12px 35px; font-weight: 600; }
     .btn-primary:hover { background-color: #d68320; border-color: #d68320; transform: translateY(-2px); }
+
+    /* ── Game Cards ─────────────────────────────────────── */
+    .game-section { background: linear-gradient(180deg, #ffffff 0%, #e0f2fe 100%); border-top: 1px solid #eef2f6; }
+    #cards { perspective: 1200px; }
+    .card {
+      width: 130px;
+      height: 180px;
+      cursor: pointer;
+      perspective: 1200px;
+    }
+    .card-inner {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      transition: transform 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+      transform-style: preserve-3d;
+    }
+    .card.flipped .card-inner { transform: rotateY(180deg); }
+    .face {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      backface-visibility: hidden;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+      font-size: 4.5rem;
+    }
+    .front {
+      background: linear-gradient(145deg, #0c4999, #083370);
+      color: white;
+    }
+    .back {
+      background: linear-gradient(145deg, #f1f5f9, #e2e8f0);
+      transform: rotateY(180deg);
+    }
+    .card.shell .back   { background: linear-gradient(145deg, #fef08a, #facc15); }
+    .card.shark .back   { background: linear-gradient(145deg, #fca5a5, #ef4444); color: white; }
+    .card.blank .back   { background: linear-gradient(145deg, #cbd5e1, #94a3b8); }
+    .card.shell .back::after { content: "🐚"; }
+    .card.shark .back::after { content: "🦈"; }
+    .card.blank .back::after { content: ""; }
+    @keyframes shuffleAnim {
+      0%,100% { transform: translateX(0) rotate(0deg); }
+      20%  { transform: translateX(-4px) rotate(-3deg); }
+      40%  { transform: translateX(4px) rotate(3deg); }
+      60%  { transform: translateX(-3px) rotate(-2deg); }
+      80%  { transform: translateX(3px) rotate(2deg); }
+    }
+    #cards.shuffling .card { animation: shuffleAnim 0.7s ease-in-out; }
+    @media (max-width: 576px) {
+      .card { width: 100px; height: 140px; }
+      .face  { font-size: 3.5rem; }
+    }
   </style>
 </head>
 
@@ -341,42 +396,39 @@
       <div class="footer-bottom"><p>© 2025 Marina Travel. All Rights Reserved.</p></div>
     </div>
 
-    <style>
-    .game-section { background: linear-gradient(180deg, #ffffff 0%, #e0f2fe 100%); text-align: center; border-top: 1px solid #eef2f6; }
-    .shell-container { display: flex; justify-content: center; gap: 20px; margin: 40px 0; flex-wrap: wrap; }
-    .shell-item { 
-      width: 120px; height: 120px; background: var(--primary); border: 4px solid #fff; border-radius: 20px; 
-      display: flex; align-items: center; justify-content: center; font-size: 3rem; cursor: pointer; 
-      transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); box-shadow: 0 10px 20px rgba(0,0,0,0.1); 
-    }
-    .shell-item:hover { transform: translateY(-10px); background: var(--secondary); }
-    .shell-item.disabled { pointer-events: none; opacity: 0.8; }
-    .shell-item.winner { background: #22c55e !important; }
-    .shell-item.loser { background: #ef4444 !important; }
-    #game-message { font-weight: 700; min-height: 1.5em; color: var(--primary); font-family: 'Playfair Display', serif; }
-  </style>
+    <section class="game-section py-5">
+      <div class="container text-center" data-aos="fade-up">
+        <span class="badge bg-primary mb-2 px-3 py-2 rounded-pill text-uppercase fw-bold">Shell Hunt Game</span>
+        <h2 class="display-5">Find the Shell – Avoid the Shark!</h2>
+        <p class="lead mb-4">+1 point per shell • Shark = reset • Blank = reshuffle<br>Reach <strong>10 points</strong> → get 10% discount coupon</p>
 
-  <section class="game-section py-5">
-   <div class="container text-center" data-aos="fade-up">
-    <span class="badge bg-primary mb-2 px-3 py-2 rounded-pill text-uppercase fw-bold">Ocean Survival</span>
-    <h2 class="display-5">Collect Shells, Avoid Sharks!</h2>
-    <p class="lead">Reach 3 points to win a 20% discount. If you hit the shark, you lose!</p>
-    
-    <div class="d-flex justify-content-center gap-4 mb-4">
-      <div class="p-3 bg-white shadow-sm rounded-3">Score: <span id="game-score" class="fw-bold text-primary">0</span>/3</div>
-    </div>
+        <div class="d-flex justify-content-center gap-4 mb-4">
+          <div class="p-3 bg-white shadow-sm rounded-3 fw-bold fs-4">
+            Score: <span id="game-score">0</span>
+          </div>
+        </div>
 
-    <div class="shell-container" id="shell-grid">
-      <div class="shell-item" onclick="playTurn(0)">❓</div>
-      <div class="shell-item" onclick="playTurn(1)">❓</div>
-      <div class="shell-item" onclick="playTurn(2)">❓</div>
-      <div class="shell-item" onclick="playTurn(3)">❓</div>
-    </div>
+        <div id="cards" class="d-flex justify-content-center gap-4 flex-wrap mb-4">
+          <div class="card" data-index="0"><div class="card-inner"><div class="face front">?</div><div class="face back"></div></div></div>
+          <div class="card" data-index="1"><div class="card-inner"><div class="face front">?</div><div class="face back"></div></div></div>
+          <div class="card" data-index="2"><div class="card-inner"><div class="face front">?</div><div class="face back"></div></div></div>
+          <div class="card" data-index="3"><div class="card-inner"><div class="face front">?</div><div class="face back"></div></div></div>
+        </div>
 
-    <h3 id="game-message">Choose a card, Captain!</h3>
-    <button id="reset-btn" class="btn btn-primary mt-3 d-none" onclick="resetGame()">Try Again</button>
-   </div>
-  </section>
+        <div id="game-message" class="fs-4 fw-bold mb-3" style="min-height: 1.6em; color: var(--primary);"></div>
+
+        <div id="coupon-area" class="d-none mt-4 p-4 bg-success text-white rounded-4 shadow">
+          <h4 class="mb-3">🎉 Congratulations!</h4>
+          <p class="mb-2">You've earned a <strong>10% discount</strong></p>
+          <div class="bg-white text-dark d-inline-block px-4 py-2 rounded-3 fw-bold fs-5 mb-3" id="coupon-code">SHELL10</div>
+          <br>
+          <button id="copy-coupon" class="btn btn-light px-4">Copy Code</button>
+        </div>
+
+        <button id="reset-game" class="btn btn-outline-primary mt-4 d-none px-5 py-2">Play Again</button>
+      </div>
+    </section>
+
   </footer>
 
   <a href="#" id="scroll-top" class="fixed-bottom end-0 m-4 btn btn-primary rounded-circle d-flex align-items-center justify-content-center" style="width: 50px; height: 50px; z-index: 999;"><i class="bi bi-arrow-up-short fs-4"></i></a>
@@ -395,6 +447,112 @@
       if (window.scrollY > 40) header.classList.add('scrolled');
       else header.classList.remove('scrolled');
     });
+
+    // ── Game logic ─────────────────────────────────────────────
+    let score = 0;
+    let gameLocked = false;
+    const types = ['shell', 'shark', 'blank', 'blank'];
+    const cards = document.querySelectorAll('#cards .card');
+    const scoreEl = document.getElementById('game-score');
+    const messageEl = document.getElementById('game-message');
+    const couponArea = document.getElementById('coupon-area');
+    const couponCodeEl = document.getElementById('coupon-code');
+    const copyBtn = document.getElementById('copy-coupon');
+    const resetBtn = document.getElementById('reset-game');
+
+    function updateScore() {
+      scoreEl.textContent = score;
+    }
+
+    function shuffleArray() {
+      let arr = [...types];
+      for (let i = arr.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [arr[i], arr[j]] = [arr[j], arr[i]];
+      }
+      cards.forEach((card, i) => {
+        card.dataset.type = arr[i];
+        card.classList.remove('flipped', 'shell', 'shark', 'blank');
+      });
+    }
+
+    function flipCard(card) {
+      card.classList.add('flipped', card.dataset.type);
+    }
+
+    function flipAllBack() {
+      cards.forEach(c => c.classList.remove('flipped', 'shell', 'shark', 'blank'));
+    }
+
+    function showMessage(txt, duration = 1800) {
+      messageEl.textContent = txt;
+      setTimeout(() => { messageEl.textContent = ''; }, duration);
+    }
+
+    function handleResult(type) {
+      if (type === 'shell') {
+        score++;
+        updateScore();
+        showMessage('🐚 Shell! +1 point');
+      } else if (type === 'shark') {
+        score = 0;
+        updateScore();
+        showMessage('🦈 Shark! Score reset to 0');
+      } else {
+        showMessage('Blank card – cards reshuffled');
+      }
+
+      if (score >= 10) {
+        couponArea.classList.remove('d-none');
+        resetBtn.classList.remove('d-none');
+        score = 0;
+        updateScore();
+        showMessage('🎉 Coupon unlocked! Score reset', 4000);
+      }
+
+      setTimeout(() => {
+        flipAllBack();
+        setTimeout(() => {
+          document.getElementById('cards').classList.add('shuffling');
+          setTimeout(() => {
+            shuffleArray();
+            document.getElementById('cards').classList.remove('shuffling');
+            gameLocked = false;
+          }, 600);
+        }, 400);
+      }, 1600);
+    }
+
+    cards.forEach(card => {
+      card.addEventListener('click', () => {
+        if (gameLocked) return;
+        gameLocked = true;
+        flipCard(card);
+        setTimeout(() => {
+          handleResult(card.dataset.type);
+        }, 900);
+      });
+    });
+
+    copyBtn.addEventListener('click', () => {
+      navigator.clipboard.writeText('SHELL10').then(() => {
+        copyBtn.textContent = 'Copied!';
+        setTimeout(() => { copyBtn.textContent = 'Copy Code'; }, 2000);
+      });
+    });
+
+    resetBtn.addEventListener('click', () => {
+      score = 0;
+      updateScore();
+      couponArea.classList.add('d-none');
+      resetBtn.classList.add('d-none');
+      shuffleArray();
+      messageEl.textContent = 'New game started!';
+    });
+
+    // Init game
+    shuffleArray();
+    updateScore();
   </script>
 
 </body>
