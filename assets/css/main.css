@@ -222,3 +222,30 @@ h1, h2, h3, h4, h5, h6 {
 section { padding: 60px 0; overflow: clip; }
 .section-title { text-align: center; padding-bottom: 60px; }
 .section-title h2 { font-size: 13px; background: rgba(0, 140, 173, 0.1); color: var(--accent-color); padding: 8px 20px; border-radius: 50px; text-transform: uppercase; }
+
+/* Game text visibility fix */
+.game-section .lead,
+.game-section #game-score,
+.game-section #game-message {
+  background-color: #ffffff !important;
+  color: #0C4999 !important;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.12) !important;
+  border: 1px solid #d1e3ff !important;
+  border-radius: 12px !important;
+  padding: 1.25rem 1.75rem !important;
+}
+
+.game-section .lead {
+  font-size: 1.15rem !important;
+  line-height: 1.6 !important;
+}
+
+.game-section #game-score {
+  font-size: 2rem !important;
+  min-width: 220px !important;
+}
+
+.game-section #game-message {
+  font-size: 1.35rem !important;
+  min-height: 3.2rem !important;
+}
