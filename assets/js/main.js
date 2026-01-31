@@ -185,35 +185,39 @@
 
 })();
 
-/* --- GAME LOGIC MOVED OUTSIDE FOR COMPATIBILITY --- */
-let pearlPosition = Math.floor(Math.random() * 3);
-let isGameOver = false;
+//* --- FINAL GAME LOGIC FIX --- */
+// We use 'window' to make sure the HTML buttons can find these functions
+window.pearlPosition = Math.floor(Math.random() * 3);
+window.isGameOver = false;
 
-function playGame(clickedIndex) {
-  if (isGameOver) return;
+window.playGame = function(clickedIndex) {
+  if (window.isGameOver) return;
 
   const shells = document.querySelectorAll('.shell-item');
   const message = document.getElementById('game-message');
   const resetBtn = document.getElementById('reset-btn');
 
-  if (clickedIndex === pearlPosition) {
-    shells[clickedIndex].innerHTML = "⚪";
+  if (clickedIndex === window.pearlPosition) {
+    // WINNER logic
+    shells[clickedIndex].innerHTML = "⚪"; // Pearl
     shells[clickedIndex].classList.add('winner');
     message.innerHTML = "🎉 TREASURE FOUND! Use Code: <span style='color: #22c55e'>MARINA20</span>";
-    isGameOver = true;
-    resetBtn.classList.remove('d-none');
+    window.isGameOver = true;
+    if(resetBtn) resetBtn.classList.remove('d-none');
     shells.forEach(s => s.classList.add('disabled'));
   } else {
+    // LOSER logic
     shells[clickedIndex].innerHTML = "❌";
     shells[clickedIndex].classList.add('loser');
     message.innerText = "Empty! Try a different shell...";
     shells[clickedIndex].classList.add('disabled');
   }
-}
+};
 
-function resetGame() {
-  pearlPosition = Math.floor(Math.random() * 3);
-  isGameOver = false;
+window.resetGame = function() {
+  window.pearlPosition = Math.floor(Math.random() * 3);
+  window.isGameOver = false;
+  
   const shells = document.querySelectorAll('.shell-item');
   const message = document.getElementById('game-message');
   const resetBtn = document.getElementById('reset-btn');
@@ -222,6 +226,7 @@ function resetGame() {
     s.innerHTML = "🐚";
     s.className = "shell-item";
   });
+  
   message.innerText = "Good Luck, Captain!";
-  resetBtn.classList.add('d-none');
-}
+  if(resetBtn) resetBtn.classList.add('d-none');
+};
