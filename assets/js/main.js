@@ -80,13 +80,15 @@
       window.scrollY > 100 ? scrollTop.classList.add('active') : scrollTop.classList.remove('active');
     }
   }
-  scrollTop.addEventListener('click', (e) => {
-    e.preventDefault();
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth'
+  if (scrollTop) {
+    scrollTop.addEventListener('click', (e) => {
+      e.preventDefault();
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
     });
-  });
+  }
 
   window.addEventListener('load', toggleScrollTop);
   document.addEventListener('scroll', toggleScrollTop);
@@ -107,7 +109,9 @@
   /**
    * Initiate Pure Counter
    */
-  new PureCounter();
+  if (typeof PureCounter !== 'undefined') {
+    new PureCounter();
+  }
 
   /**
    * Init swiper sliders
@@ -176,5 +180,50 @@
       faqItem.parentNode.classList.toggle('faq-active');
     });
   });
+
+  /**
+   * --------------------------------------------------------------
+   * MINI GAME: OCEAN TREASURE HUNT
+   * --------------------------------------------------------------
+   */
+  let pearlPosition = Math.floor(Math.random() * 3);
+  let isGameOver = false;
+
+  window.playGame = function(clickedIndex) {
+    if (isGameOver) return;
+
+    const shells = document.querySelectorAll('.shell-item');
+    const message = document.getElementById('game-message');
+    const resetBtn = document.getElementById('reset-btn');
+
+    if (clickedIndex === pearlPosition) {
+      shells[clickedIndex].innerHTML = "⚪";
+      shells[clickedIndex].classList.add('winner');
+      message.innerHTML = "🎉 TREASURE FOUND! Use Code: <span style='color: #22c55e'>MARINA20</span>";
+      isGameOver = true;
+      resetBtn.classList.remove('d-none');
+      shells.forEach(s => s.classList.add('disabled'));
+    } else {
+      shells[clickedIndex].innerHTML = "❌";
+      shells[clickedIndex].classList.add('loser');
+      message.innerText = "Empty! Try a different shell...";
+      shells[clickedIndex].classList.add('disabled');
+    }
+  };
+
+  window.resetGame = function() {
+    pearlPosition = Math.floor(Math.random() * 3);
+    isGameOver = false;
+    const shells = document.querySelectorAll('.shell-item');
+    const message = document.getElementById('game-message');
+    const resetBtn = document.getElementById('reset-btn');
+
+    shells.forEach(s => {
+      s.innerHTML = "🐚";
+      s.className = "shell-item";
+    });
+    message.innerText = "Good Luck, Captain!";
+    resetBtn.classList.add('d-none');
+  };
 
 })();
